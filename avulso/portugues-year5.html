@@ -293,8 +293,36 @@ const pick = a => a[Math.floor(Math.random() * a.length)];
 
 /* ---------- armazenamento ---------- */
 function vazio() { return { v: 1, perfis: [], ativo: null, voz: true, som: true, dados: {}, migrado: {} }; }
+// reconstrói os dados campo a campo, só com o formato esperado (protege contra backup adulterado
+// ou outro site do mesmo endereço mexendo no armazenamento: nada estranho chega à tela)
+const num = (x, max = 1e12) => (typeof x === 'number' && isFinite(x) && x >= 0 ? Math.min(x, max) : 0);
+const ehData = x => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x);
+const ehId = x => typeof x === 'string' && /^[A-Za-z0-9_-]{1,40}$/.test(x);
+function mapa(o, chaveOk, valor) { const r = {}; if (o && typeof o === 'object' && !Array.isArray(o)) for (const k of Object.keys(o).slice(0, 5000)) if (chaveOk(k)) { const v = valor(o[k]); if (v !== undefined) r[k] = v; } return r; }
+function sanear(o) {
+  const db = vazio();
+  if (!o || typeof o !== 'object' || o.v !== 1) return db;
+  db.perfis = (Array.isArray(o.perfis) ? o.perfis : []).filter(p => p && /^p[a-z0-9]{3,30}$/.test(p.id) && typeof p.nome === 'string' && p.nome.trim())
+    .slice(0, 20).map(p => ({ id: p.id, nome: Array.from(p.nome.trim()).slice(0, 20).join(''), cor: Math.floor(num(p.cor, 99)), criado: ehData(p.criado) ? p.criado : '' }));
+  const ids = new Set(db.perfis.map(p => p.id));
+  db.ativo = ids.has(o.ativo) ? o.ativo : (db.perfis[0] ? db.perfis[0].id : null);
+  db.voz = o.voz !== false; db.som = o.som !== false;
+  db.migrado = mapa(o.migrado, k => k.length < 60, v => (v === true ? true : undefined));
+  db.dados = mapa(o.dados, k => ids.has(k), porMat => mapa(porMat, ehId, d => {
+    if (!d || typeof d !== 'object') return undefined;
+    return {
+      xp: num(d.xp), melhorCombo: num(d.melhorCombo, 1e6), tempo: num(d.tempo), loteVisto: num(d.loteVisto, 1e4),
+      licoes: mapa(d.licoes, ehId, l => (l && typeof l === 'object' ? { estrelas: Math.min(3, Math.floor(num(l.estrelas))), rodadas: Math.floor(num(l.rodadas, 1e6)) } : undefined)),
+      q: mapa(d.q, ehId, x => (x && typeof x === 'object' ? { v: num(x.v), c: num(x.c), e: num(x.e), s: num(x.s), ul: x.ul === 0 ? 0 : 1, u: num(x.u, 1e15) } : undefined)),
+      dias: mapa(d.dias, ehData, v => num(v, 1e6)),
+      simulados: (Array.isArray(d.simulados) ? d.simulados : []).filter(x => x && ehData(x.data)).slice(-200).map(x => ({ data: x.data, nota: Math.min(10, num(x.nota)), n: num(x.n, 1e4) })),
+      cartoes: mapa(d.cartoes, ehId, v => (v === 'sei' || v === 'rever' ? v : undefined)),
+    };
+  }));
+  return db;
+}
 function lerTudo() {
-  try { const r = JSON.parse(localStorage.getItem(KEY)); if (r && r.v === 1) return Object.assign(vazio(), r); } catch (e) {}
+  try { return sanear(JSON.parse(localStorage.getItem(KEY))); } catch (e) {}
   return vazio();
 }
 let DB = lerTudo();
@@ -322,8 +350,10 @@ function novoPerfil(nome) {
 const codigoBackup = () => btoa(unescape(encodeURIComponent(JSON.stringify(DB))));
 function restaurarBackup(txt) {
   const o = JSON.parse(decodeURIComponent(escape(atob(String(txt).replace(/\s+/g, '')))));
-  if (!o || o.v !== 1 || !Array.isArray(o.perfis) || typeof o.dados !== 'object') throw new Error('código inválido');
-  DB = Object.assign(vazio(), o); gravar();
+  if (!o || o.v !== 1 || !Array.isArray(o.perfis)) throw new Error('código inválido');
+  const limpo = sanear(o);
+  if (!limpo.perfis.length) throw new Error('código sem criança');
+  DB = limpo; gravar();
 }
 function perfilAtivo() { return DB.perfis.find(p => p.id === DB.ativo) || null; }
 function apagarPerfil(id) { DB.perfis = DB.perfis.filter(p => p.id !== id); delete DB.dados[id]; if (DB.ativo === id) DB.ativo = DB.perfis[0] ? DB.perfis[0].id : null; gravar(); }
