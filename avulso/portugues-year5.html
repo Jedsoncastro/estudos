@@ -360,7 +360,8 @@ function apagarPerfil(id) { DB.perfis = DB.perfis.filter(p => p.id !== id); dele
 function dadosDe(pid, slug) {
   DB.dados[pid] = DB.dados[pid] || {};
   const d = DB.dados[pid][slug] = DB.dados[pid][slug] || {};
-  return Object.assign(d, { xp: d.xp || 0, licoes: d.licoes || {}, q: d.q || {}, melhorCombo: d.melhorCombo || 0, tempo: d.tempo || 0, dias: d.dias || {}, loteVisto: d.loteVisto || 0, simulados: d.simulados || [], cartoes: d.cartoes || {} });
+  // mesma ordem de campos do sanear(): assim duas abas gravam exatamente o mesmo texto e não recarregam uma à outra
+  return Object.assign(d, { xp: d.xp || 0, melhorCombo: d.melhorCombo || 0, tempo: d.tempo || 0, loteVisto: d.loteVisto || 0, licoes: d.licoes || {}, q: d.q || {}, dias: d.dias || {}, simulados: d.simulados || [], cartoes: d.cartoes || {} });
 }
 // dias com estudo (qualquer matéria) -> ofensiva e meta do dia
 function diasDoPerfil(pid) {
