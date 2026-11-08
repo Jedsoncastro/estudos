@@ -287,7 +287,9 @@ const META_DIA = 50; // pontos por dia para cumprir a meta
 const pad2 = n => String(n).padStart(2, '0');
 const hoje = (d = new Date()) => d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const strip = h => String(h).replace(/<br\s*\/?>/g, '. ').replace(/<[^>]+>/g, '').replace(/___/g, ', espaço, ').replace(/→/g, ', vira, ').replace(/\s+/g, ' ').trim();
+const stripBasico = h => String(h).replace(/<br\s*\/?>/g, '. ').replace(/<[^>]+>/g, '').replace(/___/g, ', espaço, ').replace(/→/g, ', vira, ').replace(/\s+/g, ' ').trim();
+// com o conteúdo carregado, a fala usa a mesma limpeza da narração gravada (motor/ajudantes.js: limpaFala)
+const strip = h => (typeof limpaFala === 'function' ? limpaFala(h) : stripBasico(h));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const pick = a => a[Math.floor(Math.random() * a.length)];
 
@@ -499,23 +501,35 @@ function destravarAudio() {
 }
 document.addEventListener('pointerdown', destravarAudio, { capture: true });
 document.addEventListener('keydown', destravarAudio, { capture: true });
-function say(text, force) {
-  if (!DB.voz && !force) return;
-  const f = audioDe(text);
-  if (f) {
+const temNarracao = () => !!(window.AUDIOS && Object.keys(window.AUDIOS).length && AUDIO_EL);
+let FALA_VEZ = 0; // cada fala nova invalida a sequência anterior
+/* Fala uma lista de pedaços em sequência. Se TODOS têm áudio gravado, toca um depois do outro;
+   se falta algum, fala tudo com a voz do navegador (nunca mistura as duas vozes na mesma fala). */
+function sayPartes(partes, force) {
+  partes = partes.map(p => String(p || '').trim()).filter(Boolean);
+  if (!partes.length || (!DB.voz && !force)) return;
+  const vez = ++FALA_VEZ;
+  const arquivos = partes.map(audioDe);
+  if (arquivos.every(Boolean)) {
     try { speechSynthesis.cancel(); } catch (e) {}
-    try {
-      AUDIO_EL.pause(); AUDIO_EL.src = f; AUDIO_EL.currentTime = 0;
-      // AbortError = outra fala ou hush() interrompeu de propósito: não cai na voz do navegador
-      const p = AUDIO_EL.play(); if (p && p.catch) p.catch(e => { if (!e || e.name !== 'AbortError') falaRobo(text); });
-      return;
-    } catch (e) {}
+    let i = 0;
+    const tocar = () => {
+      if (vez !== FALA_VEZ) return;
+      if (i >= arquivos.length) { AUDIO_EL.onended = null; return; }
+      try {
+        AUDIO_EL.onended = tocar; AUDIO_EL.pause(); AUDIO_EL.src = arquivos[i++]; AUDIO_EL.currentTime = 0;
+        // AbortError = outra fala ou hush() interrompeu de propósito: não cai na voz do navegador
+        const p = AUDIO_EL.play(); if (p && p.catch) p.catch(e => { if (vez === FALA_VEZ && (!e || e.name !== 'AbortError')) { AUDIO_EL.onended = null; falaRobo(partes.slice(i - 1).join(' ')); } });
+      } catch (e) { falaRobo(partes.slice(i - 1).join(' ')); }
+    };
+    tocar(); return;
   }
-  falaRobo(text);
+  falaRobo(partes.join(' '));
 }
+function say(text, force) { sayPartes([text], force); }
 let FALA_T = 0;
 function sayDepois(text, ms) { clearTimeout(FALA_T); FALA_T = setTimeout(() => say(text), ms); }
-function hush() { clearTimeout(FALA_T); try { speechSynthesis.cancel(); } catch (e) {} try { if (AUDIO_EL) AUDIO_EL.pause(); } catch (e) {} }
+function hush() { clearTimeout(FALA_T); FALA_VEZ++; try { speechSynthesis.cancel(); } catch (e) {} try { if (AUDIO_EL) { AUDIO_EL.onended = null; AUDIO_EL.pause(); } } catch (e) {} }
 
 /* ---------- confete ---------- */
 const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
