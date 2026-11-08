@@ -581,27 +581,27 @@ const MATERIA = materia({
     { n: 2, data: '2026-11-08', nota: 'Primeira renovação: palavras novas em todas as lições' },
   ],
   tabelas: {
-    def: { titulo: 'Definidos (específicos)', cols: ['Masc.', 'Fem.'], linhas: ['Sing.', 'Plural'], cel: [['o', 'a'], ['os', 'as']] },
-    indef: { titulo: 'Indefinidos (qualquer um)', cols: ['Masc.', 'Fem.'], linhas: ['Sing.', 'Plural'], cel: [['um', 'uma'], ['uns', 'umas']] },
+    def: { titulo: 'Definidos (específicos)', cols: ['Masculino', 'Feminino'], linhas: ['Singular', 'Plural'], cel: [['o', 'a'], ['os', 'as']] },
+    indef: { titulo: 'Indefinidos (qualquer um)', cols: ['Masculino', 'Feminino'], linhas: ['Singular', 'Plural'], cel: [['um', 'uma'], ['uns', 'umas']] },
   },
   modulos: [
   modulo('plurais', 'Plurais', 'Palavras compostas', 'azul', [
     licao('p1', 'Sem hífen: plural só no fim', [
       bloco(ex({ title: 'Palavra grudada: plural só no fim',
         formula: '<span class="fx">[ PALAVRA ]</span><span class="op">+</span><span class="fx s">[ S ]</span><span class="op">=</span><span class="fx">PLURAL</span>',
-        body: '<p>Quando duas palavras se juntaram e viraram <b>uma palavra só, sem hífen</b>, o plural é feito como numa palavra comum: mexemos <b>só no final</b>.</p>',
-        list: [['girassol', 'girass<mark>óis</mark>', 'igual a sol → sóis'], ['pontapé', 'pontap<mark>és</mark>'], ['mandachuva', 'mandachuv<mark>as</mark>']],
+        body: '<p>Quando duas palavras se juntaram e viraram <b>uma palavra só, sem hífen</b> (tudo junto), o plural é feito como numa palavra comum: mexemos <b>só no final</b>.</p><p>Quase sempre é só pôr o S. Mas, se o fim da palavra tem um plural diferente, ele muda do jeito dele: sol vira sóis, então <b>girassol → girassóis</b>; homem vira homens, então <b>lobisomem → lobisomens</b>.</p>',
+        list: [['pontapé', 'pontap<mark>és</mark>'], ['mandachuva', 'mandachuv<mark>as</mark>'], ['girassol', 'girass<mark>óis</mark>', 'igual a sol → sóis'], ['lobisomem', 'lobisom<mark>ens</mark>', 'igual a homem → homens']],
         memo: 'Grudou? Virou <b>uma palavra só</b>. O plural vai <b>só no fim</b>.',
-        say: 'Palavras sem hífen. Quando duas palavras se juntam e viram uma palavra só, sem hífen, o plural é feito como numa palavra comum: só no final. Girassol, girassóis. Pontapé, pontapés. Mandachuva, mandachuvas. Para lembrar: grudou? Virou uma palavra só. O plural vai só no fim.' }), [
+        say: 'Palavras sem hífen. Quando duas palavras se juntam e viram uma palavra só, sem hífen, o plural é feito como numa palavra comum: só no final. Quase sempre é só pôr o S. Pontapé, pontapés. Mandachuva, mandachuvas. Mas, se o fim tem um plural diferente, ele muda do jeito dele. Girassol, girassóis, igual a sol, sóis. Lobisomem, lobisomens, igual a homem, homens. Para lembrar: grudou? Virou uma palavra só. O plural vai só no fim.' }), [
         ...lote(1, [
           mc('Qual é o plural de <b>pontapé</b>?', ['pontapés', 'pontaspés', 'ponta-pés', 'pontapéses'], 'Pontapé é uma palavra só, sem hífen. Só ganha o S no fim: pontapés.'),
           mc('Qual é o plural de <b>girassol</b>?', ['girassóis', 'girassols', 'girassoles', 'girasóis'], 'Girassol termina igual a sol. Sol vira sóis, então girassol vira girassóis. O plural acontece só no fim, do jeito que a última parte faria sozinha.'),
           mc('Qual é o plural de <b>mandachuva</b>?', ['mandachuvas', 'mandaschuvas', 'mandaschuva', 'manda-chuvas'], 'Mandachuva é uma palavra só, sem hífen: o S vai só no fim.'),
-          mc('Qual destas palavras compostas <b>NÃO</b> tem hífen?', ['girassol', 'couve-flor', 'guarda-chuva', 'beija-flor'], 'Girassol é escrita toda junta. As outras têm hífen (o tracinho).'),
-          mc('Nas palavras compostas <b>sem hífen</b>, onde vai o plural?', ['Só no final da palavra', 'No meio da palavra', 'No começo e no final'], 'Sem hífen é uma palavra só, então o plural vai só no final.'),
+          mc('Qual destas palavras compostas <b>NÃO</b> tem hífen?', ['girassol', 'couve-flor', 'guarda-chuva', 'beija-flor'], 'A palavra girassol é escrita toda junta. As outras têm hífen (o tracinho).'),
+          mc('Nas palavras compostas <b>sem hífen</b>, onde vai o plural?', ['Só no final da palavra', 'No meio da palavra', 'No começo e no final'], 'Quando a palavra composta é escrita toda junta, sem hífen, ela virou uma palavra só. Então o plural vai só no final.'),
           mc('Qual é o plural de <b>passatempo</b>?', ['passatempos', 'passastempos', 'passatempoes', 'passos-tempos'], 'Passatempo é uma palavra só: passatempos.'),
           mc('Qual é o plural de <b>rodapé</b>?', ['rodapés', 'rodaspés', 'rodapéis', 'rodas-pés'], 'Rodapé é uma palavra só, igual a pontapé: rodapés.'),
-          vf('Girassol vira girassóis do mesmo jeito que sol vira sóis.', true, 'Isso mesmo! O fim da palavra é "sol", e sol no plural é sóis. Por isso não é só colocar S: o fim muda do jeito dele.'),
+          vf('Girassol vira girassóis do mesmo jeito que sol vira sóis.', true, 'Verdadeiro! O fim da palavra é "sol", e sol no plural é sóis. Por isso não é só colocar S: o fim muda do jeito dele.'),
         ]),
         ...lote(2, [
           mc('Qual é o plural de <b>passaporte</b>?', ['passaportes', 'passasportes', 'passa-portes', 'passaportis'], 'Passaporte é uma palavra só, sem hífen: o S vai só no fim.'),
@@ -609,20 +609,20 @@ const MATERIA = materia({
           mc('Qual é o plural de <b>pernilongo</b>?', ['pernilongos', 'pernaslongos', 'perni-longos', 'pernilongues'], 'Pernilongo é uma palavra só, sem hífen: pernilongos.'),
           mc('Qual é o plural de <b>lobisomem</b>?', ['lobisomens', 'lobisomems', 'lobishomens', 'lobisomemes'], 'Lobisomem é uma palavra só. Quem termina em -em faz o plural em -ens, igual a homem e homens: lobisomens.'),
           mc('Qual é o plural de <b>planalto</b>?', ['planaltos', 'planosaltos', 'planaltes', 'planos-altos'], 'Planalto é uma palavra só, sem hífen: planaltos.'),
-          mc('Qual destas palavras compostas é escrita <b>sem hífen</b>?', ['passaporte', 'guarda-roupa', 'couve-flor', 'arco-íris'], 'Passaporte é escrita toda junta. As outras têm hífen.'),
+          mc('Qual destas palavras compostas é escrita <b>sem hífen</b>?', ['passaporte', 'guarda-roupa', 'couve-flor', 'arco-íris'], 'A palavra passaporte é escrita toda junta. As outras têm hífen.'),
           escrever('Escreva o plural de <b>passatempo</b>.', 'passatempos', 'Passatempo é uma palavra só: o S vai só no fim. Passatempos.'),
-          vf('Planalto vira planaltos porque o plural vai só no fim.', true, 'Isso! Planalto é uma palavra só, sem hífen.'),
+          vf('Planalto vira planaltos porque o plural vai só no fim.', true, 'Verdadeiro! Planalto é uma palavra só, sem hífen: o plural vai só no fim.'),
         ]),
       ]),
-    ], { cartoes: [['Composta SEM hífen', 'Plural <b>só no fim</b>.<br>girassol → girassóis']] }),
+    ], { cartoes: [['Composta SEM hífen, escrita toda junta (uma palavra só)', 'Plural <b>só no fim</b>.<br>pontapé → pontapés, girassol → girassóis']] }),
 
     licao('p2', 'Com hífen: os DOIS mudam', [
       bloco(ex({ title: 'Com hífen: os DOIS mudam',
         formula: '<span class="fx">[ PALAVRA 1 <span class="s">+ S</span> ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 <span class="s">+ S</span> ]</span>',
-        body: '<p>Quando a palavra tem hífen e as duas partes são palavras que <b>dão nome</b> (substantivo), <b>dão característica</b> (adjetivo) ou são <b>número</b> (numeral), <b>as DUAS vão para o plural</b>.</p>',
+        body: '<p>Quando a palavra tem hífen e as duas partes são palavras que <b>dão nome</b> (substantivo), <b>dão característica</b> (adjetivo) ou são <b>número</b> (numeral), <b>as DUAS vão para o plural</b>.</p><p>Atenção: se a segunda palavra disser a <b>função</b> da primeira, como em <b>pombo-correio</b>, só a primeira muda (é a próxima regra).</p>',
         list: [['couve-flor', 'couve<mark>s</mark>-flor<mark>es</mark>', 'substantivo + substantivo'], ['segunda-feira', 'segunda<mark>s</mark>-feira<mark>s</mark>', 'numeral + substantivo'], ['amor-perfeito', 'amor<mark>es</mark>-perfeito<mark>s</mark>', 'substantivo + adjetivo']],
-        memo: 'Nome com nome, nome com característica ou número com nome: <b>os dois ganham plural</b>.',
-        say: 'Com hífen: os dois mudam. Quando as duas partes são substantivo, adjetivo ou numeral, as duas vão para o plural. Couve-flor, couves-flores. Segunda-feira, segundas-feiras. Amor-perfeito, amores-perfeitos. Para lembrar: nome com nome, nome com característica, ou número com nome: os dois ganham plural.' }), [
+        memo: 'Nome com nome, nome com característica, característica com nome ou número com nome: <b>os dois ganham plural</b>. Só não vale quando a segunda diz a função da primeira (pombo-correio).',
+        say: 'Com hífen: os dois mudam. Quando as duas partes são substantivo, adjetivo ou numeral, as duas vão para o plural. Couve-flor, couves-flores. Segunda-feira, segundas-feiras. Amor-perfeito, amores-perfeitos. Para lembrar: nome com nome, nome com característica, característica com nome, ou número com nome: os dois ganham plural. Atenção: se a segunda palavra diz a função da primeira, como em pombo-correio, só a primeira muda. Essa é a próxima regra.' }), [
         ...lote(1, [
           mc('Qual é o plural de <b>couve-flor</b>?', ['couves-flores', 'couve-flores', 'couvesflores', 'couve-flors'], 'Couve e flor são dois substantivos: os dois mudam. Couves-flores.'),
           mc('Qual é o plural de <b>segunda-feira</b>?', ['segundas-feiras', 'segunda-feiras', 'segundas-feira'], 'Segunda é numeral e feira é substantivo: os dois mudam.'),
@@ -644,15 +644,15 @@ const MATERIA = materia({
           escrever('Escreva o plural de <b>quinta-feira</b>.', 'quintas-feiras', 'Numeral + substantivo: os dois mudam. Quintas-feiras.', { dica: 'Não esqueça o hífen (o tracinho).' }),
         ]),
       ]),
-    ], { cartoes: [['Com hífen: nome + nome, nome + característica ou número + nome', 'Os <b>DOIS</b> mudam.<br>couve-flor → couves-flores']] }),
+    ], { cartoes: [['Com hífen: nome + nome, nome + característica, característica + nome ou número + nome', 'Os <b>DOIS</b> mudam.<br>couve-flor → couves-flores<br>Atenção: se a 2ª palavra diz a função da 1ª (pombo-correio), só a 1ª muda.']] }),
 
     licao('p3', 'Com hífen: só o PRIMEIRO muda', [
       bloco(ex({ title: 'Com hífen: só o PRIMEIRO muda',
         formula: '<span class="fx">[ PALAVRA 1 <span class="s">+ S</span> ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 ]</span>',
-        body: '<p>Só a <b>primeira</b> palavra vai para o plural em dois casos:</p><p><b>1.</b> Quando tem uma <b>preposição</b> no meio (<b>de, do, da</b>).<br><b>2.</b> Quando a segunda palavra diz a <b>função</b> ou o <b>tipo</b> da primeira.</p>',
-        list: [['dragão-do-mar', 'drag<mark>ões</mark>-do-mar', 'tem "do" no meio'], ['porquinho-da-índia', 'porquinho<mark>s</mark>-da-índia', 'tem "da" no meio'], ['pombo-correio', 'pombo<mark>s</mark>-correio', 'correio é a função do pombo']],
+        body: '<p>Só a <b>primeira</b> palavra vai para o plural em dois casos:</p><p><b>1.</b> Quando tem uma <b>preposição</b> no meio (<b>de, do, da</b>). Isso vale até quando as palavras são escritas separadas, sem hífen, como em <b>pé de pato</b>.<br><b>2.</b> Quando a segunda palavra diz a <b>função</b> da primeira.</p>',
+        list: [['dragão-do-mar', 'drag<mark>ões</mark>-do-mar', 'tem "do" no meio'], ['porquinho-da-índia', 'porquinho<mark>s</mark>-da-índia', 'tem "da" no meio'], ['pé de pato', 'pé<mark>s</mark> de pato', 'sem hífen, mas tem "de" no meio'], ['pombo-correio', 'pombo<mark>s</mark>-correio', 'correio é a função do pombo']],
         memo: 'Viu <b>DE, DO ou DA</b> no meio? Só a primeira muda. O resto fica igual, como um sobrenome.',
-        say: 'Com hífen: só o primeiro muda. Isso acontece quando tem uma preposição no meio, como de, do, da. Ou quando a segunda palavra diz a função da primeira. Dragão-do-mar, dragões-do-mar. Porquinho-da-índia, porquinhos-da-índia. Pombo-correio, pombos-correio, porque o correio é a função do pombo. Para lembrar: viu de, do ou da no meio? Só a primeira muda.' }), [
+        say: 'Com hífen: só o primeiro muda. Isso acontece quando tem uma preposição no meio, como de, do, da. Ou quando a segunda palavra diz a função da primeira. Dragão-do-mar, dragões-do-mar. Porquinho-da-índia, porquinhos-da-índia. Pombo-correio, pombos-correio, porque o correio é a função do pombo. Atenção: com de no meio, vale até sem hífen. Pé de pato, pés de pato. Para lembrar: viu de, do ou da no meio? Só a primeira muda.' }), [
         ...lote(1, [
           mc('Qual é o plural de <b>estrela-do-mar</b>?', ['estrelas-do-mar', 'estrelas-dos-mares', 'estrela-dos-mares', 'estrela-do-mares'], 'Tem "do" no meio (preposição). Só a primeira muda: estrelas-do-mar.'),
           mc('Qual é o plural de <b>porquinho-da-índia</b>?', ['porquinhos-da-índia', 'porquinhos-das-índias', 'porquinho-das-índias'], 'Tem "da" no meio. Só a primeira muda: porquinhos-da-índia.'),
@@ -662,7 +662,7 @@ const MATERIA = materia({
           mc('Qual é o plural de <b>dragão-do-mar</b>?', ['dragões-do-mar', 'dragãos-do-mar', 'dragões-dos-mares'], 'Tem "do" no meio. Só dragão muda, e dragão no plural é dragões.'),
           mc('Em <b>estrela-do-mar</b>, qual palavrinha mostra que só a primeira muda?', ['do', 'estrela', 'mar'], '"Do" é a preposição. Quando ela aparece no meio, só a primeira palavra muda.'),
           mc('Por que <b>pombo-correio</b> vira <b>pombos-correio</b>?', ['Porque correio diz a função do pombo', 'Porque as duas palavras são verbos', 'Porque a palavra se repete'], 'O pombo-correio é o pombo que leva cartas. Correio é a função dele, então só pombo muda.'),
-          mc('Em <b>salários-família</b>, por que só a primeira palavra mudou?', ['Porque família diz o tipo de salário', 'Porque tem preposição no meio', 'Porque a primeira palavra é verbo'], 'A segunda palavra especifica (diz o tipo) da primeira. Por isso só salário muda.'),
+          mc('Em <b>salários-família</b>, por que só a primeira palavra mudou?', ['Porque família diz o tipo de salário', 'Porque tem preposição no meio', 'Porque a primeira palavra é verbo'], 'Família diz que tipo de salário é: o salário que serve para ajudar a família. A segunda palavra especifica a primeira (diz a função dela). Por isso só salário muda.'),
         ]),
         ...lote(2, [
           mc('Qual é o plural de <b>bicho-da-seda</b>?', ['bichos-da-seda', 'bichos-das-sedas', 'bicho-das-sedas'], 'Tem "da" no meio. Só a primeira muda: bichos-da-seda.'),
@@ -672,18 +672,18 @@ const MATERIA = materia({
           mc('Qual é o plural de <b>copo-de-leite</b> (uma flor)?', ['copos-de-leite', 'copos-de-leites', 'copo-de-leites'], 'Tem "de" no meio. Só a primeira muda: copos-de-leite.'),
           mc('Qual é o plural de <b>pé de pato</b>?', ['pés de pato', 'pés de patos', 'pé de patos'], 'São palavras separadas (não grudadas) e tem "de" no meio. Só a primeira muda: pés de pato.'),
           mc('Em <b>bicho-da-seda</b>, qual palavrinha mostra que só a primeira muda?', ['da', 'bicho', 'seda'], '"Da" é a preposição. Viu de, do ou da no meio? Só a primeira muda.'),
-          vf('Em <b>joões-de-barro</b>, só a primeira palavra foi para o plural.', true, 'Isso! Tem "de" no meio, então só joão mudou.'),
+          vf('Em <b>joões-de-barro</b>, só a primeira palavra foi para o plural.', true, 'Verdadeiro! Tem "de" no meio, então só joão mudou: joões-de-barro.'),
         ]),
       ]),
-    ], { cartoes: [['Com DE, DO ou DA no meio (ou quando a 2ª diz a função)', 'Só o <b>PRIMEIRO</b> muda.<br>estrela-do-mar → estrelas-do-mar<br>pombo-correio → pombos-correio']] }),
+    ], { cartoes: [['Com DE, DO ou DA no meio (com ou sem hífen), ou quando a 2ª diz a função', 'Só o <b>PRIMEIRO</b> muda.<br>estrela-do-mar → estrelas-do-mar<br>pé de pato → pés de pato<br>pombo-correio → pombos-correio']] }),
 
     licao('p4', 'Com hífen: só o SEGUNDO muda', [
       bloco(ex({ title: 'Com hífen: só o SEGUNDO muda',
         formula: '<span class="fx">[ PALAVRA 1 ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 <span class="s">+ S</span> ]</span>',
-        body: '<p>Só a <b>segunda</b> (a última) palavra vai para o plural quando:</p><p><b>1.</b> A primeira palavra é um <b>verbo</b> (uma ação).<br><b>2.</b> As palavras se <b>repetem</b>.</p>',
-        list: [['guarda-chuva', 'guarda-chuv<mark>as</mark>', 'guarda = verbo guardar'], ['beija-flor', 'beija-flor<mark>es</mark>', 'beija = verbo beijar'], ['tico-tico', 'tico-tico<mark>s</mark>', 'palavra repetida']],
-        memo: '<b>Verbo não vai para o plural.</b> Quem muda é a palavra do fim. Eu sou um tico-tico, e meus amigos são tico-ticos!',
-        say: 'Com hífen: só o segundo muda. Isso acontece quando a primeira palavra é um verbo, uma ação, ou quando as palavras se repetem. Guarda-chuva, guarda-chuvas, porque guarda é o verbo guardar. Beija-flor, beija-flores. Tico-tico, tico-ticos. Para lembrar: verbo não vai para o plural. Quem muda é a palavra do fim.' }), [
+        body: '<p>Só a <b>segunda</b> (a última) palavra vai para o plural quando:</p><p><b>1.</b> A primeira palavra é um <b>verbo</b> (uma ação).<br><b>2.</b> As palavras se <b>repetem</b>.</p><p>Dois casos especiais que também funcionam assim: <b>vice</b> nunca muda (vice-campeão → vice-campeões) e no <b>bem-te-vi</b> só a última parte muda (bem-te-vis, nunca "bens").</p>',
+        list: [['guarda-chuva', 'guarda-chuv<mark>as</mark>', 'guarda = verbo guardar'], ['beija-flor', 'beija-flor<mark>es</mark>', 'beija = verbo beijar'], ['tico-tico', 'tico-tico<mark>s</mark>', 'palavra repetida'], ['vice-campeão', 'vice-campe<mark>ões</mark>', 'vice nunca muda'], ['bem-te-vi', 'bem-te-vi<mark>s</mark>', 'só a última parte muda']],
+        memo: '<b>O verbo do começo não vai para o plural.</b> Quem muda é a palavra do fim. Eu sou um tico-tico, e meus amigos são tico-ticos!',
+        say: 'Com hífen: só o segundo muda. Isso acontece quando a primeira palavra é um verbo, uma ação, ou quando as palavras se repetem. Guarda-chuva, guarda-chuvas, porque guarda é o verbo guardar. Beija-flor, beija-flores. Tico-tico, tico-ticos. Atenção a dois casos especiais: vice nunca muda, vice-campeão, vice-campeões. E no bem-te-vi só a última parte muda: bem-te-vis. Para lembrar: o verbo do começo não vai para o plural. Quem muda é a palavra do fim.' }), [
         ...lote(1, [
           mc('Qual é o plural de <b>guarda-chuva</b>?', ['guarda-chuvas', 'guardas-chuvas', 'guardas-chuva'], 'Guarda é verbo (guardar). Verbo não muda: guarda-chuvas.'),
           mc('Qual é o plural de <b>beija-flor</b>?', ['beija-flores', 'beijas-flores', 'beijas-flor'], 'Beija é verbo (beijar). Só flor muda: beija-flores.'),
@@ -693,14 +693,14 @@ const MATERIA = materia({
           mc('Qual é o plural de <b>guarda-roupa</b>?', ['guarda-roupas', 'guardas-roupas', 'guardas-roupa'], 'Guarda é verbo. Só roupa muda: guarda-roupas.'),
           mc('Em <b>guarda-chuva</b>, a palavra <b>guarda</b> é:', ['um verbo (a ação de guardar)', 'uma preposição', 'uma palavra repetida'], 'O guarda-chuva guarda a gente da chuva. Guarda é a ação: um verbo.'),
           mc('Qual destas palavras tem um <b>VERBO</b> na primeira parte?', ['beija-flor', 'couve-flor', 'estrela-do-mar', 'cachorro-quente'], 'Beija vem do verbo beijar. As outras começam com nomes.'),
-          mc('Qual é o plural de <b>bem-te-vi</b>?', ['bem-te-vis', 'bens-te-vis', 'bem-tes-vis'], 'No bem-te-vi também só a última parte muda: bem-te-vis.'),
+          mc('Qual é o plural de <b>bem-te-vi</b>?', ['bem-te-vis', 'bens-te-vis', 'bem-tes-vis'], 'O nome bem-te-vi imita o canto do passarinho. Aqui "bem" não é nome de coisa, por isso não vira "bens". Só a última parte muda: bem-te-vis.'),
         ]),
         ...lote(2, [
           mc('Qual é o plural de <b>guarda-sol</b>?', ['guarda-sóis', 'guardas-sóis', 'guardas-sol'], 'Guarda é verbo (guardar). Só sol muda, e sol vira sóis: guarda-sóis.'),
           mc('Qual é o plural de <b>bate-papo</b>?', ['bate-papos', 'bates-papos', 'bates-papo'], 'Bate é verbo (bater). Só papo muda: bate-papos.'),
           mc('Qual é o plural de <b>porta-retrato</b>?', ['porta-retratos', 'portas-retratos', 'portas-retrato'], 'Porta aqui é verbo (portar, carregar). Só retrato muda: porta-retratos.'),
           mc('Qual é o plural de <b>reco-reco</b>?', ['reco-recos', 'recos-recos', 'recos-reco'], 'A palavra se repete. Só a última muda: reco-recos.'),
-          mc('Qual é o plural de <b>tique-taque</b>?', ['tique-taques', 'tiques-taques', 'tiques-taque'], 'Palavras repetidas, que imitam um som: só a última muda.'),
+          mc('Qual é o plural de <b>tique-taque</b>?', ['tique-taques', 'tiques-taques', 'tiques-taque'], 'Tique-taque imita o som do relógio, com a palavra quase repetida (só muda uma letra). Funciona como a repetição: só a última muda. Tique-taques.'),
           mc('Qual é o plural de <b>vice-campeão</b>?', ['vice-campeões', 'vices-campeões', 'vices-campeão'], 'Vice nunca muda. Só campeão vai para o plural: vice-campeões.'),
           mc('Em <b>porta-retrato</b>, a palavra <b>porta</b> é:', ['um verbo (portar, carregar)', 'um substantivo (a porta da casa)', 'uma preposição'], 'O porta-retrato carrega o retrato. Porta aqui é a ação de portar: verbo.'),
           escrever('Escreva o plural de <b>guarda-roupa</b>.', 'guarda-roupas', 'Guarda é verbo: só roupa muda. Guarda-roupas.', { dica: 'Não esqueça o hífen (o tracinho).' }),
@@ -710,9 +710,9 @@ const MATERIA = materia({
 
     licao('p5', 'Revisão: qual é a regra?', [
       bloco(ex({ title: 'As 4 regras do plural',
-        body: '<ul class="ex-list"><li>Sem hífen <span class="arrow">→</span> só no fim<small>girassol → girassóis</small></li><li>Com hífen, nome + nome <span class="arrow">→</span> os dois mudam<small>couve-flor → couves-flores</small></li><li>Com hífen e DE/DO/DA ou função <span class="arrow">→</span> só o 1º muda<small>pombo-correio → pombos-correio</small></li><li>Com hífen e verbo ou repetição <span class="arrow">→</span> só o 2º muda<small>guarda-chuva → guarda-chuvas</small></li></ul>',
+        body: '<ul class="ex-list"><li>Sem hífen, tudo junto <span class="arrow">→</span> só no fim<small>girassol → girassóis</small></li><li>Com hífen, nome + nome <span class="arrow">→</span> os dois mudam<small>couve-flor → couves-flores</small></li><li>Com DE/DO/DA no meio (com ou sem hífen) ou função <span class="arrow">→</span> só o 1º muda<small>pombo-correio → pombos-correio, pé de pato → pés de pato</small></li><li>Com hífen e verbo ou repetição <span class="arrow">→</span> só o 2º muda<small>guarda-chuva → guarda-chuvas</small></li></ul>',
         memo: 'Agora eu mostro a palavra e você me diz <b>qual regra</b> foi usada. Vamos lá!',
-        say: 'Revisão das quatro regras do plural. Sem hífen: só no fim. Com hífen e nome com nome: os dois mudam. Com hífen e de, do, da, ou função: só o primeiro muda. Com hífen e verbo ou repetição: só o segundo muda. Agora eu mostro a palavra e você me diz qual regra foi usada.' }), [
+        say: 'Revisão das quatro regras do plural. Sem hífen, tudo junto: só no fim. Com hífen e nome com nome: os dois mudam. Com de, do ou da no meio, com ou sem hífen, ou com função: só o primeiro muda. Com hífen e verbo ou repetição: só o segundo muda. Agora eu mostro a palavra e você me diz qual regra foi usada.' }), [
         ...lote(1, [
           regra('Qual regra foi usada em <b>passatempo → passatempos</b>?', 0, 'Passatempo não tem hífen: o plural vai só no fim.'),
           regra('Qual regra foi usada em <b>couve-flor → couves-flores</b>?', 1, 'Couve e flor são substantivos: os dois mudam.'),
@@ -745,10 +745,10 @@ const MATERIA = materia({
   modulo('artigos', 'Artigos', 'Definidos e indefinidos', 'verde', [
     licao('a1', 'O ou UM? Definido e indefinido', [
       bloco(ex({ title: 'Qual é a diferença?',
-        body: '<div class="twocol"><div><h4 style="color:var(--green)">Definido</h4><div class="big"><mark>O</mark> rio corta a floresta.</div><small>Um rio específico, que nós já conhecemos.</small></div><div><h4 style="color:var(--muted)">Indefinido</h4><div class="big">Há <mark>um</mark> rio na floresta.</div><small>Um rio qualquer, não específico.</small></div></div>',
+        body: '<div class="twocol"><div><h4 style="color:var(--green)">Definido</h4><div class="big"><mark>O</mark> rio corta a floresta.</div><small>É um rio específico, que nós já conhecemos.</small></div><div><h4 style="color:var(--muted)">Indefinido</h4><div class="big">Há <mark>um</mark> rio na floresta.</div><small>É um rio qualquer, não específico.</small></div></div>',
         list: [['Definidos', '<mark>o, a, os, as</mark>'], ['Indefinidos', '<mark>um, uma, uns, umas</mark>']],
         memo: '<b>O</b> é "aquele ali, que eu conheço". <b>UM</b> é "um qualquer".',
-        say: 'Artigos. O artigo definido fala de algo específico, que a gente já conhece: o rio corta a floresta. O artigo indefinido fala de algo qualquer: há um rio na floresta. Os definidos são: o, a, os, as. Os indefinidos são: um, uma, uns, umas. Para lembrar: o é aquele ali, que eu conheço. Um é um qualquer.' }), [
+        say: 'Artigos. O artigo definido fala de algo específico, que a gente já conhece: o rio corta a floresta. O artigo indefinido fala de algo qualquer: há um rio na floresta. Os definidos são: o, a, os, as. Os indefinidos são: um, uma, uns, umas. Para lembrar: o artigo o é aquele ali, que eu conheço. O artigo um é um qualquer.' }), [
         ...lote(1, [
           mc('Qual frase fala de um gato <b>específico</b>, que já conhecemos?', ['O gato dormiu no sofá.', 'Um gato dormiu no sofá.'], 'O artigo "o" é definido: fala de um gato específico.', { two: false }),
           mc('Na frase "Ganhei <b>uma</b> bicicleta", a palavra <b>uma</b> é:', ['artigo indefinido', 'artigo definido', 'um verbo'], '"Uma" é artigo indefinido: uma bicicleta qualquer.'),
@@ -765,14 +765,14 @@ const MATERIA = materia({
           mc('Complete: "Quero ___ bolo que a vovó fez ontem."', ['o', 'um'], 'É um bolo específico: aquele que a vovó fez. Então é "o" (definido).', { two: true }),
           mc('Complete: "Na loja tinha muitas bolas. Escolhi ___ bola qualquer."', ['uma', 'a'], 'Qualquer bola serve. Então é "uma" (indefinido).', { two: true }),
           mc('Na frase "Comprei <b>uns</b> lápis", a palavra <b>uns</b> é:', ['artigo indefinido', 'artigo definido', 'um verbo'], '"Uns" é artigo indefinido: uns lápis quaisquer.'),
-          vf('"As" é um artigo definido.', true, 'Isso! Os definidos são o, a, os, as.'),
+          vf('"As" é um artigo definido.', true, 'Verdadeiro! Os definidos são o, a, os, as.'),
           mc('Qual frase fala de uma bicicleta <b>qualquer</b>, não específica?', ['Quero uma bicicleta de presente.', 'Quero a bicicleta que vimos na loja.'], 'Uma bicicleta qualquer: artigo indefinido "uma".'),
         ]),
       ]),
     ], { cartoes: [['Artigos DEFINIDOS', '<b>o, a, os, as</b><br>Falam de algo específico, que a gente conhece.'], ['Artigos INDEFINIDOS', '<b>um, uma, uns, umas</b><br>Falam de algo qualquer.']] }),
 
     licao('a2', 'A tabela dos artigos', [
-      bloco(ex({ title: 'A tabela dos artigos',
+      bloco(ex({ title: 'A tabela (matriz) dos artigos',
         body: '[[tabelas:def,indef]]',
         memo: 'Para classificar um artigo, responda <b>3 perguntas</b>:<br>1. Definido ou indefinido?<br>2. Masculino ou feminino?<br>3. Singular ou plural?',
         say: 'A tabela dos artigos. Definidos: o é masculino singular, a é feminino singular, os é masculino plural, as é feminino plural. Indefinidos: um é masculino singular, uma é feminino singular, uns é masculino plural, umas é feminino plural. Para classificar um artigo, responda três perguntas: definido ou indefinido? Masculino ou feminino? Singular ou plural?' }), [
@@ -804,10 +804,10 @@ const MATERIA = materia({
 
     licao('a3', 'Caça aos artigos', [
       bloco(ex({ title: 'Caça aos artigos!',
-        body: '<p>O artigo vem sempre <b>antes de um substantivo</b> (um nome) e combina com ele.</p><p>Agora você vai <b>tocar nos artigos</b> da frase e depois <b>classificar</b> com as 3 perguntas.</p>',
+        body: '<p>O artigo vem <b>antes do substantivo</b> (um nome) e combina com ele: masculino com masculino, feminino com feminino, singular com singular, plural com plural.</p><p>Agora você vai <b>tocar nos artigos</b> da frase e depois <b>classificar</b> com as 3 perguntas.</p>',
         list: [['<mark>Os</mark> livros', 'definido, masculino, plural'], ['<mark>uma</mark> reunião', 'indefinido, feminino, singular']],
         memo: 'Na prova, classifique <b>completo</b>: definido ou indefinido, masculino ou feminino, singular ou plural. As três coisas!',
-        say: 'Caça aos artigos! O artigo vem sempre antes de um nome e combina com ele. Você vai tocar nos artigos da frase e depois classificar. Na prova, classifique completo: definido ou indefinido, masculino ou feminino, singular ou plural. As três coisas!' }), [
+        say: 'Caça aos artigos! O artigo vem antes do nome e combina com ele: masculino com masculino, feminino com feminino, singular com singular, plural com plural. Você vai tocar nos artigos da frase e depois classificar. Na prova, classifique completo: definido ou indefinido, masculino ou feminino, singular ou plural. As três coisas!' }), [
         ...lote(1, [
           artigos('O mendigo pediu um pão.', [0, 3], '"O" vem antes de mendigo e "um" vem antes de pão.'),
           mc('Em "O mendigo pediu <b>um</b> pão", classifique <b>um</b>:', ['indefinido, masculino, singular', 'definido, masculino, singular', 'indefinido, feminino, singular'], 'Um pão qualquer: indefinido, masculino, singular.'),
@@ -832,7 +832,7 @@ const MATERIA = materia({
           mc('Em "Uma menina deu <b>os</b> lápis", classifique <b>os</b>:', ['definido, masculino, plural', 'indefinido, masculino, plural', 'definido, feminino, plural'], 'Os: definido, masculino, plural.'),
         ]),
       ]),
-    ], { cartoes: [['Onde fica o artigo?', 'Sempre <b>antes de um substantivo</b> (um nome), combinando com ele.<br><b>Os</b> livros, <b>uma</b> reunião.']] }),
+    ], { cartoes: [['Onde fica o artigo?', '<b>Antes do substantivo</b> (um nome), combinando com ele: masculino com masculino, feminino com feminino, singular com singular, plural com plural.<br><b>Os</b> livros, <b>uma</b> reunião.']] }),
   ]),
 
   modulo('genero', 'Gênero', 'Biformes e uniformes', 'ambar', [
@@ -840,7 +840,7 @@ const MATERIA = materia({
       bloco(ex({ title: 'Flexão de gênero: o básico',
         body: '<div class="twocol"><div><h4 style="color:var(--blue)">Masculino</h4><div class="big">aceita o artigo <mark>O</mark></div><small>o ovo, o menino, o sol</small></div><div><h4 style="color:var(--rust)">Feminino</h4><div class="big">aceita o artigo <mark>A</mark></div><small>a janela, a lua, a menina</small></div></div><p style="margin-top:12px"><b>Todos os substantivos têm gênero</b>, até os objetos!</p><p>Cuidado: não é a última letra que manda. <b>O mapa</b> e <b>o dia</b> terminam em A e são masculinos.</p>',
         memo: 'Truque: coloque <b>O</b> ou <b>A</b> na frente e escute qual soa certo.',
-        say: 'Flexão de gênero. Masculino aceita o artigo o: o ovo, o menino, o sol. Feminino aceita o artigo a: a janela, a lua, a menina. Todos os substantivos têm gênero, até os objetos! Cuidado: não é a última letra que manda. O mapa e o dia terminam em a e são masculinos. Truque: coloque o ou a na frente e escute qual soa certo.' }), [
+        say: 'Flexão de gênero. Masculino aceita o artigo o: o ovo, o menino, o sol. Feminino aceita o artigo a: a janela, a lua, a menina. Todos os substantivos têm gênero, até os objetos! Cuidado: não é a última letra que manda. O mapa e o dia terminam com a letra a e são masculinos. Truque: coloque o artigo o ou o artigo a na frente da palavra e escute qual soa certo.' }), [
         ...lote(1, [
           mc('Qual é o gênero de <b>janela</b>?', ['feminino (a janela)', 'masculino (o janela)'], 'Dizemos "a janela": feminino.'),
           mc('Qual é o gênero de <b>sol</b>?', ['masculino (o sol)', 'feminino (a sol)'], 'Dizemos "o sol": masculino.'),
@@ -864,10 +864,10 @@ const MATERIA = materia({
 
     licao('g2', 'Biformes: duas formas', [
       bloco(ex({ title: 'Biformes: duas formas',
-        body: '<p><b>BI</b> quer dizer <b>dois</b> (como bicicleta, que tem duas rodas). Biforme tem <b>uma forma para o masculino e outra para o feminino</b>.</p>',
+        body: '<p><b>BI</b> quer dizer <b>dois</b> (como bicicleta, que tem duas rodas). Biforme tem <b>uma forma para o masculino e outra para o feminino</b>.</p><p>Quase sempre muda só o final da palavra. Às vezes a palavra muda toda (pai e mãe), e <b>continua sendo biforme</b>.</p>',
         list: [['Troca -O ou -E por -A', ''], ['gato', 'gat<mark>a</mark>'], ['mestre', 'mestr<mark>a</mark>'], ['Muda -ÃO para -Ã ou -OA', ''], ['irmão', 'irm<mark>ã</mark>'], ['leão', 'le<mark>oa</mark>']],
         memo: '<b>Bi</b>forme = <b>duas</b> formas. Gato e gata, irmão e irmã.',
-        say: 'Biformes: duas formas. Bi quer dizer dois, como bicicleta, que tem duas rodas. Biforme tem uma forma para o masculino e outra para o feminino. Primeira regra: troca o ou e por a. Gato, gata. Mestre, mestra. Segunda regra: muda ão para ã ou para oa. Irmão, irmã. Leão, leoa.' }), [
+        say: 'Biformes: duas formas. Bi quer dizer dois, como bicicleta, que tem duas rodas. Biforme tem uma forma para o masculino e outra para o feminino. Primeira regra: troca a letra o, ou a letra e, pela letra a. Gato, gata. Mestre, mestra. Segunda regra: o final ão vira ã, ou vira oa. Irmão, irmã. Leão, leoa. Às vezes a palavra muda toda, como pai e mãe, e continua sendo biforme.' }), [
         ...lote(1, [
           mc('Qual é o feminino de <b>gato</b>?', ['gata', 'gatoa', 'gatisa'], 'Troca o -o por -a: gata.'),
           mc('Qual é o feminino de <b>mestre</b>?', ['mestra', 'mestressa', 'mestrisa'], 'Troca o -e por -a: mestra.'),
@@ -886,8 +886,8 @@ const MATERIA = materia({
       bloco(ex({ title: 'Terminações especiais',
         body: '<p>Algumas palavras ganham um final especial no feminino: <b>-esa, -essa</b> ou <b>-isa</b>.</p>',
         list: [['poeta', 'poet<mark>isa</mark>'], ['conde', 'cond<mark>essa</mark>'], ['príncipe', 'princ<mark>esa</mark>'], ['duque', 'duqu<mark>esa</mark>']],
-        memo: 'Princesa, condessa, poetisa: finais <b>chiques</b>, de gente da realeza e da poesia.',
-        say: 'Terminações especiais. Algumas palavras ganham um final especial no feminino: esa, essa ou isa. Poeta, poetisa. Conde, condessa. Príncipe, princesa. Duque, duquesa.' }), [
+        memo: 'Princesa, condessa, poetisa: finais <b>chiques</b>, de gente da realeza, da nobreza e da poesia.',
+        say: 'Terminações especiais. Algumas palavras ganham um final especial no feminino: esa, com um esse só, essa, com dois esses, ou isa. Poeta, poetisa. Conde, condessa. Príncipe, princesa. Duque, duquesa.' }), [
         ...lote(1, [
           mc('Qual é o feminino de <b>poeta</b>?', ['poetisa', 'poeteira', 'poetessa'], 'Terminação especial -isa: poetisa.'),
           mc('Qual é o feminino de <b>conde</b>?', ['condessa', 'condesa', 'conda'], 'Terminação especial -essa, com dois S: condessa.'),
@@ -898,12 +898,12 @@ const MATERIA = materia({
         ]),
         ...lote(2, [
           mc('Qual é o feminino de <b>profeta</b>?', ['profetisa', 'profetona', 'profetessa'], 'Terminação especial -isa: profetisa. Igual a poeta e poetisa!'),
-          mc('Qual é o feminino de <b>barão</b>?', ['baronesa', 'baroa', 'barã'], 'Terminação especial -esa: baronesa.'),
+          mc('Qual é o feminino de <b>barão</b>?', ['baronesa', 'baroa', 'barã'], 'Barão termina em -ão, mas não vira "barã" nem "baroa": ganha a terminação especial -esa. Baronesa.'),
           mc('Qual é o feminino de <b>sacerdote</b>?', ['sacerdotisa', 'sacerdota', 'sacerdotessa'], 'Terminação especial -isa: sacerdotisa.'),
           mc('Qual regra foi usada em <b>conde → condessa</b>?', ['Terminação especial -essa', 'Troca -o por -a', 'Muda -ão para -ã'], 'Conde ganhou o final especial -essa.'),
         ]),
       ]),
-    ], { cartoes: [['Biforme', '<b>Duas formas</b>: uma masculina e uma feminina.<br>gato/gata, irmão/irmã, leão/leoa'], ['Terminações especiais', '<b>-esa, -essa, -isa</b><br>princesa, condessa, poetisa']] }),
+    ], { cartoes: [['Biforme', '<b>Duas formas</b>: uma masculina e uma feminina.<br>gato/gata, irmão/irmã, poeta/poetisa, pai/mãe'], ['Terminações especiais', '<b>-esa, -essa, -isa</b><br>princesa, condessa, poetisa']] }),
 
     licao('g3', 'Radicais diferentes', [
       bloco(ex({ title: 'Às vezes, a palavra muda TODA',
@@ -913,7 +913,7 @@ const MATERIA = materia({
         say: 'Às vezes a palavra muda toda. Esses também são biformes, têm duas formas, mas o feminino é outra palavra. A regra é radical diferente. Rei, rainha. Cavalo, égua. Boi, vaca. Homem, mulher. Pai, mãe. Esses a gente decora em pares.' }), [
         ...lote(1, [
           pares('Ligue o masculino ao feminino.', [['rei', 'rainha'], ['cavalo', 'égua'], ['boi', 'vaca'], ['homem', 'mulher']], 'Rei e rainha, cavalo e égua, boi e vaca, homem e mulher.'),
-          mc('Qual é o feminino de <b>pai</b>?', ['mãe', 'paia', 'paiza'], 'Pai e mãe: a palavra muda toda.'),
+          mc('Qual é o feminino de <b>pai</b>?', ['mãe', 'paia', 'paiza'], 'Pai e mãe: a palavra muda toda (radical diferente). Continua sendo biforme: tem duas formas.'),
           mc('Pai → mãe é biforme. Mas qual é a <b>regra</b>?', ['A palavra muda toda (radical diferente)', 'Troca -o por -a', 'Terminação especial -esa'], 'Pai e mãe são biformes (duas formas), e a regra é radical diferente: a palavra muda completamente.'),
           mc('Qual é o feminino de <b>cavalo</b>?', ['égua', 'cavala', 'cavaloa'], 'Cavalo e égua: palavras totalmente diferentes.'),
           mc('Qual é o feminino de <b>boi</b>?', ['vaca', 'boia', 'boa'], 'Boi e vaca: palavras totalmente diferentes.'),
@@ -931,17 +931,17 @@ const MATERIA = materia({
           escrever('Escreva o feminino de <b>genro</b>.', 'nora', 'Genro e nora: a palavra muda toda.'),
         ]),
       ]),
-    ], { cartoes: [['Radical diferente', 'A palavra <b>muda toda</b>.<br>rei/rainha, boi/vaca, pai/mãe, cavalo/égua']] }),
+    ], { cartoes: [['Radical diferente', 'A palavra <b>muda toda</b>, mas <b>continua sendo biforme</b> (duas formas).<br>rei/rainha, boi/vaca, pai/mãe, cavalo/égua']] }),
 
     licao('g4', 'Comum de dois e sobrecomum', [
       bloco(ex({ title: 'Uniformes: uma forma só',
-        body: '<p><b>Uni</b> quer dizer <b>um</b> (como uniforme da escola, que é igual para todos). A palavra é a mesma para menino e menina.</p><p><b>Comum de dois:</b> a palavra <b>NÃO</b> muda, mas o <b>artigo MUDA</b>.</p>',
+        body: '<p><b>Uni</b> quer dizer <b>um</b> (como uniforme da escola, que é igual para todos). A palavra é uma só para o masculino e o feminino. São três tipos de substantivo uniforme: <b>comum de dois</b>, <b>sobrecomum</b> e <b>epiceno</b>.</p><p><b>Comum de dois:</b> a palavra <b>NÃO</b> muda, mas o <b>artigo MUDA</b>.</p>',
         list: [['o artista', '<mark>a</mark> artista'], ['o estudante', '<mark>a</mark> estudante'], ['o dentista', '<mark>a</mark> dentista']],
         memo: '<b>Comum de dois</b>: a palavra serve para os dois. <b>Só o artigo troca.</b>',
-        say: 'Uniformes: uma forma só. Uni quer dizer um, como o uniforme da escola, que é igual para todos. Comum de dois: a palavra não muda, mas o artigo muda. O artista, a artista. O estudante, a estudante. Para lembrar: comum de dois, só o artigo troca.' }), [
+        say: 'Uniformes: uma forma só. Uni quer dizer um, como o uniforme da escola, que é igual para todos. São três tipos de substantivo uniforme: comum de dois, sobrecomum e epiceno. Comum de dois: a palavra não muda, mas o artigo muda. O artista, a artista. O estudante, a estudante. Para lembrar: comum de dois, só o artigo troca.' }), [
         ...lote(1, [
           mc('<b>o artista / a artista</b> é:', ['comum de dois', 'sobrecomum', 'epiceno'], 'A palavra não muda, só o artigo: comum de dois.'),
-          mc('"O <b>cliente</b> reclamou do atendimento." <b>Cliente</b> é:', ['comum de dois', 'biforme', 'epiceno'], 'O cliente, a cliente: só o artigo muda. Comum de dois.'),
+          mc('"O <b>cliente</b> reclamou do atendimento." <b>Cliente</b> é:', ['comum de dois', 'biforme', 'epiceno'], 'O cliente, a cliente: a palavra não muda, só o artigo. É um uniforme do tipo comum de dois.'),
           mc('Complete: "___ estudante Maria tirou nota 10."', ['A', 'O'], 'Maria é menina. Estudante é comum de dois, então usamos "a".', { two: true }),
           mc('No <b>comum de dois</b>, o que muda?', ['Só o artigo', 'Só a palavra', 'A palavra e o artigo'], 'A palavra fica igual. Só o artigo muda: o/a dentista.'),
           mc('Qual destas palavras é <b>comum de dois</b>?', ['dentista', 'criança', 'onça', 'gato'], 'O dentista, a dentista: só o artigo muda.'),
@@ -950,7 +950,7 @@ const MATERIA = materia({
           mc('<b>o motorista / a motorista</b> é:', ['comum de dois', 'sobrecomum', 'epiceno'], 'Só o artigo muda: comum de dois.'),
           mc('Complete: "___ atleta Rebeca ganhou a medalha."', ['A', 'O'], 'Rebeca é menina. Atleta é comum de dois: a atleta.', { two: true }),
           mc('Qual destas palavras é <b>comum de dois</b>?', ['jovem', 'criança', 'cobra', 'leão'], 'O jovem, a jovem: só o artigo muda.'),
-          vf('Em "o pianista / a pianista", a palavra pianista não muda, só o artigo.', true, 'Isso! Pianista é comum de dois.'),
+          vf('Em "o pianista / a pianista", a palavra pianista não muda, só o artigo.', true, 'Verdadeiro! Pianista é comum de dois: só o artigo muda.'),
         ]),
       ]),
       bloco(ex({ title: 'Sobrecomum: nada muda',
@@ -977,17 +977,17 @@ const MATERIA = materia({
 
     licao('g5', 'Epicenos: macho e fêmea', [
       bloco(ex({ title: 'Epicenos: macho e fêmea',
-        body: '<p>Usado para <b>animais e plantas</b>. O artigo <b>não muda</b>. Usamos as palavras <b>MACHO</b> e <b>FÊMEA</b> para mostrar o sexo.</p>',
+        body: '<p>O epiceno é usado para <b>animais e plantas</b> que têm <b>uma palavra só</b> para o macho e para a fêmea. O artigo <b>não muda</b>. Usamos as palavras <b>MACHO</b> e <b>FÊMEA</b> para mostrar o sexo.</p>',
         list: [['o jacaré', 'o jacaré <mark>macho</mark> / o jacaré <mark>fêmea</mark>'], ['a onça', 'a onça <mark>macho</mark> / a onça <mark>fêmea</mark>'], ['a mosca', 'a mosca <mark>macho</mark> / a mosca <mark>fêmea</mark>']],
-        memo: '<b>Epiceno</b> = bicho ou planta + <b>macho</b> ou <b>fêmea</b>. Nunca "a jacaroa"!',
-        say: 'Epicenos: macho e fêmea. Usado para animais e plantas. O artigo não muda. Usamos as palavras macho e fêmea para mostrar o sexo. O jacaré macho, o jacaré fêmea. A onça macho, a onça fêmea. A mosca macho, a mosca fêmea. Para lembrar: epiceno é bicho ou planta mais macho ou fêmea.' }), [
+        memo: '<b>Epiceno</b> = bicho com <b>uma palavra só</b> + <b>macho</b> ou <b>fêmea</b>. Nunca "a jacaroa"! (Gato não é epiceno: tem gata.)',
+        say: 'Epicenos: macho e fêmea. O epiceno é usado para animais e plantas que têm uma palavra só para o macho e para a fêmea. O artigo não muda. Usamos as palavras macho e fêmea para mostrar o sexo. O jacaré macho, o jacaré fêmea. A onça macho, a onça fêmea. A mosca macho, a mosca fêmea. Para lembrar: epiceno é bicho com uma palavra só, mais macho ou fêmea. Gato não é epiceno, porque tem gata.' }), [
         ...lote(1, [
           mc('<b>a onça</b> é:', ['epiceno', 'sobrecomum', 'comum de dois'], 'Onça é animal e usamos macho ou fêmea: epiceno.'),
           mc('Como dizemos que o jacaré é <b>fêmea</b>?', ['o jacaré fêmea', 'a jacaroa', 'a jacaré'], 'O artigo não muda: o jacaré fêmea.'),
           mc('Como dizemos que a girafa é <b>macho</b>?', ['a girafa macho', 'o girafo', 'o girafa'], 'O artigo não muda: a girafa macho.'),
           mc('Os epicenos são usados para:', ['animais e plantas', 'profissões', 'objetos'], 'Epicenos: animais e plantas.'),
           mc('Qual destas palavras <b>NÃO</b> é epiceno?', ['gato', 'onça', 'jacaré', 'mosca'], 'Gato tem feminino próprio, gata. Então é biforme, não epiceno.'),
-          vf('A cobra é epiceno, porque precisamos usar macho ou fêmea para saber o sexo do animal.', true, 'Isso! A cobra macho, a cobra fêmea.'),
+          vf('A cobra é epiceno, porque precisamos usar macho ou fêmea para saber o sexo do animal.', true, 'Verdadeiro! A cobra macho, a cobra fêmea.'),
           mc('Em <b>a mosca macho</b>, o que mostra que é macho?', ['a palavra "macho"', 'o artigo "a"', 'a palavra "mosca"'], 'O artigo continua "a". Quem mostra é a palavra macho.'),
           mc('<b>o tatu</b> é:', ['epiceno', 'biforme', 'sobrecomum'], 'Tatu é animal: o tatu macho, o tatu fêmea. Epiceno.'),
         ]),
@@ -1000,37 +1000,37 @@ const MATERIA = materia({
           mc('<b>o besouro</b> é:', ['epiceno', 'comum de dois', 'sobrecomum'], 'Besouro é animal: o besouro macho, o besouro fêmea. Epiceno.'),
         ]),
       ]),
-    ], { cartoes: [['Epiceno', 'Animais e plantas: o artigo não muda, usamos <b>MACHO</b> ou <b>FÊMEA</b>.<br>o jacaré fêmea, a onça macho']] }),
+    ], { cartoes: [['Epiceno', 'Animal ou planta com <b>uma palavra só</b>: o artigo não muda, usamos <b>MACHO</b> ou <b>FÊMEA</b>.<br>o jacaré fêmea, a onça macho']] }),
 
     licao('g6', 'Revisão: classifique o gênero', [
-      bloco(ex({ title: 'Os 4 tipos de gênero',
-        body: '<ul class="ex-list"><li>Biforme <span class="arrow">→</span> duas formas<small>gato/gata, poeta/poetisa, rei/rainha</small></li><li>Comum de dois <span class="arrow">→</span> só o artigo muda<small>o artista / a artista</small></li><li>Sobrecomum <span class="arrow">→</span> nada muda<small>a criança (menino ou menina)</small></li><li>Epiceno <span class="arrow">→</span> macho ou fêmea<small>o jacaré macho / o jacaré fêmea</small></li></ul>',
+      bloco(ex({ title: 'Gênero: os 4 tipos de substantivo',
+        body: '<ul class="ex-list"><li>Biforme <span class="arrow">→</span> duas formas<small>gato/gata, poeta/poetisa, rei/rainha</small></li><li class="ex-sep">Uniformes, com uma forma só</li><li>Comum de dois <span class="arrow">→</span> só o artigo muda<small>o artista / a artista</small></li><li>Sobrecomum <span class="arrow">→</span> nada muda<small>a criança (menino ou menina)</small></li><li>Epiceno <span class="arrow">→</span> macho ou fêmea<small>o jacaré macho / o jacaré fêmea</small></li></ul>',
         memo: 'Agora eu mostro a palavra e você me diz <b>qual tipo</b> ela é!',
-        say: 'Revisão dos quatro tipos. Biforme: duas formas, como gato e gata, rei e rainha. Comum de dois: só o artigo muda, o artista, a artista. Sobrecomum: nada muda, a criança. Epiceno: macho ou fêmea, o jacaré macho. Agora eu mostro a palavra e você me diz qual tipo ela é.' }), [
+        say: 'Revisão: os quatro tipos de substantivo quanto ao gênero. Lembre: gêneros mesmo só existem dois, o masculino e o feminino. Biforme: duas formas, como gato e gata, rei e rainha. Os outros três são uniformes, com uma forma só. Comum de dois: só o artigo muda, o artista, a artista. Sobrecomum: nada muda, a criança. Epiceno: macho ou fêmea, o jacaré macho, o jacaré fêmea. Agora eu mostro a palavra e você me diz qual tipo ela é.' }), [
         ...lote(1, [
           tipo('Classifique: <b>o leão / a leoa</b>', 0, 'Duas formas: leão e leoa. Biforme.'),
           tipo('Classifique: <b>o estudante / a estudante</b>', 1, 'Só o artigo muda: comum de dois.'),
           tipo('Classifique: <b>a criança</b> (menino ou menina)', 2, 'Nada muda: sobrecomum.'),
-          tipo('Classifique: <b>a mosca macho / a mosca fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>a mosca macho / a mosca fêmea</b>', 3, 'Uma palavra só para o animal, e usamos macho ou fêmea para mostrar o sexo: epiceno.'),
           tipo('Classifique: <b>o poeta / a poetisa</b>', 0, 'Duas formas: poeta e poetisa. Biforme.'),
           tipo('Classifique: <b>o colega / a colega</b>', 1, 'Só o artigo muda: comum de dois.'),
           tipo('Classifique: <b>a pessoa</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
-          tipo('Classifique: <b>a baleia macho / a baleia fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>a baleia macho / a baleia fêmea</b>', 3, 'Uma palavra só para o animal, e usamos macho ou fêmea para mostrar o sexo: epiceno.'),
           tipo('Classifique: <b>o rei / a rainha</b>', 0, 'Duas formas (palavras diferentes): biforme.'),
           tipo('Classifique: <b>o jornalista / a jornalista</b>', 1, 'Só o artigo muda: comum de dois.'),
           tipo('Classifique: <b>a vítima</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
-          tipo('Classifique: <b>o jacaré macho / o jacaré fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>o jacaré macho / o jacaré fêmea</b>', 3, 'Uma palavra só para o animal, e usamos macho ou fêmea para mostrar o sexo: epiceno.'),
           mc('Leia: <b>1)</b> A cobra é epiceno porque precisamos usar macho ou fêmea. <b>2)</b> O/A dentista é comum de dois porque a palavra não muda; o que muda é o artigo. <b>3)</b> A criança é biforme porque muda para "o criança" quando é um menino. Estão corretas apenas:', ['1 e 2', '1 e 3', '2 e 3', '1, 2 e 3'], 'A 1 e a 2 estão certas. A 3 está errada: criança é sobrecomum.', { keep: true }),
         ]),
         ...lote(2, [
           tipo('Classifique: <b>o patrão / a patroa</b>', 0, 'Duas formas: patrão e patroa. Biforme.'),
           tipo('Classifique: <b>o jovem / a jovem</b>', 1, 'Só o artigo muda: comum de dois.'),
           tipo('Classifique: <b>a testemunha</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
-          tipo('Classifique: <b>a tartaruga macho / a tartaruga fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>a tartaruga macho / a tartaruga fêmea</b>', 3, 'Uma palavra só para o animal, e usamos macho ou fêmea para mostrar o sexo: epiceno.'),
           tipo('Classifique: <b>o motorista / a motorista</b>', 1, 'Só o artigo muda: comum de dois.'),
           tipo('Classifique: <b>o cavalheiro / a dama</b>', 0, 'Duas formas (palavras diferentes): biforme. Cavalheiro é um homem educado e gentil.'),
           tipo('Classifique: <b>o ídolo</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
-          tipo('Classifique: <b>o polvo macho / o polvo fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>o polvo macho / o polvo fêmea</b>', 3, 'Uma palavra só para o animal, e usamos macho ou fêmea para mostrar o sexo: epiceno.'),
         ]),
       ]),
     ], { rodada: 10 }),
@@ -1042,12 +1042,12 @@ const MATERIA = materia({
     extras: lote(1, [
       regra('Qual regra explica <b>couves-flores</b>?', 1, 'Couve e flor são substantivos: os dois mudam.'),
       regra('Qual regra explica <b>porquinhos-da-índia</b>?', 2, 'Tem preposição (da) no meio: só o primeiro muda.'),
-      regra('Qual regra explica <b>salários-família</b>?', 2, 'Família diz o tipo de salário: só o primeiro muda.'),
-      mc('Qual das sequências apresenta três substantivos compostos no plural <b>corretamente</b>?', ['vice-campeões, beija-flores, pés de pato', 'vices-campeões, beija-flor, pés de patos', 'vice-campeão, beijas-flores, pé de patos', 'vices-campeões, beijas-flores, pés de patos'], 'Vice nunca muda; beija é verbo; pés de pato são palavras separadas com "de" no meio, então só o primeiro muda.'),
+      regra('Qual regra explica <b>salários-família</b>?', 2, 'Família explica a função do salário (para que ele serve): só o primeiro muda.'),
+      mc('Qual das sequências apresenta três substantivos compostos no plural <b>corretamente</b>?', ['vice-campeões, beija-flores, pés de pato', 'vices-campeões, beija-flor, pés de patos', 'vice-campeão, beijas-flores, pé de patos', 'vices-campeões, beijas-flores, pés de patos'], 'Vice nunca muda (vice-campeões); beija é verbo, então só o 2º muda (beija-flores); pé de pato tem a preposição "de" no meio, então só o 1º muda (pés de pato).'),
       artigos('O menino comprou uns doces para a irmã.', [0, 3, 6], 'Três artigos: O (menino), uns (doces) e a (irmã).'),
       mc('Em "O menino comprou <b>uns</b> doces", classifique <b>uns</b>:', ['indefinido, masculino, plural', 'definido, masculino, plural', 'indefinido, feminino, plural'], 'Uns: indefinido, masculino, plural.'),
       tabela('def', [0, 1], ['a', 'o', 'uma', 'as'], 'Definido, feminino, singular: a.'),
-      mc('Feminino de <b>garoto</b> e a regra usada:', ['garota: troca -o por -a', 'garota: radical diferente', 'garotisa: terminação especial'], 'Garoto → garota: troca o -o por -a.'),
+      mc('Feminino de <b>garoto</b> e a regra usada:', ['garota: troca -o por -a', 'garota: radical diferente', 'garotisa: terminação especial'], 'Garoto → garota: troca o -o por -a. É um substantivo biforme (tem duas formas).'),
       tipo('"O <b>cliente</b> reclamou do atendimento." Cliente é:', 1, 'O cliente, a cliente: comum de dois.'),
       tipo('"A <b>onça</b> é um animal feroz." Onça é:', 3, 'A onça macho, a onça fêmea: epiceno.'),
       tipo('"Ninguém viu a <b>criança</b> sair." Criança é:', 2, 'Nada muda, nem o artigo: sobrecomum.'),
@@ -1056,20 +1056,22 @@ const MATERIA = materia({
 
   resumo: [
     { cor: 'azul', titulo: '1 · Plurais', subtitulo: 'Palavras compostas', itens: [
-      '<b>Sem hífen:</b> plural só no fim. girassol → girass<mark>óis</mark>',
-      '<b>Com hífen, nome + nome / característica / número:</b> os dois mudam. couve<mark>s</mark>-flor<mark>es</mark>, segunda<mark>s</mark>-feira<mark>s</mark>',
-      '<b>Com DE/DO/DA ou função:</b> só o 1º muda. pombo<mark>s</mark>-correio, dragõ<mark>es</mark>-do-mar, pé<mark>s</mark> de pato',
-      '<b>Com verbo ou repetição:</b> só o 2º muda. guarda-chuv<mark>as</mark>, tico-tico<mark>s</mark>',
-      '<b>Vice</b> nunca muda: vice-campe<mark>ões</mark>' ] },
+      '<b>Juntas, sem hífen (viram uma palavra só):</b> plural só no fim. girassol → girass<mark>óis</mark>, pontapé → pontap<mark>és</mark>',
+      '<b>Com hífen, substantivo, adjetivo ou numeral + substantivo ou adjetivo:</b> os dois mudam (menos quando a 2ª palavra diz a função da 1ª, veja abaixo). couve<mark>s</mark>-flor<mark>es</mark>, amor<mark>es</mark>-perfeito<mark>s</mark>, segunda<mark>s</mark>-feira<mark>s</mark>',
+      '<b>Com preposição no meio (de, do, da) ou quando a 2ª palavra diz a função da 1ª:</b> só o 1º muda. drag<mark>ões</mark>-do-mar, pé<mark>s</mark> de pato, pombo<mark>s</mark>-correio, salário<mark>s</mark>-família',
+      '<b>Quando a 1ª palavra é verbo ou as palavras se repetem:</b> só o 2º muda. guarda-chuv<mark>as</mark>, beija-flor<mark>es</mark>, tico-tico<mark>s</mark>',
+      '<b>Vice</b> e <b>bem</b> nunca mudam, só o último muda: vice-campe<mark>ões</mark>, bem-te-vi<mark>s</mark>' ] },
     { cor: 'verde', titulo: '2 · Artigos', subtitulo: 'Definidos e indefinidos', tabelas: ['def', 'indef'], itens: [
       '<b>Definidos (específico):</b> o, a, os, as', '<b>Indefinidos (qualquer um):</b> um, uma, uns, umas',
       'Classifique com <b>3 perguntas</b>: definido ou indefinido? masculino ou feminino? singular ou plural?' ] },
     { cor: 'ambar', titulo: '3 · Gênero', subtitulo: 'Biformes e uniformes', itens: [
-      '<b>Biforme (duas formas):</b> -o/-e → -a (gato/gat<mark>a</mark>), -ão → -ã/-oa (irm<mark>ã</mark>, le<mark>oa</mark>), -esa/-essa/-isa (princ<mark>esa</mark>, cond<mark>essa</mark>, poet<mark>isa</mark>)',
-      '<b>Radical diferente:</b> a palavra muda toda. rei/rainha, cavalo/égua, boi/vaca, homem/mulher, pai/mãe',
+      '<b>Todo substantivo tem gênero</b>, até os objetos: masculino aceita o artigo <b>o</b> (o sol), feminino aceita o artigo <b>a</b> (a lua)',
+      '<b>Biforme (duas formas):</b> -o/-e → -a (gato/gat<mark>a</mark>, mestre/mestr<mark>a</mark>), -ão → -ã/-oa (irmão/irm<mark>ã</mark>, leão/le<mark>oa</mark>), -esa/-essa/-isa (príncipe/princ<mark>esa</mark>, conde/cond<mark>essa</mark>, poeta/poet<mark>isa</mark>)',
+      '<b>Radical diferente (também é biforme):</b> a palavra muda toda. rei/rainha, cavalo/égua, boi/vaca, homem/mulher, pai/mãe',
+      '<b>Uniformes (uma forma só):</b> comum de dois, sobrecomum e epiceno',
       '<b>Comum de dois:</b> só o artigo muda. o/a artista, o/a estudante',
       '<b>Sobrecomum:</b> nada muda, nem o artigo. a criança, o indivíduo, a pessoa',
-      '<b>Epiceno:</b> animais e plantas + macho/fêmea. o jacaré macho, a onça fêmea' ] },
+      '<b>Epiceno:</b> animais e plantas. O artigo não muda; usamos macho/fêmea. o jacaré macho, a onça fêmea' ] },
   ],
 });
 
