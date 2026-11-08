@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material de Estudo História AC2 - 6º ano</title>
+<style>
+:root{
+  --txt:#1d4fa8; --forte:#13286b; --medio:#2b4c8c;
+  --barra:#8bb3de; --cab:#a9d6f5; --info:#e1f2fb; --info-borda:#9cc9ea;
+  --rosa:#fde2e4; --verde:#dff3e3; --amarelo:#fff1d0; --lilas:#ece1f7; --azul:#dcecf8;
+  --giz:"Chalkboard SE","Chalkboard","Comic Sans MS","Comic Neue",cursive;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#e9edf3;color:var(--txt);font-family:var(--sans);
+  font-size:10.6pt;line-height:1.55}
+.folha{background:#fff;max-width:210mm;margin:18px auto;padding:14mm 15mm 16mm;
+  box-shadow:0 2px 14px rgba(15,35,80,.13);border-radius:4px}
+p{margin:.45em 0;text-align:justify}
+b,strong{color:var(--forte)}
+.pg{font-size:8pt;color:#748ab4;font-weight:400;margin-left:6px;text-decoration:none!important}
+
+/* ---------- CABEÇALHO ---------- */
+.topo{display:grid;grid-template-columns:118px 1fr;gap:22px;align-items:start;margin-bottom:14px}
+.topo svg{width:118px;height:118px;margin-top:22px}
+.topo h1{font-size:40pt;line-height:1;margin:2px 0 4px;color:#1a46a0;letter-spacing:-.5px}
+.topo .sub{font-size:16pt;margin:0 0 12px;color:var(--txt)}
+.pilula{display:inline-block;background:var(--barra);color:var(--forte);font-weight:700;
+  padding:5px 26px;border-radius:4px;font-size:11pt}
+.topo ul{margin:8px 0 0;padding-left:20px}
+.topo li{margin:2px 0}
+
+/* ---------- BARRA DE SEÇÃO ---------- */
+.secao{background:var(--barra);border-radius:5px;text-align:center;padding:6px 10px;
+  margin:20px 0 10px;font-weight:700;font-size:11.5pt;color:var(--forte);
+  break-after:avoid;page-break-after:avoid}
+.secao span.t{text-decoration:underline}
+h4{margin:14px 0 4px;font-size:11pt;color:var(--forte);break-after:avoid;page-break-after:avoid}
+
+/* ---------- INFOGRÁFICO ---------- */
+.info{background:var(--info);border:2px solid var(--info-borda);border-radius:16px;
+  padding:12px 16px 10px;margin:14px 0;break-inside:avoid;page-break-inside:avoid}
+.info h3{font-family:var(--giz);font-weight:700;text-align:center;font-size:19pt;
+  margin:0;color:var(--forte);line-height:1.15}
+.info .s{font-family:var(--giz);text-align:center;font-size:9pt;margin:0 0 9px;color:var(--forte)}
+.info .rodape{font-family:var(--giz);text-align:center;font-size:9pt;margin:8px 0 0;color:var(--forte)}
+table.t{width:100%;border-collapse:separate;border-spacing:0;border:2px solid var(--medio);
+  border-radius:9px;overflow:hidden;font-size:9.4pt}
+table.t th{background:var(--cab);font-family:var(--giz);color:var(--forte);padding:6px 8px;
+  font-size:11pt;border-bottom:2px solid var(--medio)}
+table.t td{padding:6px 9px;font-weight:700;color:var(--forte);vertical-align:middle;
+  border-bottom:1px solid var(--medio);line-height:1.4}
+table.t tr:last-child td{border-bottom:none}
+table.t td:first-child{font-family:var(--giz);font-size:11.5pt;text-align:center;
+  border-right:1px solid var(--medio);width:30%}
+table.t td + td{border-right:1px solid var(--medio)}
+table.t td:last-child{border-right:none}
+table.t th + th{border-left:1px solid var(--medio)}
+table.t td .d{color:var(--txt)}
+.rosa td{background:var(--rosa)} .verde td{background:var(--verde)}
+.amarelo td{background:var(--amarelo)} .lilas td{background:var(--lilas)} .azul td{background:var(--azul)}
+.c-rosa{background:var(--rosa)} .c-verde{background:var(--verde)}
+.c-amarelo{background:var(--amarelo)} .c-lilas{background:var(--lilas)} .c-azul{background:var(--azul)}
+
+/* cartões em grade */
+.grade{display:grid;gap:8px}
+.g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:1fr 1fr 1fr} .g4{grid-template-columns:repeat(4,1fr)}
+.cartao{border:1.6px solid var(--medio);border-radius:9px;padding:7px 9px;font-size:9.2pt;
+  font-weight:700;color:var(--forte);line-height:1.38}
+.cartao .ct{font-family:var(--giz);font-size:11pt;display:block;text-align:center;margin-bottom:3px}
+.cartao.centro{text-align:center;display:flex;align-items:center;justify-content:center;min-height:42px}
+
+/* fluxo de setas */
+.fluxo{display:flex;align-items:stretch;gap:4px;justify-content:center}
+.fluxo .cartao{flex:1;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.seta{display:flex;flex-direction:column;justify-content:center;align-items:center;
+  font-size:7.6pt;color:var(--forte);text-align:center;min-width:54px;font-weight:700;line-height:1.2}
+.seta i{font-style:normal;font-size:15pt;line-height:1}
+.desce{text-align:center;font-size:8pt;color:var(--forte);font-weight:700;margin:3px 0;line-height:1.2}
+.desce i{font-style:normal;font-size:14pt;display:block;line-height:1}
+
+/* linha do tempo */
+.linha{position:relative;margin:4px 0 0 0;padding-left:0}
+.ev{display:grid;grid-template-columns:112px 1fr;gap:10px;align-items:center;margin:4px 0}
+.ev .ano{font-family:var(--giz);font-weight:700;text-align:center;border:1.6px solid var(--medio);
+  border-radius:8px;padding:3px 2px;color:var(--forte);font-size:9.6pt;line-height:1.2}
+.ev .o{font-size:9.2pt;font-weight:700;color:var(--forte);line-height:1.38}
+.marco{font-family:var(--giz);text-align:center;font-weight:700;color:var(--forte);
+  background:var(--cab);border-radius:7px;padding:3px;margin:7px 0;font-size:10pt}
+
+/* ---------- CAIXAS ---------- */
+.box{border-radius:7px;padding:9px 13px;margin:11px 0;border-left:5px solid;
+  break-inside:avoid;page-break-inside:avoid;font-size:10.2pt}
+.box .tit{font-weight:700;display:block;margin-bottom:2px}
+.box p{margin:.25em 0}
+.atencao{background:#fff4d6;border-color:#f0a81c} .atencao .tit{color:#b06f00}
+.decore{background:#e3f6ea;border-color:#2e9e5b} .decore .tit{color:#1e7a45}
+.confunda{background:#fde2e4;border-color:#e0566a} .confunda .tit{color:#c0303f}
+.livro{background:#eef3fb;border-color:var(--medio)} .livro .tit{color:var(--forte)}
+.palavras{font-size:8.6pt;margin:8px 0 4px;line-height:1.5}
+.palavras b{color:var(--forte)}
+.lacuna{display:inline-block;font-size:7.6pt;font-weight:700;background:#fff1d0;color:#9a6700;
+  border:1px solid #e0b44a;border-radius:4px;padding:0 5px;vertical-align:1px}
+
+/* ---------- EXERCÍCIOS ---------- */
+.quebra{break-before:page;page-break-before:always}
+ol.ex{padding-left:24px;margin:10px 0}
+ol.ex > li{margin:0 0 15px;padding-left:4px;break-inside:avoid;page-break-inside:avoid}
+ol.ex .txt{display:block;background:#f1f6fc;border-left:3px solid var(--barra);padding:5px 9px;
+  margin:4px 0;font-size:9.6pt;border-radius:3px}
+ol.gab > li{margin:0 0 8px}
+ol.gab{font-size:9.9pt}
+
+/* ---------- BARRA DE TELA (não imprime) ---------- */
+.barra-tela{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid #d5deec;padding:8px 14px;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;font-size:10pt}
+.barra-tela a,.barra-tela button{color:var(--forte);background:var(--info);border:1px solid var(--info-borda);
+  border-radius:20px;padding:4px 11px;text-decoration:none;font-weight:700;font-family:var(--sans);
+  font-size:9.5pt;cursor:pointer}
+.barra-tela a:hover,.barra-tela button:hover{background:var(--cab)}
+
+@media (max-width:720px){
+  .folha{padding:16px 14px;margin:0;border-radius:0}
+  .topo{grid-template-columns:76px 1fr;gap:12px}
+  .topo svg{width:76px;height:76px}
+  .topo h1{font-size:30pt} .topo .sub{font-size:12.5pt}
+  .g3,.g4{grid-template-columns:1fr 1fr} .g2{grid-template-columns:1fr}
+  .barra-tela{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .barra-tela a,.barra-tela button{white-space:nowrap;flex:0 0 auto}
+  table.t td:first-child{width:24%;font-size:10pt}
+  table.t td,table.t th{padding:5px 6px}
+  .ev{grid-template-columns:92px 1fr}
+  .fluxo{flex-direction:column} .seta{min-height:30px}
+  .seta i{transform:rotate(90deg)}
+  body{font-size:11.5pt}
+}
+@page{size:A4;margin:13mm 14mm 14mm}
+@media print{
+  body{background:#fff}
+  .folha{box-shadow:none;margin:0;padding:0;max-width:none}
+  .barra-tela{display:none}
+}
+
+/* ---------- MATERIAL DE ESTUDO ---------- */
+body{font-size:11pt;line-height:1.62}
+p.abre{font-size:11.4pt}
+h4{font-size:12pt;margin-top:16px}
+.box.pense{background:#f2ebff;border-color:#8b5cd6} .box.pense .tit{color:#6a3fb5}
+.box.ponte{background:#e2f6f7;border-color:#1a9aa3} .box.ponte .tit{color:#0a6d75}
+.box.resumo{background:#e3f6ea;border-color:#2e9e5b} .box.resumo .tit{color:#1e7a45}
+.box.chave{background:#e6f0fc;border-color:#2b5fbf} .box.chave .tit{color:#1a3f8f}
+.box.cuidado{background:#fde2e4;border-color:#e0566a} .box.cuidado .tit{color:#c0303f}
+.box.historia{background:#fff4d6;border-color:#f0a81c} .box.historia .tit{color:#b06f00}
+.trilha{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.passo{border:1.6px solid var(--medio);border-radius:9px;padding:7px 9px;font-weight:700;color:var(--forte);
+  font-size:9.6pt;display:flex;align-items:center;gap:8px}
+.passo b{font-family:var(--giz);font-size:15pt;line-height:1}
+.escada{display:flex;flex-direction:column;align-items:center}
+.degrau{border:1.6px solid var(--medio);border-radius:9px;padding:6px 10px;text-align:center;font-weight:700;
+  color:var(--forte);font-size:9.6pt}
+.grade.g3 .cartao,.grade.g2 .cartao{font-weight:600}
+.cartao{font-weight:600}
+@media (max-width:720px){.trilha{grid-template-columns:1fr 1fr}.degrau{width:100%!important}.g3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="barra-tela">
+  <a href="#p1">1. Trabalho</a><a href="#p2">2. Crise</a><a href="#p3">3. Cristianismo</a>
+  <a href="#p4">4. Divisão</a><a href="#p5">5. Germânicos</a><a href="#p6">6. Idade Média</a>
+  <a href="#p7">7. Reinos</a><a href="#p8">8. Francos</a><a href="#p9">9. Feudalismo</a>
+  <a href="#fim">Tudo junto</a>
+  <button onclick="window.print()">Imprimir / PDF</button>
+</nav>
+
+<div class="folha">
+
+<header class="topo">
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="59" fill="#0f2350"/>
+    <circle cx="22" cy="30" r="1.3" fill="#fff"/><circle cx="96" cy="24" r="1.3" fill="#fff"/>
+    <circle cx="104" cy="70" r="1.1" fill="#fff"/><circle cx="16" cy="78" r="1.1" fill="#fff"/>
+    <circle cx="60" cy="14" r="1.2" fill="#fff"/><circle cx="84" cy="102" r="1.1" fill="#fff"/>
+    <rect x="22" y="44" width="30" height="5" rx="1.5" fill="#f7b32b"/>
+    <rect x="25" y="49" width="24" height="3" fill="#f7b32b"/>
+    <rect x="28" y="52" width="4" height="34" fill="#f7b32b"/><rect x="35" y="52" width="4" height="34" fill="#f7b32b"/>
+    <rect x="42" y="52" width="4" height="34" fill="#f7b32b"/>
+    <rect x="24" y="86" width="26" height="4" fill="#f7b32b"/><rect x="21" y="90" width="32" height="4" rx="1" fill="#f7b32b"/>
+    <path d="M38 38 Q60 18 82 38" fill="none" stroke="#f7b32b" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M78 33 L83 39 L76 40 Z" fill="#f7b32b"/>
+    <path d="M66 94 V58 h5 v-5 h4 v5 h4 v-5 h4 v5 h4 v-5 h4 v5 h5 V94 Z" fill="#4f8fe0"/>
+    <path d="M78 94 v-12 a5 5 0 0 1 10 0 v12 Z" fill="#0f2350"/>
+    <rect x="71" y="64" width="4" height="6" rx="2" fill="#0f2350"/><rect x="91" y="64" width="4" height="6" rx="2" fill="#0f2350"/>
+    <path d="M83 53 V42" stroke="#f7b32b" stroke-width="1.6"/><path d="M83 42 l8 3 -8 3 Z" fill="#e0566a"/>
+  </svg>
+  <div>
+    <h1>História</h1>
+    <p class="sub">Material de estudo · AC2 Madalena Sofia 6º ano</p>
+    <span class="pilula">Leia isto primeiro</span>
+    <ul>
+      <li>Aqui não tem exercício: é só para <b>entender</b> a matéria, com calma, do começo ao fim.</li>
+      <li>Tudo o que está aqui vem da sua apostila (capítulos 7 e 8). Os exemplos do tipo <b>"Pense assim"</b> são só comparações para ajudar a entender.</li>
+    </ul>
+  </div>
+</header>
+
+<div class="box ponte"><span class="tit">Antes de começar: é tudo uma história só</span>
+<p>Parece muita coisa, mas os dois capítulos contam <b>uma única história</b>, em ordem: o <b>Império Romano</b> era enorme e dependia do trabalho escravo → entrou numa <b>grande crise</b> → no meio da crise o <b>cristianismo</b> cresceu → o Império foi <b>dividido</b> em dois → os <b>povos germânicos</b> ocuparam a parte ocidental → começou a <b>Idade Média</b> → um desses povos, os <b>francos</b>, montou um grande império → quando esse império se dividiu, nasceu o <b>feudalismo</b>. Se você entender essa corrente, o resto se encaixa.</p></div>
+
+<div class="info">
+  <h3>O caminho que vamos percorrer</h3>
+  <p class="s">Cada parte leva à seguinte</p>
+  <div class="trilha">
+    <div class="passo c-verde"><b>1</b>Como Roma trabalhava</div>
+    <div class="passo c-rosa"><b>2</b>A crise do Império</div>
+    <div class="passo c-azul"><b>3</b>O cristianismo cresce</div>
+    <div class="passo c-amarelo"><b>4</b>O Império se divide</div>
+    <div class="passo c-lilas"><b>5</b>Os germânicos chegam</div>
+    <div class="passo c-verde"><b>6</b>Começa a Idade Média</div>
+    <div class="passo c-rosa"><b>7</b>Os reinos germânicos</div>
+    <div class="passo c-azul"><b>8</b>Os francos e Carlos Magno</div>
+    <div class="passo c-amarelo"><b>9</b>Nasce o feudalismo</div>
+  </div>
+  <p class="rodape">Capítulo 7 (Roma Antiga) = partes 1 a 5 · Capítulo 8 (Alta Idade Média e feudalismo) = partes 6 a 9</p>
+</div>
+
+<!-- ============ PARTE 1 ============ -->
+<div class="secao" id="p1"><span class="t">Parte 1 · Como Roma trabalhava</span><span class="pg">apostila p. 32–33</span></div>
+
+<p class="abre">Para entender por que Roma entrou em crise, primeiro precisamos saber <b>quem trabalhava</b> no Império. A apostila mostra <b>três jeitos de trabalhar</b> na Roma Antiga: o <b>trabalho livre</b>, o <b>trabalho escravo</b> e o <b>trabalho colonato</b>.</p>
+
+<h4>1. O trabalho livre</h4>
+<p>Sempre existiu em Roma. Desde o começo, os <b>plebeus</b> (a população comum) trabalhavam na <b>agricultura</b>, no <b>pastoreio</b> (cuidar de animais) e em trabalhos na cidade. E o mais importante: eles <b>recebiam uma remuneração</b>, ou seja, eram pagos pelo trabalho.</p>
+
+<h4>2. O trabalho escravo</h4>
+<p>Os romanos <b>não inventaram</b> a escravidão: outras civilizações antigas já a usavam. Em Roma, uma pessoa podia ser escravizada por ser <b>prisioneira de guerra</b>, por <b>dívidas</b> ou por <b>nascimento</b>.</p>
+<p>Os escravizados faziam muitas coisas diferentes: trabalhavam no <b>campo</b>, na <b>mineração</b> e no <b>artesanato</b>, mas também em funções especializadas, como <b>professores, músicos e filósofos</b>.</p>
+
+<div class="box chave"><span class="tit">A ideia-chave desta parte</span>
+<p>A expansão do Império <b>dependia fortemente da mão de obra escrava</b>, e essa mão de obra vinha das <b>conquistas</b>. Era ela que <b>sustentava a economia</b>. Guarde isso: quando as conquistas pararem, vai faltar escravizado, e a economia vai sofrer (Parte 2).</p></div>
+
+<div class="box pense"><span class="tit">Pense assim</span>
+<p>A diferença entre o trabalhador livre e o escravizado não é o tipo de serviço (os dois podiam trabalhar no campo, por exemplo). A diferença é a <b>liberdade</b>. O livre trabalhava e recebia pagamento. O escravizado era <b>obrigado</b>: estava <b>privado da liberdade</b> e fazia o que o seu <b>senhor</b> mandava. A apostila chama isso de <b>caráter obrigatório</b> do trabalho escravo.</p></div>
+
+<h4>3. O trabalho colonato</h4>
+<p>Este surgiu mais tarde, quando as coisas começaram a dar errado. Veja a sequência:</p>
+
+<div class="info">
+  <h3>Como nasceu o colonato</h3>
+  <p class="s">Uma coisa levou à outra</p>
+  <div class="cartao c-rosa">Com as <u>invasões</u> de povos não romanos e a <u>falta de comida</u>, muitos trabalhadores livres <u>saíram das cidades</u> em busca de melhores condições.</div>
+  <div class="desce">ao mesmo tempo<i>↓</i></div>
+  <div class="cartao c-amarelo">Roma conquistava <u>menos territórios</u>, então havia <u>menos escravizados</u>, e eles ficaram <u>mais caros</u>.</div>
+  <div class="desce">então<i>↓</i></div>
+  <div class="cartao c-azul">Muitos <u>patrícios</u> (os ricos, donos de terras), assustados com as invasões, foram para suas <u>propriedades rurais</u> e passaram a oferecer <u>abrigo e proteção</u> a novos <u>colonos</u>, em troca de serviços.</div>
+  <div class="desce">resultado<i>↓</i></div>
+  <div class="cartao c-verde">Uma <u>relação de dependência</u>: o colono <u>cultivava a terra</u> e entregava <u>uma parte grande da sua produção</u> ao proprietário. Isso se chamou <u>colonato</u>.</div>
+</div>
+
+<div class="box pense"><span class="tit">Pense assim</span>
+<p>O colonato é como um acordo: <i>"Você mora e planta na minha terra, eu te protejo; em troca, você me entrega boa parte do que colher."</i> O colono não era escravizado, mas ficava <b>dependente</b> do dono da terra.</p></div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>Roma tinha trabalho <b>livre</b> (pago), <b>escravo</b> (obrigatório, vindo das conquistas) e <b>colonato</b> (proteção do patrício em troca de trabalho e de parte da colheita).</p></div>
+
+<!-- ============ PARTE 2 ============ -->
+<div class="secao" id="p2"><span class="t">Parte 2 · A crise dos séculos III e IV</span><span class="pg">apostila p. 33–35</span></div>
+
+<p class="abre">Aos poucos, muitas coisas mudaram no Império Romano: a política, o jeito de viver, a economia e a cultura. O resultado foi um <b>período de incerteza</b> que durou cerca de <b>duzentos anos</b>, até o <b>século IV d.C.</b> Esse momento ficou conhecido como <b>Crise do Império</b>.</p>
+
+<div class="box chave"><span class="tit">As duas causas principais</span>
+<p>A apostila diz que <b>duas questões</b> foram fundamentais para a crise: <b>(1)</b> a <b>disputa de poder com outros povos</b> e <b>(2)</b> a <b>falta de mão de obra escravizada</b>. Vamos ver cada uma.</p></div>
+
+<h4>Causa 1: a disputa com outros povos</h4>
+<p>O Império era <b>enorme</b>, difícil de administrar e dependia dos escravizados. Além disso, cada vez mais <b>povos que não eram latinos</b> apareciam por perto. Os romanos chamavam esses povos de <b>"bárbaros"</b>. Dois grupos pioraram muito a crise:</p>
+
+<div class="info">
+  <h3>Quem pressionava Roma</h3>
+  <p class="s">Um vinha do norte, o outro do leste</p>
+  <div class="grade g2">
+    <div class="cartao c-amarelo"><span class="ct">Os germânicos (norte da Europa)</span>
+      Tinham uma cultura diferente da latina e viviam em <u>clãs liderados por chefes guerreiros</u>, a <u>leste dos rios Ruhr e Reno</u>. No <u>século III</u> começaram a <u>migrar em massa</u> para dentro do Império, porque <u>outros povos do Leste da Europa os pressionavam</u>. Roma estava frágil e <u>não conseguiu impedir</u> a entrada deles.</div>
+    <div class="cartao c-lilas"><span class="ct">Os persas (leste)</span>
+      Depois de organizar bem sua política e seu exército, os persas atacaram as <u>fronteiras orientais</u> (do lado leste) do Império. Roma sofreu <u>derrotas ao longo do século III</u>, e seu <u>exército ficou enfraquecido</u>.</div>
+  </div>
+</div>
+
+<div class="box pense"><span class="tit">Pense assim</span>
+<p>Imagine uma casa enorme, com muitas portas, e pouca gente para vigiar. Pelo norte chegam os germânicos; pelo leste atacam os persas. Quanto maior a casa, mais difícil é proteger todas as portas. Era essa a situação do Império.</p></div>
+
+<h4>A bagunça na política</h4>
+<p>Durante a crise, Roma <b>trocou de imperador muitas vezes</b>. Quem mandava de verdade era o <b>Exército</b>: os soldados <b>escolhiam ou derrubavam</b> os imperadores. Muitas vezes o <b>Senado</b> nem reconhecia esses líderes, porque o Senado tinha <b>perdido seu poder para o Exército</b>. A maioria dos imperadores dessa época <b>morreu em guerras ou conspirações</b> (planos secretos para matar ou derrubar alguém).</p>
+
+<h4>Como a guerra estragou a economia</h4>
+<p>Os lugares onde os germânicos chegavam e onde se lutava contra os persas viraram <b>cenários de conflito</b>. Ali, as pessoas pararam de plantar e de fazer artesanato. Veja o efeito em cadeia:</p>
+
+<div class="info">
+  <h3>O efeito dominó</h3>
+  <p class="s">Como a apostila liga os fatos (p. 34)</p>
+  <div class="fluxo">
+    <div class="cartao c-verde">Migrações germânicas e guerras com os persas</div>
+    <div class="seta">regiões viram<br>campo de batalha<i>→</i></div>
+    <div class="cartao c-rosa">Param a agricultura e o artesanato</div>
+    <div class="seta">falta comida<br>e imposto<i>→</i></div>
+    <div class="cartao c-amarelo">Roma é mal abastecida e o Estado arrecada menos impostos</div>
+    <div class="seta">resultado<i>→</i></div>
+    <div class="cartao c-lilas">Escassez nas cidades, menos produção agrícola, inflação e fome</div>
+  </div>
+  <p class="rodape">Quem mais sofreu: a parte mais pobre da plebe.</p>
+</div>
+
+<h4>Causa 2 e os outros motivos: por que Roma ficou pobre</h4>
+<p>A apostila chama esta parte de <b>"Empobrecimento do Império e problema da mão de obra"</b> e mostra <b>quatro motivos</b>:</p>
+
+<div class="info">
+  <h3>Os 4 motivos do empobrecimento</h3>
+  <p class="s">Gastava muito, ganhava pouco</p>
+  <div class="grade g2">
+    <div class="cartao c-azul"><span class="ct">1. Manutenção de grandes obras e do Exército</span>Administrar o território enorme, <u>pagar o exército</u>, <u>defender as fronteiras</u>, cuidar dos prédios públicos e pagar os espetáculos da política do <u>"pão e circo"</u> custava cada vez mais caro. Os cofres de Roma <u>esvaziavam</u>.</div>
+    <div class="cartao c-rosa"><span class="ct">2. Crise do mercado de pessoas escravizadas</span>Com o <u>fim das guerras de conquista</u>, faltaram <u>prisioneiros de guerra</u>, então havia <u>menos escravizados</u>. Como Roma dependia deles, principalmente na <u>agricultura</u>, a <u>produção caiu</u>. Germânicos e persas também atrapalharam.</div>
+    <div class="cartao c-amarelo"><span class="ct">3. Aumento de preços</span>Entravam <u>menos materiais preciosos</u>. Para <u>manter o comércio e a arrecadação de impostos</u>, Roma passou a fazer moedas com <u>menos metal</u>. A moeda <u>perdeu valor</u> (desvalorização) e os <u>preços subiram</u> para todos.</div>
+    <div class="cartao c-verde"><span class="ct">4. Fim da expansão imperial</span>No século III o Império chegou ao seu <u>tamanho máximo</u>. As fronteiras estavam <u>bloqueadas por povos não conquistados e por obstáculos naturais</u>. Sem novas conquistas, entrava <u>menos riqueza</u>.</div>
+  </div>
+</div>
+
+<div class="box pense"><span class="tit">Pense assim (motivo 3)</span>
+<p>Uma moeda feita com menos metal precioso vale menos. Quando o dinheiro vale menos, é preciso <b>mais moedas</b> para comprar a mesma coisa. É isso que a apostila chama de <b>aumento generalizado de preços</b>, que prejudicou a população.</p></div>
+
+<div class="box ponte"><span class="tit">Ligando os pontos</span>
+<p>Lembra da Parte 1? Os escravizados vinham das <b>conquistas</b>. Quando a expansão <b>parou</b> (motivo 4), deixaram de chegar prisioneiros de guerra, e faltou mão de obra escravizada (motivo 2). Por isso a apostila diz que a <b>falta de mão de obra escravizada</b> foi uma das causas principais da crise.</p></div>
+
+<h4>O povo se revolta</h4>
+<p>Quem mais sofreu foi a <b>plebe</b>, tanto a da cidade quanto a do campo. Além da <b>inflação</b> e da <b>fome</b>, o povo ainda pagava <b>impostos altos</b> para sustentar o Império. Esses impostos eram <b>obrigatórios</b> e <b>caros</b>. No meio de toda essa crise, o resultado foi o surgimento de <b>revoltas populares</b>.</p>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>Pressionado por <b>germânicos e persas</b>, com o <b>Exército mandando na política</b>, sem novas conquistas, com menos escravizados, com <b>gastos altos</b> e <b>moeda desvalorizada</b>, o Império empobreceu e o povo se <b>revoltou</b>.</p></div>
+
+<!-- ============ PARTE 3 ============ -->
+<div class="secao" id="p3"><span class="t">Parte 3 · O cristianismo</span><span class="pg">apostila p. 37</span></div>
+
+<p class="abre">Enquanto o Império passava pela crise, uma religião crescia sem parar: o <b>cristianismo</b>. Para entender por quê, vamos ver de onde ela veio.</p>
+
+<h4>Onde e como começou</h4>
+<p>O cristianismo nasceu na <b>Palestina</b>, no <b>Oriente Médio</b>. Essa região era <b>dominada por Roma desde 63 a.C.</b> e lá viviam povos de várias culturas, como romanos, gregos e judeus.</p>
+<p>Entre os judeus surgiu alguém que criticava pontos do judaísmo e propunha uma <b>nova interpretação da Lei judaica</b>: <b>Jesus Cristo</b>, um judeu de <b>família pobre</b>. Entre os anos <b>30 e 33 d.C.</b>, ele pregou mensagens de <b>igualdade e paz</b> na Palestina, e atraiu principalmente os <b>desfavorecidos</b>, ou seja, os mais pobres.</p>
+
+<h4>Por que o cristianismo entrou em conflito com Roma?</h4>
+<p>Isso parece estranho, porque Roma tinha uma política de <b>liberdade religiosa</b>. Mas o cristianismo foi visto como uma <b>ameaça à ordem</b> e entrou em conflito com a cultura romana. Veja os dois motivos:</p>
+
+<div class="grade g2">
+  <div class="cartao c-rosa"><span class="ct">Motivo 1</span>Os cristãos <u>se recusavam a adorar o imperador</u>.</div>
+  <div class="cartao c-lilas"><span class="ct">Motivo 2</span>Acreditavam em <u>um único Deus</u>, enquanto a cultura romana era <u>politeísta</u> (acreditava em vários deuses). Isso gerou <u>conflitos com a cultura imperial</u>.</div>
+</div>
+
+<p style="margin-top:10px">Jesus foi <b>condenado à crucificação</b> pelos <b>romanos</b> e por <b>parte da elite judaica</b>, acusado de <b>heresia</b> (ir contra o que a religião ensinava) e de <b>incitar a desordem</b>. Depois da morte de Jesus, seus <b>discípulos</b> se espalharam pelo mundo romano e foram ensinando o que ele pregava.</p>
+
+<h4>Por que o cristianismo cresceu justamente na crise?</h4>
+<p>No <b>século III</b>, com a crise e o sofrimento, muitos romanos encontraram <b>refúgio</b> (consolo, proteção) no cristianismo, por causa dos princípios que ele pregava. A religião prometia <b>felicidade eterna depois da morte</b> para quem praticasse o bem durante a vida. Numa época de incerteza e sofrimento, essa promessa fazia muito sentido para as pessoas.</p>
+<p>Ela atraiu os <b>pobres</b> e os <b>escravizados</b>, mas também pessoas da <b>elite</b>, principalmente <b>mulheres ricas e seus filhos</b>, que viam na religião uma chance de serem valorizados. E quando <b>famílias ricas</b> se converteram, perseguir os cristãos ficou <b>cada vez mais raro e mais difícil</b>.</p>
+
+<div class="box ponte"><span class="tit">Ligando os pontos</span>
+<p>Perceba a ligação com a Parte 2: <b>quanto pior a crise, mais o cristianismo crescia</b>. Isso vai ser muito importante na Parte 4, porque um imperador vai perceber que ter os cristãos ao seu lado era uma vantagem política.</p></div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>Nascido na <b>Palestina</b> com <b>Jesus</b> (30–33 d.C.), o cristianismo foi perseguido porque os cristãos <b>não adoravam o imperador</b> e acreditavam em <b>um só Deus</b>, mas cresceu muito na crise porque dava <b>esperança</b>.</p></div>
+
+<!-- ============ PARTE 4 ============ -->
+<div class="secao" id="p4"><span class="t">Parte 4 · O Império se divide</span><span class="pg">apostila p. 37–39</span></div>
+
+<p class="abre">Lembra das revoltas populares? Para acabar com elas, o governo romano usou <b>forte repressão</b> (força contra quem protestava) e <b>concentrou o poder</b>. Mas isso custava dinheiro. Então o governo <b>aumentou os impostos</b> e <b>obrigou</b> as pessoas a pagar. Resultado: o povo passou a <b>enxergar o Estado como um inimigo</b>.</p>
+
+<h4>Constantino, o imperador que virou cristão</h4>
+<p>No meio da crise, o poder do imperador continuava instável. No <b>início do século IV d.C.</b>, um general chamado <b>Constantino</b>, com forte apoio do <b>Exército</b>, derrotou seus adversários e tomou o poder.</p>
+<p>Nessa época o cristianismo já tinha muitos seguidores. Aqui a apostila dá mais um motivo para isso: ele era uma religião que <b>se opunha ao imperador</b>. Por isso, para Constantino, tornar-se cristão significava <b>garantir a adoração de seus opositores</b>, ou seja, conquistar quem estava contra ele. Assim, por <b>razões sobretudo políticas</b>, ele foi o <b>primeiro imperador romano a se converter ao cristianismo</b>, alegando ter tido <b>visões</b> ligadas a essa religião.</p>
+
+<div class="box historia"><span class="tit">A história do sonho</span>
+<p>Para explicar sua conversão, Constantino contou que, <b>na véspera de uma batalha</b>, sonhou com uma <b>cruz</b> que trazia a frase <b>"Sob este signo vencerás"</b> (signo quer dizer sinal, símbolo). Ele usou o símbolo sonhado nos <b>escudos dos seus soldados</b>, <b>venceu a batalha</b> e então contou ao povo que tinha se tornado cristão.</p></div>
+
+<h4>O que mudou depois de Constantino</h4>
+
+<div class="info">
+  <h3>Quatro datas que contam a história</h3>
+  <p class="s">Do cristianismo perseguido à divisão do Império</p>
+  <div class="linha">
+    <div class="ev"><div class="ano c-verde">313</div><div class="o">Pelo <u>Édito de Milão</u> (uma ordem oficial), Constantino dá <u>liberdade de culto</u> aos cristãos. Acabam séculos de perseguição.</div></div>
+    <div class="ev"><div class="ano c-amarelo">330</div><div class="o">Constantino muda a capital do Império para <u>Bizâncio</u>, que ganha um novo nome: <u>Constantinopla</u>. Queria governar de um lugar longe da agitada Roma.</div></div>
+    <div class="ev"><div class="ano c-lilas">379–395</div><div class="o">No governo de <u>Teodósio</u>, o cristianismo é <u>oficializado</u> como a religião principal do Império.</div></div>
+    <div class="ev"><div class="ano c-rosa">395</div><div class="o">Teodósio <u>divide o Império entre seus filhos</u>: nasce o Império Romano do <u>Ocidente</u> e o do <u>Oriente</u>.</div></div>
+  </div>
+</div>
+
+<p><b>Depois de 313</b>, o cristianismo virou a religião <b>mais privilegiada</b>: ganhou <b>terras</b>, <b>templos</b> construídos, <b>isenções fiscais</b> (não precisava pagar impostos) e participação em <b>funções públicas</b>. Mas houve um outro lado: a união entre <b>Igreja e Estado</b>, que começou com Constantino, fez o imperador <b>interferir diretamente</b> nos assuntos religiosos. E os problemas para governar o Império continuaram.</p>
+
+<p><b>Sobre 330:</b> em Constantinopla, os senadores do Oriente eram, em sua maioria, <b>cristãos e de origem simples</b>. Já os <b>aristocratas de Roma</b> (os nobres ricos) <b>resistiam ao cristianismo</b>, porque queriam proteger o poder e a cultura romana.</p>
+
+<p><b>Sobre 379–395:</b> Teodósio não só incentivou as pessoas a virarem cristãs, mas buscou tornar o cristianismo <b>reconhecido e oficial para todos</b>. Os <b>clérigos</b> (os religiosos da Igreja) ganharam privilégios, como não pagar impostos, e ficaram mais ricos com <b>doações</b>.</p>
+
+<div class="box cuidado"><span class="tit">Cuidado para não misturar</span>
+<p><b>Liberdade de culto</b> (313, Constantino) é <b>deixar</b> os cristãos praticarem sua religião sem serem perseguidos. <b>Religião oficial</b> (379–395, Teodósio) é o cristianismo virar <b>a religião principal do Império</b>. São duas coisas diferentes, feitas por dois imperadores diferentes.</p></div>
+
+<h4>A divisão de 395</h4>
+<p>A crise continuava. Em <b>395 d.C.</b>, Teodósio dividiu o Império entre seus filhos:</p>
+
+<div class="info">
+  <h3>Um império vira dois</h3>
+  <p class="s">Veja o mapa da apostila na p. 39</p>
+  <div class="grade g2">
+    <div class="cartao c-lilas"><span class="ct">Império Romano do Ocidente</span>Sede em <u>Roma</u>. No mapa aparecem regiões como Britânia, Gália, Espanha, Itália e Panônia.</div>
+    <div class="cartao c-amarelo"><span class="ct">Império Romano do Oriente</span>Sede em <u>Constantinopla</u> (antiga Bizâncio). No mapa aparecem, por exemplo, o Egito e Jerusalém.</div>
+  </div>
+  <p class="rodape">No mapa da p. 62, os filhos aparecem pelo nome: Arcádio ficou com o Oriente e Honório com o Ocidente.</p>
+</div>
+
+<p>Desde o <b>fim do século III</b>, os povos germânicos vinham entrando no território romano. Houve <b>conflitos</b> e também <b>negociações</b>, e tudo isso mostrou que o Estado romano <b>não conseguia impedir</b> que esses povos se instalassem nas suas terras. No mapa da p. 39, as áreas e rotas desses povos aparecem em laranja.</p>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p><b>Constantino</b> virou cristão por política e deu <b>liberdade de culto</b> (313), mudou a capital para <b>Constantinopla</b> (330); <b>Teodósio</b> tornou o cristianismo <b>oficial</b> (379–395) e <b>dividiu o Império</b> em Ocidente (Roma) e Oriente (Constantinopla) em 395.</p></div>
+
+<!-- ============ PARTE 5 ============ -->
+<div class="secao" id="p5"><span class="t">Parte 5 · Os germânicos ocupam o Ocidente</span><span class="pg">apostila p. 39–40</span></div>
+
+<p class="abre">O período de crise do Império, do <b>século III ao século V</b>, tem um nome: <b>Antiguidade Tardia</b>. No final dele, o Império Romano do Ocidente não aguentou.</p>
+
+<p>Em <b>410 d.C.</b>, os <b>visigodos</b> (um povo germânico) <b>invadiram e saquearam Roma</b>. O Império do Ocidente estava <b>fraco no exército e na economia</b>. E sua cultura já estava bem diferente: os <b>valores cristãos</b> se misturavam à cultura romana.</p>
+
+<p>Depois de conquistar a parte ocidental do Império, os germânicos criaram <b>pequenos reinos</b>, <b>sem um governo central organizado</b>. Só que eles eram <b>minoria</b>: eram poucos para mandar em muita gente. Por isso tiveram problemas:</p>
+
+<div class="info">
+  <h3>Os problemas dos novos reinos</h3>
+  <p class="s">Poucos mandando em muitos</p>
+  <div class="grade g2">
+    <div class="cartao c-rosa">Brigas entre os <u>clãs</u> (rivalidade entre clãs)</div>
+    <div class="cartao c-amarelo">Dificuldade para <u>criar e aplicar leis</u></div>
+    <div class="cartao c-verde">Falta de <u>organização interna</u>, sem instituições sólidas</div>
+    <div class="cartao c-lilas">Conflitos entre a <u>crença politeísta germânica</u> e o <u>cristianismo</u></div>
+  </div>
+</div>
+
+<h4>Romanos e germânicos aprendem a viver juntos</h4>
+<p>Depois dos primeiros saques, os germânicos tiveram de <b>deixar parte das terras para os romanos</b>. Como as terras dos dois ficavam perto, eles passaram a <b>viver juntos</b>. Com o tempo, as pessoas <b>se casaram</b> entre si e formaram uma <b>aristocracia</b> (grupo de nobres) que misturava romanos e germânicos e unia os interesses das duas comunidades.</p>
+
+<p>Os germânicos aproveitaram a organização que os romanos já tinham. Mas, com o fim do Império, <b>muitas instituições desapareceram</b> e <b>várias leis deixaram de valer</b>, trocadas pelas <b>tradições germânicas</b>.</p>
+
+<h4>O papel da Igreja</h4>
+<p>Aqui entra uma peça muito importante. A <b>Igreja cristã</b> tinha se tornado um <b>poder paralelo ao do imperador</b> no reinado de Teodósio. Quando o Império caiu, foi ela que ajudou a <b>preservar a cultura romana</b> e o <b>poder universal do Império</b>. E ela continuou influente nos reinos germânicos, à medida que esses povos <b>se convertiam ao cristianismo</b>.</p>
+
+<div class="info">
+  <h3>Uma troca que interessava aos dois</h3>
+  <p class="s">Reinos germânicos e Igreja</p>
+  <div class="fluxo">
+    <div class="cartao c-amarelo"><span class="ct">Os reinos germânicos</span>Queriam governos mais estáveis e pediram ajuda à Igreja para organizar a política</div>
+    <div class="seta">troca<i>⇄</i></div>
+    <div class="cartao c-azul"><span class="ct">A Igreja</span>Ganhou muitos seguidores, porque os líderes germânicos se converteram ao cristianismo</div>
+  </div>
+</div>
+
+<div class="info">
+  <h3>A receita da Idade Média</h3>
+  <p class="s">Três culturas misturadas</p>
+  <div class="fluxo">
+    <div class="cartao c-amarelo">Cultura romana</div>
+    <div class="seta"><i>+</i></div>
+    <div class="cartao c-azul">Cultura cristã</div>
+    <div class="seta"><i>+</i></div>
+    <div class="cartao c-verde">Cultura germânica</div>
+    <div class="seta">deu<br>origem a<i>→</i></div>
+    <div class="cartao c-lilas">Características da Idade Média</div>
+  </div>
+</div>
+
+<div class="box cuidado"><span class="tit">Cuidado para não misturar</span>
+<p>Quem saqueou Roma em <b>410</b> foram os <b>visigodos</b>: é o que o texto da apostila diz (p. 39 e 58). O nome do quadro da p. 58 fala em "vândalos", mas o texto diz visigodos. E <b>410</b> (saque de Roma) não é a mesma data que <b>476</b> (quando o último imperador romano do Ocidente foi tirado do poder; você vai ver na Parte 6).</p></div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>Na <b>Antiguidade Tardia</b> (séculos III a V), os <b>visigodos saquearam Roma</b> (410); os germânicos criaram <b>pequenos reinos</b>, se misturaram com os romanos e se aliaram à <b>Igreja</b>, e dessa mistura de culturas <b>romana, cristã e germânica</b> surgiram características da Idade Média.</p></div>
+
+<!-- ============ PARTE 6 ============ -->
+<div class="secao" id="p6"><span class="t">Parte 6 · O que foi a Idade Média</span><span class="pg">apostila p. 58–60</span></div>
+
+<p class="abre">A apostila começa com uma cena: você acorda atrasado, olha o <b>relógio</b>, se confere no <b>espelho</b>, pega os <b>livros</b> e os <b>óculos</b> e vai para a escola. Parece uma manhã comum, mas tem muita coisa medieval aí: o <b>relógio mecânico</b>, o <b>espelho</b>, os <b>óculos</b> e os <b>livros impressos</b> surgiram no <b>Período Medieval</b>.</p>
+
+<p>O nome <b>"Idade Média"</b> se refere ao período que veio <b>depois da queda do Império Romano</b>, do <b>século V ao século XV</b>. Ele é dividido em duas partes:</p>
+
+<div class="info">
+  <h3>A linha do tempo da Idade Média</h3>
+  <p class="s">Do fim de Roma ao fim do período medieval</p>
+  <div class="fluxo">
+    <div class="cartao c-rosa"><span class="ct">476 d.C.</span>O último imperador romano do Ocidente foi deposto (tirado do poder)</div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-amarelo"><span class="ct">Séculos V a X</span>Alta Idade Média</div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-verde"><span class="ct">Séculos XI a XV</span>Baixa Idade Média</div>
+  </div>
+  <p class="rodape">A apostila também diz: o saque de Roma, em 410, pelos visigodos, marcou o início da queda do Império Romano.</p>
+</div>
+
+<div class="box pense"><span class="tit">Pense assim</span>
+<p>Os nomes enganam. <b>"Alta"</b> não quer dizer "a melhor fase", e <b>"Baixa"</b> não quer dizer "a pior". Na linha do tempo, a <b>Alta vem primeiro</b> (é a parte mais antiga) e a <b>Baixa vem depois</b> (a parte mais recente).</p></div>
+
+<h4>Alta e Baixa Idade Média, lado a lado</h4>
+
+<div class="info">
+  <h3>Duas fases bem diferentes</h3>
+  <p class="s">Alta = campo e Igreja · Baixa = cidades e comércio</p>
+  <div class="grade g2">
+    <div class="cartao c-amarelo"><span class="ct">Alta Idade Média (séculos V a X)</span>
+      • É a <u>transição da Antiguidade para a Idade Média</u> e a época da <u>consolidação do Império Carolíngio</u> (quando o Império Carolíngio ficou forte).<br>
+      • Com o fim do Império Romano, o poder ficou <u>descentralizado</u>: surgiram pequenos reinos e <u>feudos</u>, com autoridade mais local.<br>
+      • A <u>Igreja Católica</u> teve papel fundamental na organização social e política, e o <u>papado</u> ganhou muita influência.<br>
+      • As <u>invasões</u>, como a dos germânicos, dividiram a política e a sociedade.<br>
+      • Uma <u>nova pirâmide social sem mobilidade</u> (quem nascia embaixo ficava embaixo) e o <u>aumento do poder da Igreja</u>.<br>
+      • A agricultura era central, para a <u>subsistência</u> (o necessário para sobreviver) e o consumo local: as grandes propriedades romanas deram lugar a sistemas descentralizados. Os camponeses trabalhavam nas terras dos <u>senhores feudais</u> em troca de <u>proteção e moradia</u>: o <u>feudalismo</u>.</div>
+    <div class="cartao c-verde"><span class="ct">Baixa Idade Média (séculos XI a XV)</span>
+      • Fala das <u>cruzadas</u> e da <u>dissolução progressiva das estruturas medievais</u> (o jeito medieval de organizar a vida foi acabando aos poucos).<br>
+      • As <u>cidades</u> voltaram a crescer e o <u>comércio</u> aumentou, com <u>guildas</u> (associações de profissionais do mesmo ofício), mercados e <u>feiras</u>.<br>
+      • O comércio fez surgir a <u>burguesia</u>, uma classe social diferente da nobreza e dos camponeses, e uma <u>classe mercantil</u> que desafiava a antiga ordem feudal.<br>
+      • Rotas comerciais entre o <u>Oriente e o Ocidente</u> trouxeram trocas comerciais e culturais e um <u>renascimento econômico</u>.<br>
+      • Apareceram os <u>primeiros sinais de estados nacionais</u>, com reis fortalecendo o poder central.<br>
+      • Melhorias nas cidades: <u>muralhas, pontes, esgoto, praças e prédios do governo</u>; e o <u>retorno do comércio</u>.</div>
+  </div>
+</div>
+
+<h4>"Idade Média" ou "Idades Médias"?</h4>
+<p>Aqui vem uma ideia que a apostila destaca bastante. O nome "Idade Média" foi criado por historiadores para estudar o que aconteceu na <b>Europa</b>. Por isso, ele <b>não serve bem</b> para entender a história de <b>outros continentes</b>, que viveram coisas muito diferentes no mesmo período (séculos V a XV):</p>
+
+<div class="grade g2">
+  <div class="cartao c-amarelo"><span class="ct">Na América</span>Era o <u>Período Pré-Colonial</u>, com muitas culturas indígenas, como os <u>maias, astecas e incas</u>.</div>
+  <div class="cartao c-verde"><span class="ct">Na África</span>Havia <u>intensas trocas comerciais e culturais</u> e reinos importantes, como <u>Axum e Mali</u>.</div>
+</div>
+
+<p style="margin-top:10px">Por isso, uma nova leitura propõe falar em <b>"Idades Médias"</b>, no plural. O historiador <b>Rodrigo Prates de Andrade</b> explica por quê:</p>
+
+<div class="info">
+  <h3>Por que no plural?</h3>
+  <p class="s">Duas razões, segundo a apostila</p>
+  <div class="grade g2">
+    <div class="cartao c-azul"><span class="ct">1. Não foi só atraso</span>Antigamente, a Idade Média era vista como um tempo de <u>retrocessos</u> (de andar para trás). A palavra "medieval" virou até sinônimo de atraso, o contrário de "moderno". Mas pesquisas recentes mostram que ela teve muitos <u>avanços tecnológicos e comportamentais</u>.</div>
+    <div class="cartao c-lilas"><span class="ct">2. Não foi igual em todo lugar</span>Citando o historiador <u>Umberto Eco</u>, o texto diz que essas "idades médias" <u>não cabem em um só século nem em um só continente</u>: os <u>visigodos do século VI</u> eram muito diferentes dos <u>venezianos do século XV</u>.</div>
+  </div>
+</div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>A Idade Média vai do <b>século V ao XV</b>: a <b>Alta</b> (V a X) é do campo, da Igreja e do poder espalhado; a <b>Baixa</b> (XI a XV) é das cidades, do comércio e da burguesia. E falar em <b>"Idades Médias"</b> lembra que ela não foi só atraso e não foi igual em todo lugar.</p></div>
+
+<!-- ============ PARTE 7 ============ -->
+<div class="secao" id="p7"><span class="t">Parte 7 · Os reinos germânicos</span><span class="pg">apostila p. 62–63</span></div>
+
+<p class="abre">Agora voltamos aos germânicos para ver o que eles construíram. Eles migraram para o Império Romano em busca de <b>terras e recursos</b>, e isso acelerou a <b>divisão política</b> do Império. Pressionado por dentro e por fora, o Império <b>não resistiu às invasões</b>.</p>
+
+<p>Essas migrações marcaram o <b>início da Idade Média na Europa Ocidental</b>: o poder romano, que era centralizado, desabou, e o território foi dividido em <b>reinos controlados por líderes germânicos</b>. O mapa "As migrações bárbaras" (p. 62) mostra as rotas de vários povos, como <b>alanos, hunos, vândalos, visigodos e ostrogodos</b>, e marca Roma <b>saqueada em 410</b>.</p>
+
+<h4>Por que "bárbaros"?</h4>
+<p>Os romanos chamavam os germânicos de <b>bárbaros</b>. A palavra tem <b>origem grega</b>: os gregos chamavam assim todos que eram diferentes do povo grego. Para os romanos, bárbaro era <b>todo mundo que vivia fora das fronteiras do Império e não falava latim</b>, a língua oficial.</p>
+
+<div class="box pense"><span class="tit">Pense assim</span>
+<p>"Bárbaro" mostra o <b>ponto de vista dos romanos</b> sobre os outros, e não como esses povos realmente eram. Por isso a apostila diz que o termo é considerado <b>pejorativo</b> (usado para desprezar). Os líderes germânicos tinham <b>suas próprias regras</b> e criaram <b>governos diferentes</b> em cada lugar.</p></div>
+
+<h4>Três reinos germânicos</h4>
+
+<div class="info">
+  <h3>Cada reino em seu lugar</h3>
+  <p class="s">Os exemplos da apostila</p>
+  <div class="cartao c-amarelo"><span class="ct">Reino Visigodo: na Península Ibérica</span>Onde hoje ficam <u>Espanha e Portugal</u>. Durou do <u>século V ao VIII</u>. Os visigodos faziam parte de um grupo maior de germânicos, os <u>godos</u>. O reino misturava influências <u>romanas e germânicas</u>: em meados do <u>século VII</u>, foram compiladas (reunidas) as <u>Leis Visigóticas</u>, que misturavam a lei romana com as tradições germânicas. E o <u>cristianismo</u> foi se tornando a religião predominante.</div>
+  <div class="cartao c-verde" style="margin-top:8px"><span class="ct">Reino Anglo-Saxão: na Inglaterra</span>Tribos germânicas chegaram à ilha no <u>século V</u> e formaram reinos como <u>Mércia, Nortúmbria e Wessex</u>, que depois se uniram no <u>Reino da Inglaterra</u>. A partir do fim do <u>século VIII</u>, a Inglaterra foi invadida por <u>vikings</u> dinamarqueses e noruegueses: houve conflitos, surgiram reinos vikings e as culturas anglo-saxã e viking se misturaram. Depois da derrota dos vikings, os reinos se uniram sob o domínio de <u>Wessex</u>. Os guerreiros usavam escudos, espadas, machados, lanças e elmos (capacetes) e treinavam desde a infância.</div>
+  <div class="cartao c-lilas" style="margin-top:8px"><span class="ct">Reino Sueco: na Suécia</span>No começo da Idade Média, a região era habitada por tribos germânicas, entre elas os <u>suecos</u>, que viviam em <u>comunidades agrícolas</u> e faziam comércio local e regional. Participaram da <u>Era Viking</u> (<u>séculos VIII a XI</u>), com comércio, exploração e conquistas, e lutaram contra a <u>Dinamarca</u>, a <u>Noruega</u> e invasores estrangeiros.</div>
+</div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>As migrações germânicas marcaram o <b>início da Idade Média</b> na Europa Ocidental; "bárbaro" era o nome <b>pejorativo</b> que os romanos davam a quem vivia fora das fronteiras do Império e não falava latim; e surgiram reinos como o <b>Visigodo</b> (Península Ibérica), o <b>Anglo-Saxão</b> (Inglaterra) e o <b>Sueco</b>.</p></div>
+
+<!-- ============ PARTE 8 ============ -->
+<div class="secao" id="p8"><span class="t">Parte 8 · Os francos e Carlos Magno</span><span class="pg">apostila p. 64–66</span></div>
+
+<p class="abre">Os <b>francos</b> também eram um povo germânico, e a história deles é a mais importante para entender o feudalismo. Ela tem <b>duas fases</b>, cada uma comandada por uma <b>dinastia</b> (uma família que governa por gerações):</p>
+
+<div class="grade g2">
+  <div class="cartao c-azul"><span class="ct">Dinastia merovíngia</span>De <u>481 a 751</u></div>
+  <div class="cartao c-verde"><span class="ct">Dinastia carolíngia</span>De <u>751 a 987</u></div>
+</div>
+
+<h4>Primeira fase: os merovíngios</h4>
+<p>Começou com <b>Clóvis</b>, que <b>uniu as tribos francas</b> e aumentou o território depois de anos de guerras. O nome "merovíngia" é uma homenagem a <b>Meroveu</b>, o <b>fundador mítico</b> (de lenda) da dinastia.</p>
+<p>Por volta de <b>496</b>, Clóvis <b>se tornou cristão</b>. Com isso, ganhou a <b>simpatia e a obediência dos romanos cristãos</b> e o <b>apoio do clero</b> (os religiosos). Essa <b>aliança com a Igreja</b> ajudou a unir politicamente a <b>Gália</b>, região que hoje é a <b>França</b>. O mapa da p. 64 mostra a região dos francos antes de Clóvis e a região de Clóvis (496 a 511).</p>
+
+<div class="box ponte"><span class="tit">Ligando os pontos</span>
+<p>Lembra da Parte 5? Os reinos germânicos se aproximavam da Igreja para governar melhor. Clóvis é um exemplo perfeito disso: ao virar cristão, ganhou o apoio dos romanos cristãos e da Igreja.</p></div>
+
+<p>Depois que Clóvis morreu, o reino foi <b>dividido entre seus herdeiros</b>. Vieram brigas constantes, e as terras eram sempre redistribuídas entre <b>clero e nobreza</b> como recompensa por apoio. Essa divisão <b>enfraqueceu os reis merovíngios</b>: eles perderam autoridade e ficaram nas mãos dos donos de terras.</p>
+<p>Quem passou a mandar de verdade foram os altos funcionários do rei, chamados de <b>Prefeitos do Palácio</b> ou <b>mordomos do paço</b>. No começo, eles dividiram o Reino dos Francos em <b>três territórios</b>. O mais famoso deles foi <b>Carlos Martel</b>: ele <b>derrotou os muçulmanos</b> e <b>impediu que o Islã se expandisse para além da Península Ibérica</b>. Também uniu os reinos francos em batalha, virou a grande autoridade entre eles e deixou os reis merovíngios ainda mais fracos. Seu papel foi <b>fundamental</b> para consolidar o poder político na região e para resistir às ameaças externas.</p>
+
+<h4>Segunda fase: os carolíngios</h4>
+<p>Em <b>751</b>, <b>Pepino, o Breve</b>, <b>filho de Carlos Martel</b>, formalizou o poder que o pai tinha começado a concentrar e <b>tirou do trono o último rei merovíngio</b>, com o <b>apoio da Igreja</b>. O <b>papa</b> reconheceu oficialmente o poder dos carolíngios. Em agradecimento, Pepino <b>doou terras à Igreja</b>, criando o <b>Patrimônio de São Pedro</b>. Essa doação deu origem ao <b>poder temporal do papa</b> (poder sobre terras, e não só sobre a religião) e aos futuros <b>Estados Pontifícios</b>, que hoje se resumem ao <b>Estado do Vaticano</b>.</p>
+
+<div class="info">
+  <h3>A família que mandou nos francos</h3>
+  <p class="s">Quatro gerações, de pai para filho</p>
+  <div class="fluxo">
+    <div class="cartao c-azul"><span class="ct">Carlos Martel</span>Prefeito do Palácio; venceu os muçulmanos</div>
+    <div class="seta">pai de<i>→</i></div>
+    <div class="cartao c-amarelo"><span class="ct">Pepino, o Breve</span>751: começa a dinastia carolíngia</div>
+    <div class="seta">pai de<i>→</i></div>
+    <div class="cartao c-verde"><span class="ct">Carlos Magno</span>Rei de 768 a 814; coroado imperador</div>
+    <div class="seta">pai de<i>→</i></div>
+    <div class="cartao c-lilas"><span class="ct">Luís, o Piedoso</span>Governou de 814 a 840</div>
+  </div>
+  <p class="rodape">Não confunda Carlos Martel (o avô) com Carlos Magno (o neto).</p>
+</div>
+
+<h4>Carlos Magno, o grande imperador</h4>
+<p>Em <b>768</b>, <b>Carlos Magno</b> assumiu o lugar do pai, Pepino, e foi rei dos francos por <b>quase 50 anos</b> (de <b>768 a 814</b>). Ele fez muitas <b>campanhas de conquista</b> e aumentou muito o reino. Parte das terras conquistadas era <b>dada aos nobres</b>, que em troca prometiam <b>lealdade e obrigações</b> ao rei. Assim, ele manteve os nobres <b>ligados e dependentes</b> do poder central.</p>
+<p>Ele fundou o <b>Império Carolíngio</b>, o <b>primeiro grande império pós-romano na Europa Ocidental</b>. Esse império incluía territórios que hoje são <b>França, Alemanha, Itália, Bélgica, Holanda e partes da Espanha</b>. Carlos Magno <b>uniu muitas tribos germânicas e outros povos</b> e trouxe um período de <b>relativa estabilidade</b>, depois de séculos de guerras.</p>
+
+<h4>Como ele organizou um império tão grande</h4>
+<p>Para administrar tudo, Carlos Magno <b>dividiu o Império em condados e marcas</b>. Essas terras eram dadas a <b>nobres que se destacavam</b> diante do imperador, e isso criou um <b>novo tipo de administração</b>: um governo <b>descentralizado</b>, baseado em <b>títulos de nobreza</b> (como <b>condes, barões e marqueses</b>) e na <b>delegação de autoridade</b> (o imperador passava o poder de governar cada pedaço para um nobre).</p>
+
+<div class="info">
+  <h3>Condados e marcas</h3>
+  <p class="s">Centro e fronteira</p>
+  <div class="grade g2">
+    <div class="cartao c-azul"><span class="ct">Condados</span>Governados pelos <u>condes</u>, nomeados pelo imperador, a quem juravam fidelidade. Ficavam geralmente em <u>áreas centrais e mais estáveis</u>. Tinham função <u>administrativa e judicial</u>.</div>
+    <div class="cartao c-rosa"><span class="ct">Marcas</span>Governadas pelos <u>marqueses</u>, nobres com <u>poder militar</u>, responsáveis por <u>defender o Império</u>. Ficavam nas <u>fronteiras</u>, frequentemente ameaçadas de invasões.</div>
+  </div>
+  <p class="rodape">Dica: MARca fica na MARgem do Império, a fronteira.</p>
+</div>
+
+<h4>Coroação e Renascimento Carolíngio</h4>
+<p>As conquistas de Carlos Magno tiveram o <b>apoio da Igreja</b>. E, em reconhecimento ao <b>apoio que ele dava à Igreja</b>, o <b>papa Leão III</b> o coroou <b>Imperador e Augusto do Ocidente</b>.</p>
+<p>Carlos Magno também cuidou da cultura: deu atenção às <b>letras, às artes e às ciências</b>. Esse grande desenvolvimento cultural é chamado de <b>Renascimento Carolíngio</b>. O ensino, que antes ficava só nos <b>mosteiros</b>, se espalhou com <b>escolas públicas e bibliotecas</b>, e sábios ensinavam <b>gramática, retórica</b> (falar bem), <b>dialética</b> (argumentar), <b>aritmética, geometria e música</b>.</p>
+
+<h4>O fim do Império Carolíngio</h4>
+<p>Carlos Magno morreu em <b>814</b>, e seu filho <b>Luís, o Piedoso</b>, governou até <b>840</b>. Depois, os <b>netos</b> de Carlos Magno brigaram pelo Império. Foram muitas batalhas, que esgotaram o Império, até que os irmãos assinaram o <b>Tratado de Verdun</b>, em <b>843</b>, que <b>dividiu o Império entre eles</b>.</p>
+
+<div class="info">
+  <h3>Como o fim do Império levou ao feudalismo</h3>
+  <p class="s">A ponte para a Parte 9</p>
+  <div class="fluxo">
+    <div class="cartao c-amarelo">Tratado de Verdun (843): Império dividido</div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-rosa">O poder do rei enfraquece</div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-azul">Os nobres ganham mais poder e autonomia</div>
+    <div class="seta">+ novas<br>invasões<i>→</i></div>
+    <div class="cartao c-verde">Nasce o feudalismo</div>
+  </div>
+  <p class="rodape">As novas invasões citadas pela apostila incluem a dos povos normandos.</p>
+</div>
+
+<div class="box cuidado"><span class="tit">Um detalhe da apostila</span>
+<p>A legenda da imagem da p. 66 mostra Luís, o Piedoso, abençoando a divisão de 843, mas o texto diz que ele governou só até <b>840</b>. Para estudar, siga o texto: Luís governou de <b>814 a 840</b>, e quem assinou o Tratado de Verdun (843) foram os <b>netos</b> de Carlos Magno.</p></div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>Os francos tiveram os <b>merovíngios</b> (Clóvis, cristão por volta de 496) e os <b>carolíngios</b> (Pepino, o Breve, em 751); <b>Carlos Magno</b> criou um grande império, dividido em <b>condados e marcas</b>, e depois o <b>Tratado de Verdun</b> (843) o dividiu, enfraquecendo o rei e abrindo caminho para o <b>feudalismo</b>.</p></div>
+
+<!-- ============ PARTE 9 ============ -->
+<div class="secao" id="p9"><span class="t">Parte 9 · O feudalismo</span><span class="pg">apostila p. 77–81</span></div>
+
+<p class="abre">Chegamos ao fim da história. Com a <b>expansão do Islã</b> e o <b>fim da autoridade de Carlos Magno</b>, as comunidades locais buscavam <b>proteção e estabilidade</b> em tempos de incerteza e guerra. Foi assim que o feudalismo se espalhou pela Europa.</p>
+
+<div class="box chave"><span class="tit">A definição da apostila (vale decorar)</span>
+<p>O <b>feudalismo</b> foi um <b>sistema socioeconômico e político</b> que predominou na <b>Europa medieval</b>, caracterizado por uma <b>estrutura hierárquica de poder político</b> e uma <b>economia agrária</b>.</p></div>
+
+<div class="box pense"><span class="tit">Pense assim (traduzindo a definição)</span>
+<p><b>Socioeconômico e político</b> = organizava a sociedade, a economia e a política ao mesmo tempo. <b>Hierárquico</b> = organizado em níveis, como uma escada, do mais poderoso ao menos poderoso. <b>Economia agrária</b> = a riqueza vinha da terra e da agricultura.</p></div>
+
+<h4>Como o feudalismo se formou</h4>
+
+<div class="info">
+  <h3>Três passos</h3>
+  <p class="s">Do Império de Carlos Magno aos feudos</p>
+  <div class="cartao c-azul"><span class="ct">Passo 1 · Carlos Magno</span>Para ter o apoio dos súditos e controlar o Império, ele fortaleceu a prática de <u>suserania e vassalagem</u>, que vinha das <u>tribos germânicas</u>: o imperador (o <u>suserano</u>) dava <u>terras e poderes</u> aos nobres (os <u>vassalos</u>), e eles davam em troca <u>serviços militares e administrativos</u>.</div>
+  <div class="desce">o Império se divide<i>↓</i></div>
+  <div class="cartao c-amarelo"><span class="ct">Passo 2 · O Império Carolíngio se divide</span>O poder fica cada vez mais <u>descentralizado</u>. Os reis fazem alianças seguindo o costume germânico de <u>doar terras</u> a pessoas com títulos de nobreza (a apostila chama essas pessoas de "suseranos" nesta frase), e recebem em troca <u>apoio militar, ajuda na administração e proteção</u> contra ameaças, como os <u>vikings</u>. Essa doação de terras se chamava <u>feudo</u>, e daí vem a palavra <u>feudalismo</u>.</div>
+  <div class="desce">os nobres fazem alianças entre si<i>↓</i></div>
+  <div class="cartao c-verde"><span class="ct">Passo 3 · As alianças se multiplicam</span>Os nobres fazem cada vez mais acordos entre si e ficam mais <u>independentes</u> em suas terras. As terras vão sendo <u>divididas em pedaços menores</u>, até formar <u>milhares de unidades administrativas</u>.</div>
+</div>
+
+<h4>Suserano e vassalo: quem é quem</h4>
+<div class="grade g2">
+  <div class="cartao c-amarelo"><span class="ct">Suserano</span>Quem <u>concede</u> (dá) o feudo.</div>
+  <div class="cartao c-azul"><span class="ct">Vassalo</span>Quem <u>recebe</u> o feudo e jura <u>fidelidade</u> ao suserano.</div>
+</div>
+
+<p style="margin-top:10px">Os nobres que recebiam terras eram os <b>senhores feudais</b>. O poder deles dependia de <b>quantas terras tinham e do tamanho delas</b>. Além do poder político e econômico, eles cuidavam da <b>segurança</b> e da <b>justiça</b> no lugar onde mandavam.</p>
+
+<div class="box pense"><span class="tit">Pense assim: e o rei?</span>
+<p>O rei era considerado o <b>maior senhor feudal</b>, o suserano mais alto de todos. Mas, na prática, ele <b>quase não se metia</b> nas terras dos outros nobres. Cada vassalo devia fidelidade ao <b>seu</b> suserano, e <b>não necessariamente ao rei</b>. É como se cada um obedecesse primeiro ao chefe imediatamente acima dele, que nem sempre era o rei. Por isso, quanto mais essas relações se espalhavam, <b>mais fraco o rei ficava</b>.</p></div>
+
+<h4>O ritual: como alguém virava vassalo</h4>
+<p>Esses laços eram criados com <b>cerimônias solenes</b>. O ritual tinha <b>três etapas</b>, nesta ordem:</p>
+
+<div class="info">
+  <h3>O ritual feudal</h3>
+  <p class="s">Homenagem, juramento e investidura</p>
+  <div class="fluxo">
+    <div class="cartao c-azul"><span class="ct">1. Homenagem</span>O vassalo se <u>ajoelha</u> diante do suserano</div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-amarelo"><span class="ct">2. Juramento</span>Jura <u>lealdade</u> diante de uma <u>Bíblia</u> e de um membro do clero, muitas vezes selado com um <u>beijo</u></div>
+    <div class="seta"><i>→</i></div>
+    <div class="cartao c-verde"><span class="ct">3. Investidura</span>O suserano entrega o feudo com um <u>objeto simbólico</u>, como um ramo de árvore ou um pouco de terra</div>
+  </div>
+</div>
+
+<p>O historiador <b>Marc Bloch</b>, num texto que está na apostila (p. 79), descreve essa cena: um homem que <b>quer servir</b> coloca as mãos juntas nas mãos de outro, que <b>aceita, ou deseja, ser chefe</b> (sinal de <b>submissão</b>); diz poucas palavras se reconhecendo como <b>"o homem"</b> do outro; e os dois se <b>beijam</b> (sinal de <b>acordo e amizade</b>). Eram gestos simples, mas criavam um dos <b>laços mais fortes</b> da época feudal. Quem quer servir é o <b>vassalo</b>; quem aceita ser chefe é o <b>suserano</b>.</p>
+
+<p>O sistema também era <b>flexível</b>: um vassalo podia receber um feudo em troca de <b>serviços administrativos</b>, como cuidar das <b>finanças</b> do senhor feudal ou ser seu <b>conselheiro</b> em política.</p>
+
+<h4>A vida no feudo</h4>
+<p>No começo do feudalismo, um dependia do outro (a apostila chama isso de <b>interdependência</b>). Os <b>senhores feudais</b> eram donos das terras e, por isso, tinham o <b>poder</b>. As pessoas <b>sem terra</b> dependiam deles para ter <b>sustento e proteção</b>. E essa dependência tinha vantagens: as terras davam <b>como sobreviver</b> e <b>segurança contra invasões e guerras</b>. Como o <b>comércio diminuiu</b>, a terra ficou ainda mais importante, e o domínio dos senhores sobre a população ficou ainda mais forte.</p>
+
+<div class="info">
+  <h3>As três partes do feudo</h3>
+  <p class="s">Imagine o feudo como um grande terreno dividido em três</p>
+  <div class="grade g3">
+    <div class="cartao c-lilas"><span class="ct">Manso senhorial</span>A <u>metade das terras cultivadas</u>, que era <u>só do senhor feudal</u>. Ali ficavam o <u>castelo</u> e as construções do senhor: <u>forno, moinho, celeiro, estábulo, oficinas, lagar, destilaria e forja</u>.</div>
+    <div class="cartao c-verde"><span class="ct">Manso servil</span>Os <u>campos de plantação</u> que pertenciam ao senhor feudal e eram usados pelos <u>servos</u> para <u>plantar e colher</u> alimentos.</div>
+    <div class="cartao c-amarelo"><span class="ct">Manso comum</span><u>Pastagens, bosques e prados</u> de <u>uso de todos</u>: nobres e camponeses levavam os animais para pastar e tiravam madeira. Mas a <u>caça</u> era <u>só dos nobres</u>.</div>
+  </div>
+  <p class="rodape">Senhorial = do senhor · Servil = onde os servos plantam · Comum = de todos (menos a caça)</p>
+</div>
+
+<h4>Mais coisas sobre o feudo (p. 81)</h4>
+<p>O feudo era frequentemente uma grande propriedade no campo, com <b>camponeses sustentando o nobre vassalo</b>. Mas atenção: um feudo <b>não era só terra</b>. Também podia ser um <b>cargo oficial</b>, <b>armas</b> ou o <b>direito de cobrar pedágio</b>.</p>
+<p>Os laços entre vassalos e senhores eram <b>vitalícios</b> (para a vida toda) e <b>hereditários</b> (passavam de pai para filho), e envolviam obrigações como <b>pagar impostos</b>, <b>serviço militar</b> e <b>aconselhamento</b>. Quem não cumprisse essas obrigações podia sofrer o <b>confisco do feudo</b> (perder o feudo). Os vassalos também podiam doar benefícios a outros nobres, criando relações complicadas dentro da nobreza.</p>
+<p>O <b>rei</b> era o <b>suserano mais alto</b> e só podia ser vassalo de <b>outro rei</b>. Nobres de títulos diferentes, como <b>duques e condes</b>, dividiam feudos e davam pedaços a <b>nobres inferiores</b>. Assim se formava a <b>hierarquia feudal</b>.</p>
+
+<div class="info">
+  <h3>A escada feudal</h3>
+  <p class="s">Desenho para visualizar a hierarquia descrita na p. 81</p>
+  <div class="escada">
+    <div class="degrau c-amarelo" style="width:44%">Rei · o suserano mais alto (só podia ser vassalo de outro rei)</div>
+    <div class="desce">doa feudos<i>↓</i></div>
+    <div class="degrau c-azul" style="width:64%">Nobres de títulos mais altos, como duques e condes</div>
+    <div class="desce">dão pedaços dos feudos<i>↓</i></div>
+    <div class="degrau c-verde" style="width:84%">Nobres inferiores</div>
+    <div class="desce">sustentam o nobre vassalo<i>↑</i></div>
+    <div class="degrau c-rosa" style="width:100%">Camponeses e servos, que trabalham a terra</div>
+  </div>
+</div>
+
+<div class="box resumo"><span class="tit">Em uma frase</span>
+<p>O feudalismo foi um sistema <b>hierárquico</b> e <b>agrário</b>: o <b>suserano</b> dava um <b>feudo</b> ao <b>vassalo</b> num ritual de <b>homenagem, juramento e investidura</b>, o vassalo devia fidelidade ao seu suserano, os <b>senhores feudais</b> mandavam nas suas terras e o <b>rei</b> ficou cada vez mais fraco.</p></div>
+
+<!-- ============ FIM ============ -->
+<div class="secao" id="fim"><span class="t">A história inteira em uma página</span></div>
+
+<div class="info">
+  <h3>Do Império Romano ao feudalismo</h3>
+  <p class="s">Leia de cima para baixo: é a corrente toda</p>
+  <div class="linha">
+    <div class="ev"><div class="ano c-verde">Roma forte</div><div class="o">Trabalho livre, escravo e, mais tarde, colonato. A economia depende dos escravizados que vêm das conquistas.</div></div>
+    <div class="ev"><div class="ano c-azul">30–33 d.C.</div><div class="o">Jesus prega na Palestina; o cristianismo é perseguido, mas cresce muito durante a crise.</div></div>
+    <div class="ev"><div class="ano c-rosa">Séculos III e IV</div><div class="o">Crise do Império: germânicos e persas, Exército mandando na política, fim das conquistas, falta de escravizados, gastos altos, moeda desvalorizada, fome e revoltas.</div></div>
+    <div class="ev"><div class="ano c-amarelo">313 · 330</div><div class="o">Constantino dá liberdade de culto (Édito de Milão) e muda a capital para Constantinopla.</div></div>
+    <div class="ev"><div class="ano c-lilas">379–395 · 395</div><div class="o">Teodósio oficializa o cristianismo e divide o Império: Ocidente (Roma) e Oriente (Constantinopla).</div></div>
+    <div class="ev"><div class="ano c-rosa">410 · 476</div><div class="o">Os visigodos saqueiam Roma; o último imperador do Ocidente é deposto. Começa a Idade Média (séculos V a XV).</div></div>
+    <div class="ev"><div class="ano c-verde">Reinos germânicos</div><div class="o">Pequenos reinos, mistura com os romanos, aliança com a Igreja: cultura romana + cristã + germânica.</div></div>
+    <div class="ev"><div class="ano c-azul">481–751</div><div class="o">Francos merovíngios: Clóvis vira cristão (cerca de 496); Carlos Martel vence os muçulmanos.</div></div>
+    <div class="ev"><div class="ano c-amarelo">751–987</div><div class="o">Francos carolíngios: Pepino, o Breve (751); Carlos Magno (768–814), condados e marcas, Renascimento Carolíngio.</div></div>
+    <div class="ev"><div class="ano c-lilas">843</div><div class="o">Tratado de Verdun divide o Império Carolíngio; o rei enfraquece e os nobres se fortalecem.</div></div>
+    <div class="ev"><div class="ano c-verde">Feudalismo</div><div class="o">Suserania e vassalagem, feudos, ritual em três etapas, senhores feudais e a escada da hierarquia feudal.</div></div>
+  </div>
+</div>
+
+<div class="box chave"><span class="tit">Se você lembrar só de uma coisa</span>
+<p>Roma cresceu com <b>conquistas</b> e <b>escravizados</b>. Quando as conquistas pararam e outros povos (<b>germânicos e persas</b>) pressionaram o Império, veio a <b>crise</b>. Na crise, o <b>cristianismo</b> cresceu e o Império se <b>dividiu</b>. Os <b>germânicos</b> ocuparam o Ocidente, se aliaram à <b>Igreja</b>, e da mistura das culturas romana, cristã e germânica surgiram características da Idade Média. Os <b>francos</b> criaram um grande império, que também se dividiu, e o poder foi parar nas mãos dos nobres: o <b>feudalismo</b>.</p></div>
+
+</div>
+
+</body>
+</html>
