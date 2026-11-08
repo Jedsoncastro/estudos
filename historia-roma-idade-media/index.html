@@ -276,6 +276,9 @@ mark{background:none;color:var(--mc-d);font-weight:900;text-decoration:underline
 <div id="app"></div>
 <canvas id="confetti"></canvas>
 <script>
+window.AUDIOS = {"wovbfy":"1urabrt.mp3","1kvpzvb":"omdrr6.mp3","ws7aml":"8r9188.mp3","nck8gj":"rrw2pq.mp3","o9kjpp":"i5evug.mp3","80v621":"1c6vs5w.mp3","mesa8s":"16uiu6f.mp3","zpc0r7":"raaldq.mp3","14dyh0s":"1vrkg7r.mp3","wn590g":"jffe4r.mp3","qavlns":"11ncdeb.mp3","1088va2":"88bav9.mp3","15o4kh0":"c5xogf.mp3","1hw4zjf":"15pqg9i.mp3","1isahd5":"9k8ndg.mp3","18v6dbw":"1l2jcyv.mp3","x182cz":"hc56fy.mp3","12j0dtd":"6qptcs.mp3","14dc5cc":"k5mpvb.mp3","s0kv98":"nrmvtz.mp3","poqiw4":"q2zurz.mp3","1vcnum":"9qo0tl.mp3","t7s22d":"1b6omzk.mp3","4bl1v5":"1b3kiho.mp3","hfuhnq":"19lhsup.mp3","qou5qj":"6dwrqu.mp3","1o8ghtd":"bucw7w.mp3","fe4wkm":"19zt4y9.mp3","8rsrab":"130bklq.mp3","1c4xy03":"gey9n2.mp3","5zrefx":"2gwrt4.mp3","yyjqae":"4ltvsx.mp3","2w672l":"azimgo.mp3","1nreegx":"subir0.mp3"}; window.AUDIO_BASE = "audio/";
+</script>
+<script>
 /* ===================== BASE (dividida entre o portal e as páginas de matéria) =====================
    Guarda: perfis das crianças, progresso por matéria, ajustes de voz/som, o mascote Tico,
    ícones, sons sintetizados, voz do navegador e confete. Tudo fica no próprio aparelho (localStorage). */
@@ -472,13 +475,50 @@ function pickVoice() {
   VOICE = vs.find(v => fav.some(f => v.name.includes(f))) || vs[0] || speechSynthesis.getVoices().find(v => /^pt/i.test(v.lang)) || null;
 }
 if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
-function say(text, force) {
-  if (!('speechSynthesis' in window) || (!DB.voz && !force)) return;
+function falaRobo(text) {
+  try { if (AUDIO_EL && !AUDIO_EL.paused) AUDIO_EL.pause(); } catch (e) {} // nunca duas vozes ao mesmo tempo
+  if (!('speechSynthesis' in window)) return;
   try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = 'pt-BR'; if (VOICE) u.voice = VOICE; u.rate = 0.97; u.pitch = 1.08; speechSynthesis.speak(u); } catch (e) {}
+}
+/* Narração gravada (voz profissional): window.AUDIOS = { hashId(texto): 'arquivo.mp3' }, colocado pelo montar.mjs.
+   Se a fala tem áudio gravado, toca o arquivo; senão (ou se o aparelho bloquear), usa a voz do navegador.
+   Um único elemento de áudio, destravado no primeiro toque (exigência do Safari no iPhone). */
+const AUDIO_EL = typeof Audio === 'function' ? new Audio() : null;
+function audioDe(text) {
+  const A = window.AUDIOS; if (!A || !AUDIO_EL || typeof hashId !== 'function') return null;
+  const f = A[hashId(String(text))]; return f ? (window.AUDIO_BASE || 'audio/') + f : null;
+}
+function destravarAudio() {
+  if (!AUDIO_EL || !window.AUDIOS || AUDIO_EL.dataset.ok) return;
+  AUDIO_EL.dataset.ok = '1';
+  try {
+    const n = 800, b = new ArrayBuffer(44 + n), v = new DataView(b), w = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, 8000, true); v.setUint32(28, 8000, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+    for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+    AUDIO_EL.src = URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
+    const p = AUDIO_EL.play(); if (p && p.catch) p.catch(() => {});
+  } catch (e) {}
+}
+document.addEventListener('pointerdown', destravarAudio, { capture: true });
+document.addEventListener('keydown', destravarAudio, { capture: true });
+function say(text, force) {
+  if (!DB.voz && !force) return;
+  const f = audioDe(text);
+  if (f) {
+    try { speechSynthesis.cancel(); } catch (e) {}
+    try {
+      AUDIO_EL.pause(); AUDIO_EL.src = f; AUDIO_EL.currentTime = 0;
+      // AbortError = outra fala ou hush() interrompeu de propósito: não cai na voz do navegador
+      const p = AUDIO_EL.play(); if (p && p.catch) p.catch(e => { if (!e || e.name !== 'AbortError') falaRobo(text); });
+      return;
+    } catch (e) {}
+  }
+  falaRobo(text);
 }
 let FALA_T = 0;
 function sayDepois(text, ms) { clearTimeout(FALA_T); FALA_T = setTimeout(() => say(text), ms); }
-function hush() { clearTimeout(FALA_T); try { speechSynthesis.cancel(); } catch (e) {} }
+function hush() { clearTimeout(FALA_T); try { speechSynthesis.cancel(); } catch (e) {} try { if (AUDIO_EL) AUDIO_EL.pause(); } catch (e) {} }
 
 /* ---------- confete ---------- */
 const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
