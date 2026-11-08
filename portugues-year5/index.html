@@ -1,0 +1,1515 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#EEF3FB">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Português Year 5">
+<title>Português Year 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800;900&display=swap">
+<style>
+/* Layout: uma coluna de celular (max 560px). Mapa em trilha; rodada = barra de progresso no topo, cartão no meio, botão grande embaixo.
+   Cada módulo define sua cor em --mc / --mc-d / --mc-l. Tema claro fixo de propósito (jogo infantil). */
+:root{
+  --bg:#EEF3FB; --card:#FFFFFF; --ink:#1D2340; --muted:#5D6487; --line:#D6DDEC;
+  --blue:#2D5BD0; --blue-d:#1F44A6; --blue-l:#E3EBFD;
+  --green:#14755B; --green-d:#0C5643; --green-l:#DDF2EA;
+  --amber:#E7A21B; --amber-d:#A96F00; --amber-l:#FFF2D3;
+  --purple:#7A4FD0; --purple-d:#5A33A8; --purple-l:#EEE7FC;
+  --pink:#C4407A; --pink-d:#9A2C5D; --pink-l:#FBE4EE;
+  --cyan:#0F8BA8; --cyan-d:#0A6880; --cyan-l:#DDF3F8;
+  --ok:#2FA968; --ok-d:#1F8450; --ok-l:#DDF6E7;
+  --oops:#E8723C; --oops-d:#BD5323; --oops-l:#FFE8DC;
+  --gold:#F5B800; --rust:#C4572A;
+  --mc:var(--blue); --mc-d:var(--blue-d); --mc-l:var(--blue-l);
+  --f-display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+#app{max-width:560px;margin:0 auto;min-height:100%;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:max(12px,env(safe-area-inset-top,0px));padding-bottom:140px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.btn{display:block;width:100%;padding:14px 18px;border-radius:16px;font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:.02em;text-transform:uppercase;background:var(--blue);color:#fff;box-shadow:0 5px 0 var(--blue-d);transition:transform .08s, box-shadow .08s;text-align:center;text-decoration:none}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--blue-d)}
+.btn[disabled]{background:var(--line);color:#8E96B3;box-shadow:0 5px 0 #C3CBDD;cursor:default}
+.btn.ok{background:var(--ok);box-shadow:0 5px 0 var(--ok-d)}
+.btn.oops{background:var(--oops);box-shadow:0 5px 0 var(--oops-d)}
+.btn.ghost{background:var(--card);color:var(--blue);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+.btn.ghost[disabled]{color:#9AA2BE;background:var(--card)}
+.btn.small{font-size:16px;padding:10px 14px}
+
+/* ---------- mascote e avatares ---------- */
+.tico{display:block;flex:none}
+.bounce{animation:bounce 1.2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.pop{animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+.ava{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-family:var(--f-display);font-weight:800;flex:none;line-height:1}
+.ava.ghost{background:var(--card);border:3px dashed var(--line);color:var(--muted)}
+
+/* ---------- início / perfis ---------- */
+.start{display:grid;gap:18px;padding-top:24px;text-align:center;justify-items:center}
+.start h1{font-size:40px;color:var(--blue-d)}
+.bubble{position:relative;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;font-weight:700;max-width:420px}
+.bubble::after{content:"";position:absolute;left:50%;top:-11px;width:18px;height:18px;background:var(--card);border-left:2px solid var(--line);border-top:2px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.bubble.small{font-size:15px}
+.bubble.small::after{display:none}
+.name-in,.write-in{width:100%;max-width:340px;font:800 24px var(--f-display);text-align:center;padding:12px;border-radius:14px;border:3px solid var(--line);background:var(--card);color:var(--ink)}
+.name-in::placeholder,.write-in::placeholder{color:#9AA2BE}
+.perfis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.perfil{display:grid;justify-items:center;gap:6px;padding:12px;border-radius:18px;background:var(--card);border:2px solid var(--line);box-shadow:0 4px 0 var(--line);min-width:108px}
+.perfil b{font-size:17px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- mapa ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:6px 12px}
+.chip-perfil{display:flex;align-items:center;gap:10px;min-width:0;text-align:left}
+.hello{font:800 24px var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pills{display:flex;gap:6px;flex:none}
+.pill{display:flex;align-items:center;gap:4px;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:900;font-variant-numeric:tabular-nums}
+.pill svg{width:19px;height:19px}
+.hero{margin-bottom:14px;padding:14px 16px}
+.hero-t{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero-m{font:800 26px var(--f-display);color:var(--blue-d);line-height:1.1}
+.hero-m span{font-size:18px;color:var(--muted)}
+.prova{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-weight:900;color:var(--oops-d);background:var(--oops-l);border-radius:999px;padding:3px 12px 3px 8px;font-size:15px}
+.prova svg{width:18px;height:18px}
+.meta{flex:1;min-width:180px}
+.meta-l{display:flex;justify-content:space-between;font-size:14px;font-weight:800;color:var(--muted);margin-bottom:4px}
+.aviso{display:flex;gap:12px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:10px 14px;margin-bottom:14px;font-size:15px;text-align:left}
+.aviso.novo{border-color:var(--gold);background:#FFF8E0}
+.acoes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.acoes .btn{font-size:15px;padding:12px 8px}
+.acoes #treino{grid-column:1/-1;font-size:19px;background:var(--purple);box-shadow:0 5px 0 var(--purple-d)}
+.acoes>:nth-child(4){grid-column:1/-1}
+.mod{margin-bottom:26px}
+.mod-head{border-radius:20px;padding:14px 16px;color:#fff;display:flex;align-items:center;gap:12px;background:var(--mc)}
+.mod-head .num{font:800 34px var(--f-display);opacity:.9;line-height:1}
+.mod-head h2{font-size:26px}
+.mod-head p{margin:0;font-weight:700;opacity:.92;font-size:15px}
+.trail{display:grid;gap:14px;padding:18px 0 0}
+.node{display:flex;align-items:center;gap:14px;width:fit-content;max-width:100%}
+.node:nth-child(4n+2){margin-left:16%}
+.node:nth-child(4n+3){margin-left:30%}
+.node:nth-child(4n+4){margin-left:16%}
+.dot{flex:none;width:76px;height:76px;border-radius:50%;padding:5px;box-shadow:0 6px 0 rgba(0,0,0,.18)}
+.dot-in{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font:800 28px var(--f-display);color:#fff;border:3px solid #fff}
+.node-label{min-width:0}
+.node-label b{display:block;font-size:16px;line-height:1.2}
+.node-label .sub{display:block;color:var(--muted);font-weight:800;font-size:13px;margin-top:2px}
+.aqui{color:var(--oops-d);font-weight:900}
+.stars{display:flex;gap:2px;margin-top:3px}
+.stars svg{width:18px;height:18px}
+.final .dot{width:88px;height:88px;background:var(--gold)}
+.settings{margin-top:30px;background:var(--card);border-radius:18px;border:2px solid var(--line);padding:14px 16px;display:grid;gap:10px}
+.settings h3{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:700}
+.row.wrap{flex-wrap:wrap;justify-content:flex-start;gap:6px 18px}
+.toggle{width:56px;height:32px;border-radius:999px;background:var(--line);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
+.toggle[aria-pressed="true"]{background:var(--ok)}
+.toggle[aria-pressed="true"]::after{left:28px}
+.linkbtn{color:var(--blue);font-weight:800;text-decoration:underline;padding:4px 0}
+.linkbtn.danger{color:var(--oops-d)}
+
+/* ---------- portal ---------- */
+.materias{display:grid;gap:14px}
+.materia{display:grid;gap:8px;background:var(--card);border:2px solid var(--line);border-left:10px solid var(--mc);border-radius:18px;padding:14px 16px;color:var(--ink);text-decoration:none;box-shadow:0 4px 0 var(--line)}
+.mt-top{display:flex;align-items:baseline;gap:8px}
+.mt-top h2{font-size:26px}
+.mt-top span{font-weight:800;color:var(--muted)}
+.mt-mods{display:flex;flex-wrap:wrap;gap:6px}
+.mt-mods span{font-size:13px;font-weight:800;background:var(--bg);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.materia small{color:var(--muted);font-weight:700}
+
+/* ---------- rodada ---------- */
+.lesson{display:flex;flex-direction:column;gap:16px}
+.lbar{display:flex;align-items:center;gap:12px;position:sticky;top:0;background:var(--bg);padding-block:8px;z-index:5}
+.x{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;color:var(--muted)}
+.x svg{width:24px;height:24px}
+.prog{flex:1;height:18px;background:var(--line);border-radius:999px;overflow:hidden}
+.prog.small{height:12px}
+.prog i{display:block;height:100%;border-radius:999px;background:var(--ok);transition:width .4s ease;box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
+.combo{font-weight:900;color:var(--oops-d);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.cmb{display:inline-flex;align-items:center;gap:2px}
+.cmb svg{width:18px;height:18px}
+.card{background:var(--card);border-radius:22px;border:2px solid var(--line);padding:18px}
+.kicker{font-weight:900;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff;display:inline-block;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.ex-title{font-size:28px;margin-bottom:12px}
+.formula{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;font:800 22px var(--f-display);background:var(--bg);border-radius:16px;padding:12px;margin:6px 0 14px}
+.formula .fx{background:var(--card);border:2px solid var(--line);border-radius:10px;padding:2px 10px;white-space:nowrap}
+.formula .s{color:var(--mc);border-color:var(--mc)}
+.formula .op{color:var(--muted)}
+.ex-body p{margin:0 0 10px}
+.ex-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
+.ex-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px;background:var(--bg);border-radius:12px;padding:8px 12px;font-weight:800;font-size:19px}
+.ex-list li.ex-sep{background:none;padding:6px 0 0;font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ex-list .arrow{color:var(--muted)}
+.ex-list small{flex-basis:100%;font-weight:600;font-size:14px;color:var(--muted)}
+mark{background:none;color:var(--mc-d);font-weight:900;text-decoration:underline 3px;text-underline-offset:3px}
+.tip{display:flex;gap:10px;align-items:flex-start;margin-top:14px}
+.tip .bubble{flex:1;text-align:left;font-size:16px}
+.tip .bubble::after{left:-11px;top:24px;transform:rotate(-45deg)}
+.tip .bubble b{color:var(--rust)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.twocol>div{background:var(--bg);border-radius:14px;padding:10px 12px;min-width:0}
+.twocol h4{margin:0 0 4px;font:800 15px var(--f-display);text-transform:uppercase;letter-spacing:.05em}
+.twocol .big{font:800 21px var(--f-display);line-height:1.2}
+.twocol small{display:block;color:var(--muted);font-weight:600;font-size:14px;margin-top:4px}
+.mtx{border-collapse:separate;border-spacing:4px;margin:4px auto;font-variant-numeric:tabular-nums}
+.mtx th{font-size:13px;color:var(--muted);font-weight:800;padding:2px 6px;text-transform:uppercase;letter-spacing:.04em}
+.mtx td{background:var(--mc-l);border-radius:10px;font:800 26px var(--f-display);color:var(--mc-d);text-align:center;min-width:76px;padding:4px 8px}
+.mtx td.q{background:var(--amber-l);color:var(--amber-d);outline:3px dashed var(--amber)}
+.mtx caption{font:800 16px var(--f-display);color:var(--mc-d);padding-bottom:2px}
+.mtx-wrap{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;overflow-x:auto}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.qlabel{font-weight:900;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.spk{width:44px;height:44px;border-radius:12px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;flex:none}
+.spk svg{width:24px;height:24px}
+.prompt{font-size:25px;font-weight:700;margin-bottom:16px}
+.prompt b{color:var(--mc-d)}
+.opts{display:grid;gap:10px}
+.opt{width:100%;text-align:left;padding:14px 16px;border-radius:16px;border:2px solid var(--line);background:var(--card);font-weight:800;font-size:19px;box-shadow:0 4px 0 var(--line);transition:transform .06s}
+.opt:active{transform:translateY(2px)}
+.opt.sel{border-color:var(--blue);background:var(--blue-l);box-shadow:0 4px 0 var(--blue)}
+.opt.right{border-color:var(--ok);background:var(--ok-l);box-shadow:0 4px 0 var(--ok)}
+.opt.wrong{border-color:var(--oops);background:var(--oops-l);box-shadow:0 4px 0 var(--oops)}
+.opts.two{grid-template-columns:1fr 1fr}
+.opts.two .opt{text-align:center}
+.toks{display:flex;flex-wrap:wrap;gap:8px;font-size:22px;line-height:1.2}
+.tok{padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--card);font-weight:800;box-shadow:0 3px 0 var(--line)}
+.tok.sel{border-color:var(--mc);background:var(--mc-l);box-shadow:0 3px 0 var(--mc)}
+.tok.right{border-color:var(--ok);background:var(--ok-l)}
+.tok.miss{border-color:var(--oops);border-style:dashed}
+.tok.wrong{border-color:var(--oops);background:var(--oops-l)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .col{display:grid;gap:10px;min-width:0}
+.mt{padding:14px 10px;border-radius:14px;border:2px solid var(--line);background:var(--card);font-weight:800;font-size:19px;box-shadow:0 4px 0 var(--line);text-align:center}
+.mt.sel{border-color:var(--amber);background:var(--amber-l);box-shadow:0 4px 0 var(--amber)}
+.mt.neutro{border-color:var(--line);background:var(--bg);color:var(--muted);box-shadow:none}
+.mt.done{border-color:var(--ok);background:var(--ok-l);color:var(--ok-d);box-shadow:none;opacity:.75}
+.write-in{max-width:none;text-align:left;font-size:24px}
+.write-in.right{border-color:var(--ok);background:var(--ok-l)}
+.write-in.wrong{border-color:var(--oops);background:var(--oops-l)}
+.dica{margin:8px 0 0;color:var(--muted);font-weight:700;font-size:15px}
+.shake{animation:shake .35s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:2px solid var(--line);padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bottom .inner{max-width:560px;margin:0 auto;display:grid;gap:12px}
+.bottom.good{background:var(--ok-l);border-color:var(--ok)}
+.bottom.bad{background:var(--oops-l);border-color:var(--oops)}
+.hint-b{text-align:center;font-weight:800;color:var(--muted)}
+.fb{display:flex;gap:12px;align-items:center}
+.fb h3{font-size:26px}
+.good .fb h3{color:var(--ok-d)}
+.bad .fb h3{color:var(--oops-d)}
+.fb p{margin:2px 0 0;font-weight:700}
+.fb .why{font-weight:600;font-size:15px;color:var(--ink)}
+.slide{animation:slide .25s ease-out}
+@keyframes slide{from{transform:translateY(40px);opacity:.3}to{transform:none;opacity:1}}
+.xpfly{font:800 20px var(--f-display);color:var(--amber-d)}
+.two-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* ---------- cartões ---------- */
+.flash{width:100%;display:grid;gap:14px;align-content:center;justify-items:center;text-align:center;min-height:300px;background:var(--card);border:3px solid var(--mc);border-radius:24px;padding:22px 18px;box-shadow:0 6px 0 var(--mc-d)}
+.f-frente{font:800 28px var(--f-display);color:var(--mc-d);line-height:1.2}
+.f-verso{font-weight:800;font-size:20px;background:var(--mc-l);border-radius:16px;padding:12px 14px;line-height:1.4}
+.f-hint{color:var(--muted);font-weight:800}
+.flash.virado{animation:pop .35s cubic-bezier(.2,1.6,.4,1)}
+
+/* ---------- fim ---------- */
+.end{display:grid;gap:16px;justify-items:center;text-align:center;padding-top:20px}
+.end h1{font-size:36px;color:var(--ok-d)}
+.bigstars{display:flex;gap:8px}
+.bigstars svg{width:58px;height:58px}
+.bigstars svg.on{animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.bigstars svg:nth-child(2){animation-delay:.15s}
+.bigstars svg:nth-child(3){animation-delay:.3s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.stat{border-radius:16px;border:2px solid var(--line);background:var(--card);padding:10px 6px;text-align:center}
+.stat b{display:block;font:800 24px var(--f-display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.end .btn{max-width:420px}
+.end .aviso{max-width:420px;width:100%}
+.meta-ok svg{flex:none}
+.erros{width:100%;text-align:left}
+.erros h3{font-size:22px;margin-bottom:6px}
+.err{border-top:2px solid var(--line);padding:10px 0}
+.err p{margin:4px 0}
+.err .eq{font-weight:800}
+.err .why{color:var(--muted);font-size:15px;font-weight:600}
+.tag{display:inline-block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:1px 8px;margin-right:4px}
+.tag.bad{background:var(--oops-l);color:var(--oops-d)}
+.tag.good{background:var(--ok-l);color:var(--ok-d)}
+
+/* ---------- resumão e pais ---------- */
+.res{display:grid;gap:14px}
+.res .card h3{font-size:22px;margin-bottom:8px}
+.res ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.res li b{font-weight:900}
+.pais{display:grid;gap:12px}
+.pais-h{display:flex;gap:12px;align-items:center}
+.pais-h small{color:var(--muted);font-weight:700}
+.pais p{margin:0}
+.tb{width:100%;border-collapse:collapse;font-size:14px}
+.tb th,.tb td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+.tb th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.tb td:not(:first-child),.tb th:not(:first-child){text-align:center;font-variant-numeric:tabular-nums}
+.piores{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px}
+.piores small{color:var(--muted)}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+@media (prefers-reduced-motion:reduce){.bounce,.pop,.slide,.shake,.bigstars svg.on,.flash.virado{animation:none}}
+@media (max-width:380px){.prompt{font-size:22px}.ex-title{font-size:24px}.node:nth-child(4n+3){margin-left:22%}.hello{font-size:20px}.pill{padding:3px 7px}}
+
+</style>
+</head>
+<body data-portal="1">
+<div id="app"></div>
+<canvas id="confetti"></canvas>
+<script>
+/* ===================== BASE (dividida entre o portal e as páginas de matéria) =====================
+   Guarda: perfis das crianças, progresso por matéria, ajustes de voz/som, o mascote Tico,
+   ícones, sons sintetizados, voz do navegador e confete. Tudo fica no próprio aparelho (localStorage). */
+
+const KEY = 'estudos-v1';
+const LEGADO = { 'missao-portugues-y5': 'portugues-year5' }; // quiz antigo -> matéria nova
+const META_DIA = 50; // pontos por dia para cumprir a meta
+
+const pad2 = n => String(n).padStart(2, '0');
+const hoje = (d = new Date()) => d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const strip = h => String(h).replace(/<br\s*\/?>/g, '. ').replace(/<[^>]+>/g, '').replace(/___/g, ', espaço, ').replace(/→/g, ', vira, ').replace(/\s+/g, ' ').trim();
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = a => a[Math.floor(Math.random() * a.length)];
+
+/* ---------- armazenamento ---------- */
+function vazio() { return { v: 1, perfis: [], ativo: null, voz: true, som: true, dados: {}, migrado: {} }; }
+function lerTudo() {
+  try { const r = JSON.parse(localStorage.getItem(KEY)); if (r && r.v === 1) return Object.assign(vazio(), r); } catch (e) {}
+  return vazio();
+}
+let DB = lerTudo();
+let GRAVOU_OK = true;
+function gravar() {
+  try {
+    const txt = JSON.stringify(DB);
+    if (localStorage.getItem(KEY) !== txt) localStorage.setItem(KEY, txt); // não grava o que não mudou (evita abas recarregando uma à outra)
+    GRAVOU_OK = true;
+  } catch (e) { GRAVOU_OK = false; }
+}
+// outra aba (ou a página restaurada pelo "voltar" do Safari) pode ter uma cópia velha: recarrega para não gravar por cima
+addEventListener('pageshow', e => { if (e.persisted) location.reload(); });
+addEventListener('storage', e => { if (e.key === KEY) location.reload(); });
+try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {} // pede ao navegador para não apagar o progresso
+// letras de verdade (um emoji conta como uma letra só)
+const letras = s => Array.from(String(s));
+
+const CORES_PERFIL = ['#2D5BD0', '#C4407A', '#14755B', '#7A4FD0', '#D2691E', '#0F8BA8'];
+function novoPerfil(nome) {
+  const p = { id: 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), nome: letras(nome.trim()).slice(0, 20).join(''), cor: DB.perfis.length % CORES_PERFIL.length, criado: hoje() };
+  DB.perfis.push(p); DB.ativo = p.id; gravar(); return p;
+}
+// backup: o progresso inteiro vira um código de texto (para guardar no WhatsApp, e-mail etc.)
+const codigoBackup = () => btoa(unescape(encodeURIComponent(JSON.stringify(DB))));
+function restaurarBackup(txt) {
+  const o = JSON.parse(decodeURIComponent(escape(atob(String(txt).replace(/\s+/g, '')))));
+  if (!o || o.v !== 1 || !Array.isArray(o.perfis) || typeof o.dados !== 'object') throw new Error('código inválido');
+  DB = Object.assign(vazio(), o); gravar();
+}
+function perfilAtivo() { return DB.perfis.find(p => p.id === DB.ativo) || null; }
+function apagarPerfil(id) { DB.perfis = DB.perfis.filter(p => p.id !== id); delete DB.dados[id]; if (DB.ativo === id) DB.ativo = DB.perfis[0] ? DB.perfis[0].id : null; gravar(); }
+function dadosDe(pid, slug) {
+  DB.dados[pid] = DB.dados[pid] || {};
+  const d = DB.dados[pid][slug] = DB.dados[pid][slug] || {};
+  return Object.assign(d, { xp: d.xp || 0, licoes: d.licoes || {}, q: d.q || {}, melhorCombo: d.melhorCombo || 0, tempo: d.tempo || 0, dias: d.dias || {}, loteVisto: d.loteVisto || 0, simulados: d.simulados || [], cartoes: d.cartoes || {} });
+}
+// dias com estudo (qualquer matéria) -> ofensiva e meta do dia
+function diasDoPerfil(pid) {
+  const tot = {}; const m = DB.dados[pid] || {};
+  Object.values(m).forEach(d => Object.entries(d.dias || {}).forEach(([k, v]) => { tot[k] = (tot[k] || 0) + v; }));
+  return tot;
+}
+function ofensiva(pid) {
+  const dias = diasDoPerfil(pid); let n = 0; const d = new Date();
+  if (!dias[hoje(d)]) d.setDate(d.getDate() - 1); // ainda não estudou hoje: conta até ontem
+  while (dias[hoje(d)]) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function pontosHoje(pid) { return diasDoPerfil(pid)[hoje()] || 0; }
+
+// importa o progresso do quiz antigo (mesmo endereço do GitHub Pages), uma vez só
+function migrarLegado() {
+  for (const k in LEGADO) {
+    if (DB.migrado[k]) continue;
+    try {
+      let old = null; try { old = JSON.parse(localStorage.getItem(k)); } catch (e) {}
+      if (!old || typeof old !== 'object' || !old.started) continue;
+      const nome = typeof old.name === 'string' && old.name.trim() && old.name !== 'você' ? old.name : 'Estudante';
+      const ativoAntes = DB.ativo;
+      const p = DB.perfis.find(x => x.nome.toLowerCase() === nome.toLowerCase()) || novoPerfil(nome);
+      if (ativoAntes) DB.ativo = ativoAntes; // não troca a criança que já estava escolhida
+      const d = dadosDe(p.id, LEGADO[k]);
+      d.xp += Number(old.xp) || 0; d.melhorCombo = Math.max(d.melhorCombo, Number(old.bestCombo) || 0);
+      Object.entries(old.done || {}).forEach(([lid, v]) => { const id = lid === 'final' ? 'simulado' : lid; const at = d.licoes[id] || {}; d.licoes[id] = { estrelas: Math.max((v && v.stars) || 0, at.estrelas || 0), rodadas: (at.rodadas || 0) + 1 }; });
+      if (typeof old.voice === 'boolean') DB.voz = old.voice;
+      if (typeof old.sound === 'boolean') DB.som = old.sound;
+      if (!DB.ativo) DB.ativo = p.id;
+    } catch (e) {}
+    DB.migrado[k] = true; // mesmo se der erro: nunca tenta de novo (evita tela em branco)
+  }
+  gravar();
+}
+
+/* ---------- prova: contagem regressiva ---------- */
+function diasAte(iso) { if (!iso) return null; const [y, m, d] = iso.split('-').map(Number); const a = new Date(y, m - 1, d), b = new Date(); b.setHours(0, 0, 0, 0); return Math.round((a - b) / 864e5); }
+function textoProva(iso) { const n = diasAte(iso); if (n === null || n < 0) return ''; return n === 0 ? 'Prova hoje!' : n === 1 ? 'Prova amanhã' : 'Prova em ' + n + ' dias'; }
+
+/* ---------- mascote Tico (um tico-tico) ---------- */
+function tico(mood = 'happy', size = 96, cls = '') {
+  const eyes = mood === 'cheer'
+    ? '<path d="M41 57q6-8 12 0M67 57q6-8 12 0" stroke="#1D2340" stroke-width="4" fill="none" stroke-linecap="round"/>'
+    : `<circle cx="47" cy="56" r="7" fill="#fff"/><circle cx="73" cy="56" r="7" fill="#fff"/>
+       <circle cx="${mood === 'think' ? 49 : 48}" cy="${mood === 'think' ? 53 : 57}" r="3.8" fill="#1D2340"/>
+       <circle cx="${mood === 'think' ? 75 : 74}" cy="${mood === 'think' ? 53 : 57}" r="3.8" fill="#1D2340"/>`;
+  const wings = mood === 'cheer'
+    ? '<ellipse cx="22" cy="52" rx="9" ry="20" transform="rotate(-35 22 52)" fill="#7E4B22"/><ellipse cx="98" cy="52" rx="9" ry="20" transform="rotate(35 98 52)" fill="#7E4B22"/>'
+    : '<ellipse cx="25" cy="78" rx="9" ry="19" transform="rotate(15 25 78)" fill="#7E4B22"/><ellipse cx="95" cy="78" rx="9" ry="19" transform="rotate(-15 95 78)" fill="#7E4B22"/>';
+  const drop = mood === 'oops' ? '<path d="M92 30q5 8 0 12q-5-4 0-12z" fill="#7FB6F0"/>' : '';
+  return `<svg class="tico ${cls}" width="${size}" height="${size}" viewBox="0 0 120 120" aria-hidden="true">
+    <path d="M50 36q3-16 12-8q5-12 12 3" fill="#7E4B22"/>${wings}
+    <ellipse cx="60" cy="72" rx="38" ry="38" fill="#B9773F"/>
+    <path d="M40 36q20-14 40 0" stroke="#5E5E66" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <ellipse cx="60" cy="86" rx="24" ry="20" fill="#F7E8C9"/>
+    <path d="M30 70q30 16 60 0" stroke="#C4572A" stroke-width="6" fill="none" stroke-linecap="round"/>${eyes}
+    <circle cx="38" cy="66" r="5" fill="#F29B8B" opacity=".55"/><circle cx="82" cy="66" r="5" fill="#F29B8B" opacity=".55"/>
+    <path d="M55 62h10l-5 8z" fill="#F2A93B"/>
+    <path d="M50 108v6M70 108v6" stroke="#E08A2C" stroke-width="4" stroke-linecap="round"/>${drop}
+  </svg>`;
+}
+const STAR = on => `<svg viewBox="0 0 24 24" class="${on ? 'on' : ''}"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z" fill="${on ? 'var(--gold)' : 'var(--line)'}" stroke="${on ? '#C08F00' : '#C3CBDD'}" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+const ICON = {
+  x: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  back: '<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  spk: '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="var(--gold)" stroke="#C08F00" stroke-width="1.2" stroke-linejoin="round"/></svg>',
+  fire: '<svg viewBox="0 0 24 24"><path d="M12 2c1 4 6 6 6 12a6 6 0 01-12 0c0-3 2-5 3-6 0 2 1 3 2 3 0-3-1-6 1-9z" fill="var(--oops)"/></svg>',
+  trophy: '<svg viewBox="0 0 24 24" width="40" height="40"><path d="M7 3h10v5a5 5 0 01-10 0zM7 5H4a3 3 0 003 4M17 5h3a3 3 0 01-3 4M10 13h4v4h-4zM7 21h10v-2a2 2 0 00-2-2H9a2 2 0 00-2 2z" fill="#fff" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg>',
+  check: '<svg viewBox="0 0 24 24" width="34" height="34"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  cal: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+};
+function avatar(p, size = 44) {
+  const c = CORES_PERFIL[p.cor % CORES_PERFIL.length];
+  return `<span class="ava" style="width:${size}px;height:${size}px;background:${c};font-size:${Math.round(size * .46)}px">${esc((letras(p.nome)[0] || '?').toUpperCase())}</span>`;
+}
+
+/* ---------- som (sintetizado, sem arquivos) ---------- */
+let AC = null;
+function audio() { if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } if (AC && AC.state === 'suspended') AC.resume(); return AC; }
+function tone(freq, start, dur, type = 'triangle', vol = 0.18) {
+  try {
+    const a = audio(); if (!a || !DB.som) return;
+    const o = a.createOscillator(), g = a.createGain(); o.type = type; o.frequency.value = freq;
+    const t = a.currentTime + start; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + 0.05);
+  } catch (e) {}
+}
+const SFX = {
+  ok() { tone(784, 0, .16); tone(1175, .1, .28); },
+  combo() { tone(784, 0, .12); tone(988, .08, .12); tone(1319, .16, .3); },
+  oops() { tone(330, 0, .18, 'sine', .14); tone(262, .14, .28, 'sine', .12); },
+  tap() { tone(600, 0, .05, 'sine', .06); },
+  flip() { tone(520, 0, .06, 'sine', .08); tone(780, .05, .08, 'sine', .07); },
+  win() { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * .12, .35)); tone(1319, .5, .6); },
+};
+
+/* ---------- voz (do próprio navegador) ---------- */
+let VOICE = null;
+function pickVoice() {
+  if (!('speechSynthesis' in window)) return;
+  const vs = speechSynthesis.getVoices().filter(v => /^pt[-_]BR/i.test(v.lang));
+  const fav = ['Luciana', 'Francisca', 'Google português do Brasil', 'Thalita', 'Maria'];
+  VOICE = vs.find(v => fav.some(f => v.name.includes(f))) || vs[0] || speechSynthesis.getVoices().find(v => /^pt/i.test(v.lang)) || null;
+}
+if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text, force) {
+  if (!('speechSynthesis' in window) || (!DB.voz && !force)) return;
+  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = 'pt-BR'; if (VOICE) u.voice = VOICE; u.rate = 0.97; u.pitch = 1.08; speechSynthesis.speak(u); } catch (e) {}
+}
+let FALA_T = 0;
+function sayDepois(text, ms) { clearTimeout(FALA_T); FALA_T = setTimeout(() => say(text), ms); }
+function hush() { clearTimeout(FALA_T); try { speechSynthesis.cancel(); } catch (e) {} }
+
+/* ---------- confete ---------- */
+const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
+let parts = [], raf = 0;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function confetti(n = 90) {
+  if (reduce) return;
+  cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio;
+  const cols = ['#2D5BD0', '#14755B', '#E7A21B', '#E8723C', '#2FA968', '#F5B800', '#7A4FD0'];
+  for (let i = 0; i < n; i++) parts.push({ x: innerWidth / 2 + (Math.random() - .5) * 120, y: innerHeight * .55, vx: (Math.random() - .5) * 14, vy: -Math.random() * 15 - 6, r: Math.random() * 6 + 4, c: pick(cols), a: Math.random() * 6, va: (Math.random() - .5) * .4, life: 0 });
+  if (!raf) raf = requestAnimationFrame(confStep);
+}
+function confStep() {
+  cx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); cx.clearRect(0, 0, innerWidth, innerHeight);
+  parts.forEach(p => { p.vy += .45; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va; p.life++; cx.save(); cx.translate(p.x, p.y); cx.rotate(p.a); cx.fillStyle = p.c; cx.fillRect(-p.r / 2, -p.r / 3, p.r, p.r * .66); cx.restore(); });
+  parts = parts.filter(p => p.y < innerHeight + 40 && p.life < 200);
+  raf = parts.length ? requestAnimationFrame(confStep) : (cx.clearRect(0, 0, innerWidth, innerHeight), 0);
+}
+
+/* ---------- tela "quem vai estudar?" (usada no portal e nas matérias) ---------- */
+function telaPerfis($app, aoEscolher, texto) {
+  hush();
+  const lista = DB.perfis;
+  $app.innerHTML = `<div class="start">
+    ${tico('happy', 130, 'bounce')}
+    <div class="bubble">${lista.length ? (texto || 'Oi! Eu sou o <b>Tico</b>. Quem vai estudar comigo hoje?') : 'Oi! Eu sou o <b>Tico</b>, um tico-tico. Vou te ajudar a estudar. Qual é o seu nome?'}</div>
+    ${lista.length ? `<div class="perfis">${lista.map(p => `<button class="perfil" data-p="${p.id}">${avatar(p, 64)}<b>${esc(p.nome)}</b></button>`).join('')}
+      <button class="perfil novo" id="add"><span class="ava ghost" style="width:64px;height:64px">${ICON.plus}</span><b>Adicionar</b></button></div>` : ''}
+    <div id="novoBox" ${lista.length ? 'hidden' : ''} style="width:100%;display:grid;gap:12px;justify-items:center">
+      <input class="name-in" id="nm" maxlength="20" placeholder="Digite seu nome" aria-label="Seu nome" autocomplete="off">
+      <button class="btn" id="go" style="max-width:340px">Começar</button>
+    </div>
+  </div>`;
+  const entrar = p => { DB.ativo = p.id; gravar(); audio(); SFX.tap(); aoEscolher(p); };
+  $app.querySelectorAll('[data-p]').forEach(b => b.onclick = () => entrar(DB.perfis.find(p => p.id === b.dataset.p)));
+  const add = document.getElementById('add');
+  if (add) add.onclick = () => { SFX.tap(); document.getElementById('novoBox').hidden = false; add.hidden = true; document.getElementById('nm').focus(); };
+  const go = () => { const n = (document.getElementById('nm').value || '').trim(); if (!n) { document.getElementById('nm').focus(); return; } entrar(novoPerfil(n)); };
+  document.getElementById('go').onclick = go;
+  document.getElementById('nm').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); go(); } };
+}
+
+</script>
+<script>
+/* ===================== AJUDANTES DE CONTEÚDO =====================
+   Atalhos para escrever uma matéria em materias/<slug>/conteudo.js.
+   Regra de ouro: em mc(...) a resposta certa é SEMPRE a primeira opção (o jogo embaralha na tela).
+   Cada pergunta ganha um id fixo (calculado do texto), usado para saber o que a criança já viu. */
+
+let LOTE_ATUAL = 1;
+function hashId(s) { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h.toString(36); }
+function chavePergunta(q) { return [q.t, q.q, JSON.stringify(q.o || q.s || q.pairs || q.r || ''), JSON.stringify(q.cell || '')].join('|'); }
+
+// tipos de pergunta
+const mc = (q, o, why, x = {}) => ({ t: 'mc', q, o, a: 0, why, lote: LOTE_ATUAL, ...x });
+const vf = (q, v, why) => ({ t: 'mc', q: 'Verdadeiro ou falso? ' + q, o: ['Verdadeiro', 'Falso'], a: v ? 0 : 1, keep: true, two: true, why, lote: LOTE_ATUAL });
+const fixas = opcoes => (q, a, why) => ({ t: 'mc', q, o: opcoes, a, keep: true, why, lote: LOTE_ATUAL }); // mesmas opções sempre, na mesma ordem
+const tap = (frase, a, why, x = {}) => ({ t: 'tap', q: x.q || 'Toque nas palavras certas.', s: frase.split(' '), a, why, conjunto: x.conjunto, lote: LOTE_ATUAL });
+const pares = (q, lista, why) => ({ t: 'match', q, pairs: lista, why, lote: LOTE_ATUAL });
+const tabela = (nome, cell, o, why, x = {}) => ({ t: 'table', tab: nome, cell, q: x.q || 'O que está faltando na tabela?', o, a: 0, why, lote: LOTE_ATUAL });
+const escrever = (q, r, why, x = {}) => ({ t: 'write', q, r: [].concat(r), why, dica: x.dica || '', lote: LOTE_ATUAL });
+
+// estrutura
+const ex = o => ({ t: 'explain', ...o });
+function lote(n, perguntas) { return perguntas.map(p => Object.assign(p, { lote: n })); }
+const bloco = (explica, perguntas) => ({ explica, perguntas });
+const licao = (id, titulo, blocos, x = {}) => ({ id, titulo, blocos, ...x });
+const modulo = (id, nome, desc, cor, licoes) => ({ id, nome, desc, cor, licoes });
+
+function materia(m) {
+  m.rodada = m.rodada || 8;
+  m.simulado = Object.assign({ titulo: 'Simulado da prova', quantas: 16, extras: [] }, m.simulado || {});
+  const darId = (lid, q) => { q.id = lid + '_' + hashId(lid + '|' + chavePergunta(q)); };
+  m.modulos.forEach(md => md.licoes.forEach(l => l.blocos.forEach(b => b.perguntas.forEach(q => darId(l.id, q)))));
+  m.simulado.extras.forEach(q => darId('simulado', q));
+  return m;
+}
+
+</script>
+<script>
+/* ===================== PORTUGUÊS YEAR 5 (Maple Bear) =====================
+   Fonte: "Roteiro de Estudos Português Year 5" (fotos em fonte/, fora do git).
+   Segue o gabarito da escola (ex.: salários-família, pés de pato, vice-campeões).
+   Ficaram de fora palavras em que a gramática aceita mais de um plural (ex.: peixes-boi/peixes-bois). */
+
+const PR = ['Sem hífen: só no fim', 'Com hífen: os dois mudam', 'Com hífen: só o 1º muda', 'Com hífen: só o 2º muda'];
+const GT = ['Biforme', 'Comum de dois', 'Sobrecomum', 'Epiceno'];
+const regra = fixas(PR);
+const tipo = fixas(GT);
+const ARTIGOS = ['o', 'a', 'os', 'as', 'um', 'uma', 'uns', 'umas'];
+const artigos = (frase, a, why) => tap(frase, a, why, { q: 'Toque em TODOS os artigos da frase.', conjunto: ARTIGOS });
+
+const MATERIA = materia({
+  slug: 'portugues-year5',
+  titulo: 'Português',
+  serie: 'Year 5',
+  prova: '2026-11-09',
+  rodada: 8,
+  lotes: [
+    { n: 1, data: '2026-11-08', nota: 'Conteúdo do quiz Missão Português (versão 1)' },
+    { n: 2, data: '2026-11-08', nota: 'Primeira renovação: palavras novas em todas as lições' },
+  ],
+  tabelas: {
+    def: { titulo: 'Definidos (específicos)', cols: ['Masc.', 'Fem.'], linhas: ['Sing.', 'Plural'], cel: [['o', 'a'], ['os', 'as']] },
+    indef: { titulo: 'Indefinidos (qualquer um)', cols: ['Masc.', 'Fem.'], linhas: ['Sing.', 'Plural'], cel: [['um', 'uma'], ['uns', 'umas']] },
+  },
+  modulos: [
+  modulo('plurais', 'Plurais', 'Palavras compostas', 'azul', [
+    licao('p1', 'Sem hífen: plural só no fim', [
+      bloco(ex({ title: 'Palavra grudada: plural só no fim',
+        formula: '<span class="fx">[ PALAVRA ]</span><span class="op">+</span><span class="fx s">[ S ]</span><span class="op">=</span><span class="fx">PLURAL</span>',
+        body: '<p>Quando duas palavras se juntaram e viraram <b>uma palavra só, sem hífen</b>, o plural é feito como numa palavra comum: mexemos <b>só no final</b>.</p>',
+        list: [['girassol', 'girass<mark>óis</mark>', 'igual a sol → sóis'], ['pontapé', 'pontap<mark>és</mark>'], ['mandachuva', 'mandachuv<mark>as</mark>']],
+        memo: 'Grudou? Virou <b>uma palavra só</b>. O plural vai <b>só no fim</b>.',
+        say: 'Palavras sem hífen. Quando duas palavras se juntam e viram uma palavra só, sem hífen, o plural é feito como numa palavra comum: só no final. Girassol, girassóis. Pontapé, pontapés. Mandachuva, mandachuvas. Para lembrar: grudou? Virou uma palavra só. O plural vai só no fim.' }), [
+        ...lote(1, [
+          mc('Qual é o plural de <b>pontapé</b>?', ['pontapés', 'pontaspés', 'ponta-pés', 'pontapéses'], 'Pontapé é uma palavra só, sem hífen. Só ganha o S no fim: pontapés.'),
+          mc('Qual é o plural de <b>girassol</b>?', ['girassóis', 'girassols', 'girassoles', 'girasóis'], 'Girassol termina igual a sol. Sol vira sóis, então girassol vira girassóis. O plural acontece só no fim, do jeito que a última parte faria sozinha.'),
+          mc('Qual é o plural de <b>mandachuva</b>?', ['mandachuvas', 'mandaschuvas', 'mandaschuva', 'manda-chuvas'], 'Mandachuva é uma palavra só, sem hífen: o S vai só no fim.'),
+          mc('Qual destas palavras compostas <b>NÃO</b> tem hífen?', ['girassol', 'couve-flor', 'guarda-chuva', 'beija-flor'], 'Girassol é escrita toda junta. As outras têm hífen (o tracinho).'),
+          mc('Nas palavras compostas <b>sem hífen</b>, onde vai o plural?', ['Só no final da palavra', 'No meio da palavra', 'No começo e no final'], 'Sem hífen é uma palavra só, então o plural vai só no final.'),
+          mc('Qual é o plural de <b>passatempo</b>?', ['passatempos', 'passastempos', 'passatempoes', 'passos-tempos'], 'Passatempo é uma palavra só: passatempos.'),
+          mc('Qual é o plural de <b>rodapé</b>?', ['rodapés', 'rodaspés', 'rodapéis', 'rodas-pés'], 'Rodapé é uma palavra só, igual a pontapé: rodapés.'),
+          vf('Girassol vira girassóis do mesmo jeito que sol vira sóis.', true, 'Isso mesmo! O fim da palavra é "sol", e sol no plural é sóis. Por isso não é só colocar S: o fim muda do jeito dele.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o plural de <b>passaporte</b>?', ['passaportes', 'passasportes', 'passa-portes', 'passaportis'], 'Passaporte é uma palavra só, sem hífen: o S vai só no fim.'),
+          mc('Qual é o plural de <b>sobremesa</b>?', ['sobremesas', 'sobresmesas', 'sobre-mesas', 'sobremesases'], 'Sobremesa é uma palavra só: sobremesas.'),
+          mc('Qual é o plural de <b>pernilongo</b>?', ['pernilongos', 'pernaslongos', 'perni-longos', 'pernilongues'], 'Pernilongo é uma palavra só, sem hífen: pernilongos.'),
+          mc('Qual é o plural de <b>lobisomem</b>?', ['lobisomens', 'lobisomems', 'lobishomens', 'lobisomemes'], 'Lobisomem é uma palavra só. Quem termina em -em faz o plural em -ens, igual a homem e homens: lobisomens.'),
+          mc('Qual é o plural de <b>planalto</b>?', ['planaltos', 'planosaltos', 'planaltes', 'planos-altos'], 'Planalto é uma palavra só, sem hífen: planaltos.'),
+          mc('Qual destas palavras compostas é escrita <b>sem hífen</b>?', ['passaporte', 'guarda-roupa', 'couve-flor', 'arco-íris'], 'Passaporte é escrita toda junta. As outras têm hífen.'),
+          escrever('Escreva o plural de <b>passatempo</b>.', 'passatempos', 'Passatempo é uma palavra só: o S vai só no fim. Passatempos.'),
+          vf('Planalto vira planaltos porque o plural vai só no fim.', true, 'Isso! Planalto é uma palavra só, sem hífen.'),
+        ]),
+      ]),
+    ], { cartoes: [['Composta SEM hífen', 'Plural <b>só no fim</b>.<br>girassol → girassóis']] }),
+
+    licao('p2', 'Com hífen: os DOIS mudam', [
+      bloco(ex({ title: 'Com hífen: os DOIS mudam',
+        formula: '<span class="fx">[ PALAVRA 1 <span class="s">+ S</span> ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 <span class="s">+ S</span> ]</span>',
+        body: '<p>Quando a palavra tem hífen e as duas partes são palavras que <b>dão nome</b> (substantivo), <b>dão característica</b> (adjetivo) ou são <b>número</b> (numeral), <b>as DUAS vão para o plural</b>.</p>',
+        list: [['couve-flor', 'couve<mark>s</mark>-flor<mark>es</mark>', 'substantivo + substantivo'], ['segunda-feira', 'segunda<mark>s</mark>-feira<mark>s</mark>', 'numeral + substantivo'], ['amor-perfeito', 'amor<mark>es</mark>-perfeito<mark>s</mark>', 'substantivo + adjetivo']],
+        memo: 'Nome com nome, nome com característica ou número com nome: <b>os dois ganham plural</b>.',
+        say: 'Com hífen: os dois mudam. Quando as duas partes são substantivo, adjetivo ou numeral, as duas vão para o plural. Couve-flor, couves-flores. Segunda-feira, segundas-feiras. Amor-perfeito, amores-perfeitos. Para lembrar: nome com nome, nome com característica, ou número com nome: os dois ganham plural.' }), [
+        ...lote(1, [
+          mc('Qual é o plural de <b>couve-flor</b>?', ['couves-flores', 'couve-flores', 'couvesflores', 'couve-flors'], 'Couve e flor são dois substantivos: os dois mudam. Couves-flores.'),
+          mc('Qual é o plural de <b>segunda-feira</b>?', ['segundas-feiras', 'segunda-feiras', 'segundas-feira'], 'Segunda é numeral e feira é substantivo: os dois mudam.'),
+          mc('Qual é o plural de <b>cachorro-quente</b>?', ['cachorros-quentes', 'cachorro-quentes', 'cachorros-quente'], 'Cachorro é substantivo e quente é adjetivo: os dois mudam.'),
+          mc('Qual é o plural de <b>amor-perfeito</b>?', ['amores-perfeitos', 'amor-perfeitos', 'amores-perfeito', 'amors-perfeitos'], 'Amor (substantivo) + perfeito (adjetivo): os dois mudam. Amores-perfeitos.'),
+          mc('Qual é o plural de <b>cavalo-marinho</b>?', ['cavalos-marinhos', 'cavalo-marinhos', 'cavalos-marinho'], 'Cavalo (substantivo) + marinho (adjetivo): os dois mudam.'),
+          mc('Qual é o plural de <b>obra-prima</b>?', ['obras-primas', 'obra-primas', 'obras-prima'], 'Obra (substantivo) + prima (adjetivo): os dois mudam.'),
+          mc('Em <b>couve-flor</b>, as duas partes são:', ['substantivo + substantivo', 'verbo + substantivo', 'uma palavra repetida'], 'Couve é um nome e flor também é um nome: substantivo + substantivo.'),
+          mc('Por que <b>segunda-feira</b> vira <b>segundas-feiras</b>?', ['Porque é numeral + substantivo: os dois mudam', 'Porque tem preposição no meio', 'Porque a primeira palavra é verbo'], 'Segunda é um numeral (número) e feira é substantivo. Por isso os dois mudam.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o plural de <b>terça-feira</b>?', ['terças-feiras', 'terça-feiras', 'terças-feira'], 'Terça é numeral e feira é substantivo: os dois mudam.'),
+          mc('Qual é o plural de <b>batata-doce</b>?', ['batatas-doces', 'batata-doces', 'batatas-doce'], 'Batata é substantivo e doce é adjetivo: os dois mudam.'),
+          mc('Qual é o plural de <b>água-marinha</b>?', ['águas-marinhas', 'água-marinhas', 'águas-marinha'], 'Água (substantivo) + marinha (adjetivo): os dois mudam.'),
+          mc('Qual é o plural de <b>mesa-redonda</b>?', ['mesas-redondas', 'mesa-redondas', 'mesas-redonda'], 'Mesa (substantivo) + redonda (adjetivo): os dois mudam.'),
+          mc('Qual é o plural de <b>carro-forte</b>?', ['carros-fortes', 'carro-fortes', 'carros-forte'], 'Carro (substantivo) + forte (adjetivo): os dois mudam.'),
+          mc('Qual é o plural de <b>primeiro-ministro</b>?', ['primeiros-ministros', 'primeiro-ministros', 'primeiros-ministro'], 'Primeiro é numeral e ministro é substantivo: os dois mudam.'),
+          mc('Em <b>batata-doce</b>, a palavra <b>doce</b> é:', ['adjetivo (diz como é a batata)', 'verbo (uma ação)', 'preposição'], 'Doce diz uma característica da batata: é adjetivo. Por isso os dois mudam.'),
+          escrever('Escreva o plural de <b>quinta-feira</b>.', 'quintas-feiras', 'Numeral + substantivo: os dois mudam. Quintas-feiras.', { dica: 'Não esqueça o hífen (o tracinho).' }),
+        ]),
+      ]),
+    ], { cartoes: [['Com hífen: nome + nome, nome + característica ou número + nome', 'Os <b>DOIS</b> mudam.<br>couve-flor → couves-flores']] }),
+
+    licao('p3', 'Com hífen: só o PRIMEIRO muda', [
+      bloco(ex({ title: 'Com hífen: só o PRIMEIRO muda',
+        formula: '<span class="fx">[ PALAVRA 1 <span class="s">+ S</span> ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 ]</span>',
+        body: '<p>Só a <b>primeira</b> palavra vai para o plural em dois casos:</p><p><b>1.</b> Quando tem uma <b>preposição</b> no meio (<b>de, do, da</b>).<br><b>2.</b> Quando a segunda palavra diz a <b>função</b> ou o <b>tipo</b> da primeira.</p>',
+        list: [['dragão-do-mar', 'drag<mark>ões</mark>-do-mar', 'tem "do" no meio'], ['porquinho-da-índia', 'porquinho<mark>s</mark>-da-índia', 'tem "da" no meio'], ['pombo-correio', 'pombo<mark>s</mark>-correio', 'correio é a função do pombo']],
+        memo: 'Viu <b>DE, DO ou DA</b> no meio? Só a primeira muda. O resto fica igual, como um sobrenome.',
+        say: 'Com hífen: só o primeiro muda. Isso acontece quando tem uma preposição no meio, como de, do, da. Ou quando a segunda palavra diz a função da primeira. Dragão-do-mar, dragões-do-mar. Porquinho-da-índia, porquinhos-da-índia. Pombo-correio, pombos-correio, porque o correio é a função do pombo. Para lembrar: viu de, do ou da no meio? Só a primeira muda.' }), [
+        ...lote(1, [
+          mc('Qual é o plural de <b>estrela-do-mar</b>?', ['estrelas-do-mar', 'estrelas-dos-mares', 'estrela-dos-mares', 'estrela-do-mares'], 'Tem "do" no meio (preposição). Só a primeira muda: estrelas-do-mar.'),
+          mc('Qual é o plural de <b>porquinho-da-índia</b>?', ['porquinhos-da-índia', 'porquinhos-das-índias', 'porquinho-das-índias'], 'Tem "da" no meio. Só a primeira muda: porquinhos-da-índia.'),
+          mc('Qual é o plural de <b>cana-de-açúcar</b>?', ['canas-de-açúcar', 'canas-de-açúcares', 'cana-de-açúcares'], 'Tem "de" no meio. Só a primeira muda: canas-de-açúcar.'),
+          mc('Qual é o plural de <b>joão-de-barro</b>?', ['joões-de-barro', 'joão-de-barros', 'joões-de-barros'], 'Tem "de" no meio. Só a primeira muda: joões-de-barro.'),
+          mc('Qual é o plural de <b>pombo-correio</b>?', ['pombos-correio', 'pombo-correio', 'pombo-correios'], 'Correio diz a função do pombo (ele leva cartas). Só a primeira muda.'),
+          mc('Qual é o plural de <b>dragão-do-mar</b>?', ['dragões-do-mar', 'dragãos-do-mar', 'dragões-dos-mares'], 'Tem "do" no meio. Só dragão muda, e dragão no plural é dragões.'),
+          mc('Em <b>estrela-do-mar</b>, qual palavrinha mostra que só a primeira muda?', ['do', 'estrela', 'mar'], '"Do" é a preposição. Quando ela aparece no meio, só a primeira palavra muda.'),
+          mc('Por que <b>pombo-correio</b> vira <b>pombos-correio</b>?', ['Porque correio diz a função do pombo', 'Porque as duas palavras são verbos', 'Porque a palavra se repete'], 'O pombo-correio é o pombo que leva cartas. Correio é a função dele, então só pombo muda.'),
+          mc('Em <b>salários-família</b>, por que só a primeira palavra mudou?', ['Porque família diz o tipo de salário', 'Porque tem preposição no meio', 'Porque a primeira palavra é verbo'], 'A segunda palavra especifica (diz o tipo) da primeira. Por isso só salário muda.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o plural de <b>bicho-da-seda</b>?', ['bichos-da-seda', 'bichos-das-sedas', 'bicho-das-sedas'], 'Tem "da" no meio. Só a primeira muda: bichos-da-seda.'),
+          mc('Qual é o plural de <b>pimenta-do-reino</b>?', ['pimentas-do-reino', 'pimentas-dos-reinos', 'pimenta-dos-reinos'], 'Tem "do" no meio. Só a primeira muda: pimentas-do-reino.'),
+          mc('Qual é o plural de <b>banana-da-terra</b>?', ['bananas-da-terra', 'bananas-das-terras', 'banana-das-terras'], 'Tem "da" no meio. Só a primeira muda: bananas-da-terra.'),
+          mc('Qual é o plural de <b>ervilha-de-cheiro</b> (uma flor)?', ['ervilhas-de-cheiro', 'ervilhas-de-cheiros', 'ervilha-de-cheiros'], 'Tem "de" no meio. Só a primeira muda: ervilhas-de-cheiro.'),
+          mc('Qual é o plural de <b>copo-de-leite</b> (uma flor)?', ['copos-de-leite', 'copos-de-leites', 'copo-de-leites'], 'Tem "de" no meio. Só a primeira muda: copos-de-leite.'),
+          mc('Qual é o plural de <b>pé de pato</b>?', ['pés de pato', 'pés de patos', 'pé de patos'], 'São palavras separadas (não grudadas) e tem "de" no meio. Só a primeira muda: pés de pato.'),
+          mc('Em <b>bicho-da-seda</b>, qual palavrinha mostra que só a primeira muda?', ['da', 'bicho', 'seda'], '"Da" é a preposição. Viu de, do ou da no meio? Só a primeira muda.'),
+          vf('Em <b>joões-de-barro</b>, só a primeira palavra foi para o plural.', true, 'Isso! Tem "de" no meio, então só joão mudou.'),
+        ]),
+      ]),
+    ], { cartoes: [['Com DE, DO ou DA no meio (ou quando a 2ª diz a função)', 'Só o <b>PRIMEIRO</b> muda.<br>estrela-do-mar → estrelas-do-mar<br>pombo-correio → pombos-correio']] }),
+
+    licao('p4', 'Com hífen: só o SEGUNDO muda', [
+      bloco(ex({ title: 'Com hífen: só o SEGUNDO muda',
+        formula: '<span class="fx">[ PALAVRA 1 ]</span><span class="op">-</span><span class="fx">[ PALAVRA 2 <span class="s">+ S</span> ]</span>',
+        body: '<p>Só a <b>segunda</b> (a última) palavra vai para o plural quando:</p><p><b>1.</b> A primeira palavra é um <b>verbo</b> (uma ação).<br><b>2.</b> As palavras se <b>repetem</b>.</p>',
+        list: [['guarda-chuva', 'guarda-chuv<mark>as</mark>', 'guarda = verbo guardar'], ['beija-flor', 'beija-flor<mark>es</mark>', 'beija = verbo beijar'], ['tico-tico', 'tico-tico<mark>s</mark>', 'palavra repetida']],
+        memo: '<b>Verbo não vai para o plural.</b> Quem muda é a palavra do fim. Eu sou um tico-tico, e meus amigos são tico-ticos!',
+        say: 'Com hífen: só o segundo muda. Isso acontece quando a primeira palavra é um verbo, uma ação, ou quando as palavras se repetem. Guarda-chuva, guarda-chuvas, porque guarda é o verbo guardar. Beija-flor, beija-flores. Tico-tico, tico-ticos. Para lembrar: verbo não vai para o plural. Quem muda é a palavra do fim.' }), [
+        ...lote(1, [
+          mc('Qual é o plural de <b>guarda-chuva</b>?', ['guarda-chuvas', 'guardas-chuvas', 'guardas-chuva'], 'Guarda é verbo (guardar). Verbo não muda: guarda-chuvas.'),
+          mc('Qual é o plural de <b>beija-flor</b>?', ['beija-flores', 'beijas-flores', 'beijas-flor'], 'Beija é verbo (beijar). Só flor muda: beija-flores.'),
+          mc('Qual é o plural de <b>arranha-céu</b>?', ['arranha-céus', 'arranhas-céus', 'arranhas-céu'], 'Arranha é verbo (arranhar). Só céu muda: arranha-céus.'),
+          mc('Qual é o plural de <b>quebra-cabeça</b>?', ['quebra-cabeças', 'quebras-cabeças', 'quebras-cabeça'], 'Quebra é verbo (quebrar). Só cabeça muda: quebra-cabeças.'),
+          mc('Qual é o plural de <b>tico-tico</b>?', ['tico-ticos', 'ticos-ticos', 'ticos-tico'], 'A palavra se repete. Só a última muda: tico-ticos.'),
+          mc('Qual é o plural de <b>guarda-roupa</b>?', ['guarda-roupas', 'guardas-roupas', 'guardas-roupa'], 'Guarda é verbo. Só roupa muda: guarda-roupas.'),
+          mc('Em <b>guarda-chuva</b>, a palavra <b>guarda</b> é:', ['um verbo (a ação de guardar)', 'uma preposição', 'uma palavra repetida'], 'O guarda-chuva guarda a gente da chuva. Guarda é a ação: um verbo.'),
+          mc('Qual destas palavras tem um <b>VERBO</b> na primeira parte?', ['beija-flor', 'couve-flor', 'estrela-do-mar', 'cachorro-quente'], 'Beija vem do verbo beijar. As outras começam com nomes.'),
+          mc('Qual é o plural de <b>bem-te-vi</b>?', ['bem-te-vis', 'bens-te-vis', 'bem-tes-vis'], 'No bem-te-vi também só a última parte muda: bem-te-vis.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o plural de <b>guarda-sol</b>?', ['guarda-sóis', 'guardas-sóis', 'guardas-sol'], 'Guarda é verbo (guardar). Só sol muda, e sol vira sóis: guarda-sóis.'),
+          mc('Qual é o plural de <b>bate-papo</b>?', ['bate-papos', 'bates-papos', 'bates-papo'], 'Bate é verbo (bater). Só papo muda: bate-papos.'),
+          mc('Qual é o plural de <b>porta-retrato</b>?', ['porta-retratos', 'portas-retratos', 'portas-retrato'], 'Porta aqui é verbo (portar, carregar). Só retrato muda: porta-retratos.'),
+          mc('Qual é o plural de <b>reco-reco</b>?', ['reco-recos', 'recos-recos', 'recos-reco'], 'A palavra se repete. Só a última muda: reco-recos.'),
+          mc('Qual é o plural de <b>tique-taque</b>?', ['tique-taques', 'tiques-taques', 'tiques-taque'], 'Palavras repetidas, que imitam um som: só a última muda.'),
+          mc('Qual é o plural de <b>vice-campeão</b>?', ['vice-campeões', 'vices-campeões', 'vices-campeão'], 'Vice nunca muda. Só campeão vai para o plural: vice-campeões.'),
+          mc('Em <b>porta-retrato</b>, a palavra <b>porta</b> é:', ['um verbo (portar, carregar)', 'um substantivo (a porta da casa)', 'uma preposição'], 'O porta-retrato carrega o retrato. Porta aqui é a ação de portar: verbo.'),
+          escrever('Escreva o plural de <b>guarda-roupa</b>.', 'guarda-roupas', 'Guarda é verbo: só roupa muda. Guarda-roupas.', { dica: 'Não esqueça o hífen (o tracinho).' }),
+        ]),
+      ]),
+    ], { cartoes: [['A 1ª palavra é VERBO ou a palavra se REPETE', 'Só o <b>SEGUNDO</b> muda.<br>guarda-chuva → guarda-chuvas<br>tico-tico → tico-ticos'], ['VICE na frente', 'Vice <b>nunca</b> muda.<br>vice-campeão → vice-campeões']] }),
+
+    licao('p5', 'Revisão: qual é a regra?', [
+      bloco(ex({ title: 'As 4 regras do plural',
+        body: '<ul class="ex-list"><li>Sem hífen <span class="arrow">→</span> só no fim<small>girassol → girassóis</small></li><li>Com hífen, nome + nome <span class="arrow">→</span> os dois mudam<small>couve-flor → couves-flores</small></li><li>Com hífen e DE/DO/DA ou função <span class="arrow">→</span> só o 1º muda<small>pombo-correio → pombos-correio</small></li><li>Com hífen e verbo ou repetição <span class="arrow">→</span> só o 2º muda<small>guarda-chuva → guarda-chuvas</small></li></ul>',
+        memo: 'Agora eu mostro a palavra e você me diz <b>qual regra</b> foi usada. Vamos lá!',
+        say: 'Revisão das quatro regras do plural. Sem hífen: só no fim. Com hífen e nome com nome: os dois mudam. Com hífen e de, do, da, ou função: só o primeiro muda. Com hífen e verbo ou repetição: só o segundo muda. Agora eu mostro a palavra e você me diz qual regra foi usada.' }), [
+        ...lote(1, [
+          regra('Qual regra foi usada em <b>passatempo → passatempos</b>?', 0, 'Passatempo não tem hífen: o plural vai só no fim.'),
+          regra('Qual regra foi usada em <b>couve-flor → couves-flores</b>?', 1, 'Couve e flor são substantivos: os dois mudam.'),
+          regra('Qual regra foi usada em <b>porquinho-da-índia → porquinhos-da-índia</b>?', 2, 'Tem "da" no meio (preposição): só o primeiro muda.'),
+          regra('Qual regra foi usada em <b>guarda-chuva → guarda-chuvas</b>?', 3, 'Guarda é verbo: só o segundo muda.'),
+          regra('Qual regra foi usada em <b>segunda-feira → segundas-feiras</b>?', 1, 'Numeral + substantivo: os dois mudam.'),
+          regra('Qual regra foi usada em <b>beija-flor → beija-flores</b>?', 3, 'Beija é verbo: só o segundo muda.'),
+          regra('Qual regra foi usada em <b>pombo-correio → pombos-correio</b>?', 2, 'Correio é a função do pombo: só o primeiro muda.'),
+          regra('Qual regra foi usada em <b>tico-tico → tico-ticos</b>?', 3, 'Palavra repetida: só o segundo muda.'),
+          regra('Qual regra foi usada em <b>girassol → girassóis</b>?', 0, 'Girassol não tem hífen: o plural vai só no fim.'),
+          regra('Qual regra foi usada em <b>cachorro-quente → cachorros-quentes</b>?', 1, 'Substantivo + adjetivo: os dois mudam.'),
+          mc('Qual sequência está <b>toda certa</b>?', ['vice-campeões, beija-flores, pés de pato', 'vices-campeões, beija-flor, pés de patos', 'vice-campeão, beijas-flores, pé de patos', 'vices-campeões, beijas-flores, pés de patos'], 'Vice nunca muda. Beija é verbo, então só flor muda. Pés de pato são palavras separadas (não grudadas) com "de" no meio, então só pé muda.'),
+          mc('Qual destes plurais está <b>ERRADO</b>?', ['beijas-flores', 'couves-flores', 'estrelas-do-mar', 'guarda-chuvas'], 'Beija é verbo e verbo não vai para o plural. O certo é beija-flores.'),
+        ]),
+        ...lote(2, [
+          regra('Qual regra foi usada em <b>lobisomem → lobisomens</b>?', 0, 'Lobisomem não tem hífen: o plural vai só no fim.'),
+          regra('Qual regra foi usada em <b>batata-doce → batatas-doces</b>?', 1, 'Substantivo + adjetivo: os dois mudam.'),
+          regra('Qual regra foi usada em <b>bicho-da-seda → bichos-da-seda</b>?', 2, 'Tem "da" no meio: só o primeiro muda.'),
+          regra('Qual regra foi usada em <b>guarda-sol → guarda-sóis</b>?', 3, 'Guarda é verbo: só o segundo muda.'),
+          regra('Qual regra foi usada em <b>reco-reco → reco-recos</b>?', 3, 'Palavra repetida: só o segundo muda.'),
+          regra('Qual regra foi usada em <b>terça-feira → terças-feiras</b>?', 1, 'Numeral + substantivo: os dois mudam.'),
+          regra('Qual regra foi usada em <b>passaporte → passaportes</b>?', 0, 'Passaporte não tem hífen: o plural vai só no fim.'),
+          regra('Qual regra foi usada em <b>pimenta-do-reino → pimentas-do-reino</b>?', 2, 'Tem "do" no meio: só o primeiro muda.'),
+          mc('Qual destes plurais está <b>ERRADO</b>?', ['guardas-sóis', 'batatas-doces', 'bichos-da-seda', 'reco-recos'], 'Guarda é verbo e verbo não vai para o plural. O certo é guarda-sóis.'),
+        ]),
+      ]),
+    ], { rodada: 10 }),
+  ]),
+
+  modulo('artigos', 'Artigos', 'Definidos e indefinidos', 'verde', [
+    licao('a1', 'O ou UM? Definido e indefinido', [
+      bloco(ex({ title: 'Qual é a diferença?',
+        body: '<div class="twocol"><div><h4 style="color:var(--green)">Definido</h4><div class="big"><mark>O</mark> rio corta a floresta.</div><small>Um rio específico, que nós já conhecemos.</small></div><div><h4 style="color:var(--muted)">Indefinido</h4><div class="big">Há <mark>um</mark> rio na floresta.</div><small>Um rio qualquer, não específico.</small></div></div>',
+        list: [['Definidos', '<mark>o, a, os, as</mark>'], ['Indefinidos', '<mark>um, uma, uns, umas</mark>']],
+        memo: '<b>O</b> é "aquele ali, que eu conheço". <b>UM</b> é "um qualquer".',
+        say: 'Artigos. O artigo definido fala de algo específico, que a gente já conhece: o rio corta a floresta. O artigo indefinido fala de algo qualquer: há um rio na floresta. Os definidos são: o, a, os, as. Os indefinidos são: um, uma, uns, umas. Para lembrar: o é aquele ali, que eu conheço. Um é um qualquer.' }), [
+        ...lote(1, [
+          mc('Qual frase fala de um gato <b>específico</b>, que já conhecemos?', ['O gato dormiu no sofá.', 'Um gato dormiu no sofá.'], 'O artigo "o" é definido: fala de um gato específico.', { two: false }),
+          mc('Na frase "Ganhei <b>uma</b> bicicleta", a palavra <b>uma</b> é:', ['artigo indefinido', 'artigo definido', 'um verbo'], '"Uma" é artigo indefinido: uma bicicleta qualquer.'),
+          mc('Quais são os artigos <b>definidos</b>?', ['o, a, os, as', 'um, uma, uns, umas', 'o, um, a, uma'], 'Definidos: o, a, os, as.'),
+          mc('Quais são os artigos <b>indefinidos</b>?', ['um, uma, uns, umas', 'o, a, os, as', 'os, as, uns, umas'], 'Indefinidos: um, uma, uns, umas.'),
+          mc('O artigo <b>definido</b> fala de algo:', ['específico, que já conhecemos', 'qualquer um, sem escolher'], 'Definido = específico, aquele que a gente já conhece.'),
+          mc('Complete: "Mãe, me empresta ___ caderno azul que eu te mostrei ontem?"', ['o', 'um'], 'É um caderno específico, que a mãe já conhece. Então é "o" (definido).', { two: true }),
+          mc('Complete: "Estou com fome. Quero comer ___ fruta, qualquer uma!"', ['uma', 'a'], 'Qualquer fruta serve. Então é "uma" (indefinido).', { two: true }),
+          vf('"Um" é um artigo definido.', false, '"Um" é indefinido. Os definidos são o, a, os, as.'),
+        ]),
+        ...lote(2, [
+          mc('Complete: "___ menino que mora ao lado é meu amigo."', ['O', 'Um'], 'É um menino específico: o que mora ao lado. Então é "o" (definido).', { two: true }),
+          mc('Complete: "Vi ___ passarinho diferente no quintal. Nunca tinha visto um igual!"', ['um', 'o'], 'É um passarinho qualquer, que a gente não conhece. Então é "um" (indefinido).', { two: true }),
+          mc('Complete: "Quero ___ bolo que a vovó fez ontem."', ['o', 'um'], 'É um bolo específico: aquele que a vovó fez. Então é "o" (definido).', { two: true }),
+          mc('Complete: "Na loja tinha muitas bolas. Escolhi ___ bola qualquer."', ['uma', 'a'], 'Qualquer bola serve. Então é "uma" (indefinido).', { two: true }),
+          mc('Na frase "Comprei <b>uns</b> lápis", a palavra <b>uns</b> é:', ['artigo indefinido', 'artigo definido', 'um verbo'], '"Uns" é artigo indefinido: uns lápis quaisquer.'),
+          vf('"As" é um artigo definido.', true, 'Isso! Os definidos são o, a, os, as.'),
+          mc('Qual frase fala de uma bicicleta <b>qualquer</b>, não específica?', ['Quero uma bicicleta de presente.', 'Quero a bicicleta que vimos na loja.'], 'Uma bicicleta qualquer: artigo indefinido "uma".'),
+        ]),
+      ]),
+    ], { cartoes: [['Artigos DEFINIDOS', '<b>o, a, os, as</b><br>Falam de algo específico, que a gente conhece.'], ['Artigos INDEFINIDOS', '<b>um, uma, uns, umas</b><br>Falam de algo qualquer.']] }),
+
+    licao('a2', 'A tabela dos artigos', [
+      bloco(ex({ title: 'A tabela dos artigos',
+        body: '[[tabelas:def,indef]]',
+        memo: 'Para classificar um artigo, responda <b>3 perguntas</b>:<br>1. Definido ou indefinido?<br>2. Masculino ou feminino?<br>3. Singular ou plural?',
+        say: 'A tabela dos artigos. Definidos: o é masculino singular, a é feminino singular, os é masculino plural, as é feminino plural. Indefinidos: um é masculino singular, uma é feminino singular, uns é masculino plural, umas é feminino plural. Para classificar um artigo, responda três perguntas: definido ou indefinido? Masculino ou feminino? Singular ou plural?' }), [
+        ...lote(1, [
+          tabela('def', [1, 1], ['as', 'os', 'umas', 'a'], 'Definido, feminino, plural: as.'),
+          tabela('indef', [1, 0], ['uns', 'umas', 'os', 'um'], 'Indefinido, masculino, plural: uns.'),
+          tabela('indef', [0, 1], ['uma', 'um', 'a', 'umas'], 'Indefinido, feminino, singular: uma.'),
+          tabela('def', [1, 0], ['os', 'as', 'uns', 'o'], 'Definido, masculino, plural: os.'),
+          mc('Artigo <b>definido, feminino, plural</b>:', ['as', 'os', 'umas', 'a'], 'Definido + feminino + plural = as.'),
+          mc('Artigo <b>indefinido, masculino, plural</b>:', ['uns', 'os', 'um', 'umas'], 'Indefinido + masculino + plural = uns.'),
+          mc('Classifique o artigo <b>umas</b>:', ['indefinido, feminino, plural', 'definido, feminino, plural', 'indefinido, masculino, plural', 'indefinido, feminino, singular'], 'Umas: indefinido (qualquer), feminino, plural.'),
+          mc('Classifique o artigo <b>o</b>:', ['definido, masculino, singular', 'indefinido, masculino, singular', 'definido, feminino, singular', 'definido, masculino, plural'], 'O: definido, masculino, singular.'),
+          mc('Classifique o artigo <b>um</b>:', ['indefinido, masculino, singular', 'definido, masculino, singular', 'indefinido, masculino, plural'], 'Um: indefinido, masculino, singular.'),
+          mc('Complete com artigo <b>definido</b>: "___ meninas chegaram cedo."', ['As', 'Os', 'A'], 'Meninas é feminino e plural. Definido feminino plural: as.'),
+          mc('Complete com artigo <b>indefinido</b>: "Comprei ___ livros novos."', ['uns', 'umas', 'os'], 'Livros é masculino e plural. Indefinido masculino plural: uns.'),
+        ]),
+        ...lote(2, [
+          tabela('def', [0, 0], ['o', 'a', 'um', 'os'], 'Definido, masculino, singular: o.'),
+          tabela('indef', [1, 1], ['umas', 'uns', 'as', 'uma'], 'Indefinido, feminino, plural: umas.'),
+          tabela('indef', [0, 0], ['um', 'uma', 'o', 'uns'], 'Indefinido, masculino, singular: um.'),
+          mc('Classifique o artigo <b>as</b>:', ['definido, feminino, plural', 'indefinido, feminino, plural', 'definido, masculino, plural', 'definido, feminino, singular'], 'As: definido, feminino, plural.'),
+          mc('Classifique o artigo <b>uns</b>:', ['indefinido, masculino, plural', 'definido, masculino, plural', 'indefinido, feminino, plural', 'indefinido, masculino, singular'], 'Uns: indefinido, masculino, plural.'),
+          mc('Artigo <b>definido, masculino, singular</b>:', ['o', 'a', 'um', 'os'], 'Definido + masculino + singular = o.'),
+          escrever('Escreva o artigo <b>indefinido, feminino, singular</b>.', 'uma', 'Indefinido + feminino + singular = uma.'),
+          mc('Complete com artigo <b>indefinido</b>: "Encontrei ___ amigas na praça."', ['umas', 'uns', 'as'], 'Amigas é feminino e plural. Indefinido feminino plural: umas.'),
+        ]),
+      ]),
+    ], { cartoes: [['As 3 perguntas para classificar um artigo', '1. Definido ou indefinido?<br>2. Masculino ou feminino?<br>3. Singular ou plural?']] }),
+
+    licao('a3', 'Caça aos artigos', [
+      bloco(ex({ title: 'Caça aos artigos!',
+        body: '<p>O artigo vem sempre <b>antes de um substantivo</b> (um nome) e combina com ele.</p><p>Agora você vai <b>tocar nos artigos</b> da frase e depois <b>classificar</b> com as 3 perguntas.</p>',
+        list: [['<mark>Os</mark> livros', 'definido, masculino, plural'], ['<mark>uma</mark> reunião', 'indefinido, feminino, singular']],
+        memo: 'Na prova, classifique <b>completo</b>: definido ou indefinido, masculino ou feminino, singular ou plural. As três coisas!',
+        say: 'Caça aos artigos! O artigo vem sempre antes de um nome e combina com ele. Você vai tocar nos artigos da frase e depois classificar. Na prova, classifique completo: definido ou indefinido, masculino ou feminino, singular ou plural. As três coisas!' }), [
+        ...lote(1, [
+          artigos('O mendigo pediu um pão.', [0, 3], '"O" vem antes de mendigo e "um" vem antes de pão.'),
+          mc('Em "O mendigo pediu <b>um</b> pão", classifique <b>um</b>:', ['indefinido, masculino, singular', 'definido, masculino, singular', 'indefinido, feminino, singular'], 'Um pão qualquer: indefinido, masculino, singular.'),
+          artigos('O dia está agradável hoje.', [0], 'Só "O" é artigo (antes de dia).'),
+          artigos('A manhã começou com uma reunião.', [0, 4], '"A" vem antes de manhã e "uma" vem antes de reunião.'),
+          mc('Em "A manhã começou com <b>uma</b> reunião", classifique <b>uma</b>:', ['indefinido, feminino, singular', 'definido, feminino, singular', 'indefinido, feminino, plural'], 'Uma: indefinido, feminino, singular.'),
+          artigos('Os livros estão sobre as bancadas.', [0, 4], '"Os" vem antes de livros e "as" vem antes de bancadas.'),
+          mc('Em "Os livros estão sobre <b>as</b> bancadas", classifique <b>as</b>:', ['definido, feminino, plural', 'indefinido, feminino, plural', 'definido, masculino, plural'], 'As: definido, feminino, plural.'),
+          artigos('Umas meninas encontraram uns gatinhos.', [0, 3], '"Umas" vem antes de meninas e "uns" vem antes de gatinhos.'),
+          mc('Em "<b>Os</b> livros estão sobre as bancadas", classifique <b>Os</b>:', ['definido, masculino, plural', 'definido, masculino, singular', 'indefinido, masculino, plural'], 'Os: definido, masculino, plural.'),
+          artigos('A professora leu uma história para os alunos.', [0, 3, 6], 'Três artigos: "A" (professora), "uma" (história) e "os" (alunos).'),
+          mc('Quantos artigos tem a frase: "O menino deu uma flor para a mãe"?', ['3', '2', '1', '4'], 'São três: O (menino), uma (flor) e a (mãe).', { keep: true }),
+        ]),
+        ...lote(2, [
+          artigos('A vovó fez um bolo.', [0, 3], '"A" vem antes de vovó e "um" vem antes de bolo.'),
+          mc('Em "A vovó fez <b>um</b> bolo", classifique <b>um</b>:', ['indefinido, masculino, singular', 'definido, masculino, singular', 'indefinido, masculino, plural'], 'Um bolo qualquer: indefinido, masculino, singular.'),
+          artigos('Umas flores enfeitavam a mesa.', [0, 3], '"Umas" vem antes de flores e "a" vem antes de mesa.'),
+          artigos('O cachorro trouxe a bola para o menino.', [0, 3, 6], 'Três artigos: "O" (cachorro), "a" (bola) e "o" (menino).'),
+          mc('Em "O cachorro trouxe <b>a</b> bola", classifique <b>a</b>:', ['definido, feminino, singular', 'indefinido, feminino, singular', 'definido, masculino, singular'], 'A: definido, feminino, singular.'),
+          artigos('Uns meninos jogaram bola com as meninas.', [0, 5], '"Uns" vem antes de meninos e "as" vem antes de meninas.'),
+          mc('Quantos artigos tem a frase: "Uma menina deu os lápis para a professora"?', ['3', '2', '1', '4'], 'São três: Uma (menina), os (lápis) e a (professora).', { keep: true }),
+          mc('Em "Uma menina deu <b>os</b> lápis", classifique <b>os</b>:', ['definido, masculino, plural', 'indefinido, masculino, plural', 'definido, feminino, plural'], 'Os: definido, masculino, plural.'),
+        ]),
+      ]),
+    ], { cartoes: [['Onde fica o artigo?', 'Sempre <b>antes de um substantivo</b> (um nome), combinando com ele.<br><b>Os</b> livros, <b>uma</b> reunião.']] }),
+  ]),
+
+  modulo('genero', 'Gênero', 'Biformes e uniformes', 'ambar', [
+    licao('g1', 'Masculino e feminino', [
+      bloco(ex({ title: 'Flexão de gênero: o básico',
+        body: '<div class="twocol"><div><h4 style="color:var(--blue)">Masculino</h4><div class="big">aceita o artigo <mark>O</mark></div><small>o ovo, o menino, o sol</small></div><div><h4 style="color:var(--rust)">Feminino</h4><div class="big">aceita o artigo <mark>A</mark></div><small>a janela, a lua, a menina</small></div></div><p style="margin-top:12px"><b>Todos os substantivos têm gênero</b>, até os objetos!</p><p>Cuidado: não é a última letra que manda. <b>O mapa</b> e <b>o dia</b> terminam em A e são masculinos.</p>',
+        memo: 'Truque: coloque <b>O</b> ou <b>A</b> na frente e escute qual soa certo.',
+        say: 'Flexão de gênero. Masculino aceita o artigo o: o ovo, o menino, o sol. Feminino aceita o artigo a: a janela, a lua, a menina. Todos os substantivos têm gênero, até os objetos! Cuidado: não é a última letra que manda. O mapa e o dia terminam em a e são masculinos. Truque: coloque o ou a na frente e escute qual soa certo.' }), [
+        ...lote(1, [
+          mc('Qual é o gênero de <b>janela</b>?', ['feminino (a janela)', 'masculino (o janela)'], 'Dizemos "a janela": feminino.'),
+          mc('Qual é o gênero de <b>sol</b>?', ['masculino (o sol)', 'feminino (a sol)'], 'Dizemos "o sol": masculino.'),
+          mc('Qual destas palavras é <b>masculina</b>?', ['ovo', 'lua', 'mesa', 'cadeira'], 'O ovo. As outras usam "a": a lua, a mesa, a cadeira.'),
+          mc('Qual destas palavras é <b>feminina</b>?', ['flor', 'lápis', 'sol', 'ovo'], 'A flor. As outras usam "o": o lápis, o sol, o ovo.'),
+          vf('Objetos, como mesa e lápis, não têm gênero.', false, 'Todos os substantivos têm gênero, até os objetos: a mesa, o lápis.'),
+          mc('Qual é o gênero de <b>mapa</b>?', ['masculino (o mapa)', 'feminino (a mapa)'], 'Termina em A, mas dizemos "o mapa": masculino. Quem manda é o artigo.'),
+          mc('Para descobrir o gênero de uma palavra, o melhor truque é:', ['colocar O ou A na frente', 'olhar só a última letra', 'contar as letras'], 'Coloque o artigo na frente: o mapa, a flor.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o gênero de <b>dia</b>?', ['masculino (o dia)', 'feminino (a dia)'], 'Termina em A, mas dizemos "o dia": masculino.'),
+          mc('Qual é o gênero de <b>tribo</b>?', ['feminino (a tribo)', 'masculino (o tribo)'], 'Termina em O, mas dizemos "a tribo": feminino. Quem manda é o artigo!'),
+          mc('Qual é o gênero de <b>planeta</b>?', ['masculino (o planeta)', 'feminino (a planeta)'], 'Dizemos "o planeta": masculino.'),
+          mc('Qual é o gênero de <b>ponte</b>?', ['feminino (a ponte)', 'masculino (o ponte)'], 'Dizemos "a ponte": feminino.'),
+          mc('Qual destas palavras é <b>masculina</b>, mesmo terminando em A?', ['cometa', 'janela', 'casa', 'escola'], 'Dizemos "o cometa". As outras são femininas: a janela, a casa, a escola.'),
+          vf('Toda palavra que termina em O é masculina.', false, 'Não! "A tribo" termina em O e é feminina. Quem manda é o artigo.'),
+          mc('Qual é o gênero de <b>leite</b>?', ['masculino (o leite)', 'feminino (a leite)'], 'Dizemos "o leite": masculino.'),
+        ]),
+      ]),
+    ], { cartoes: [['Como descobrir o gênero?', 'Coloque <b>O</b> ou <b>A</b> na frente.<br>Não é a última letra que manda: o mapa, o dia, a tribo.']] }),
+
+    licao('g2', 'Biformes: duas formas', [
+      bloco(ex({ title: 'Biformes: duas formas',
+        body: '<p><b>BI</b> quer dizer <b>dois</b> (como bicicleta, que tem duas rodas). Biforme tem <b>uma forma para o masculino e outra para o feminino</b>.</p>',
+        list: [['Troca -O ou -E por -A', ''], ['gato', 'gat<mark>a</mark>'], ['mestre', 'mestr<mark>a</mark>'], ['Muda -ÃO para -Ã ou -OA', ''], ['irmão', 'irm<mark>ã</mark>'], ['leão', 'le<mark>oa</mark>']],
+        memo: '<b>Bi</b>forme = <b>duas</b> formas. Gato e gata, irmão e irmã.',
+        say: 'Biformes: duas formas. Bi quer dizer dois, como bicicleta, que tem duas rodas. Biforme tem uma forma para o masculino e outra para o feminino. Primeira regra: troca o ou e por a. Gato, gata. Mestre, mestra. Segunda regra: muda ão para ã ou para oa. Irmão, irmã. Leão, leoa.' }), [
+        ...lote(1, [
+          mc('Qual é o feminino de <b>gato</b>?', ['gata', 'gatoa', 'gatisa'], 'Troca o -o por -a: gata.'),
+          mc('Qual é o feminino de <b>mestre</b>?', ['mestra', 'mestressa', 'mestrisa'], 'Troca o -e por -a: mestra.'),
+          mc('Qual é o feminino de <b>irmão</b>?', ['irmã', 'irmoa', 'irmona'], 'Muda -ão para -ã: irmã.'),
+          mc('Qual é o feminino de <b>leão</b>?', ['leoa', 'leã', 'leona'], 'Muda -ão para -oa: leoa.'),
+          mc('Qual regra foi usada em <b>garoto → garota</b>?', ['Troca -o por -a', 'Muda -ão para -oa', 'Terminação especial -isa'], 'Garoto termina em -o, que virou -a.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o feminino de <b>aluno</b>?', ['aluna', 'alunoa', 'alunisa'], 'Troca o -o por -a: aluna.'),
+          mc('Qual é o feminino de <b>patrão</b>?', ['patroa', 'patrã', 'patrona'], 'Muda -ão para -oa: patroa.'),
+          mc('Qual é o feminino de <b>cidadão</b>?', ['cidadã', 'cidadoa', 'cidadona'], 'Muda -ão para -ã: cidadã.'),
+          mc('Qual é o feminino de <b>anão</b>?', ['anã', 'anoa', 'anona'], 'Muda -ão para -ã: anã.'),
+          escrever('Escreva o feminino de <b>menino</b>.', 'menina', 'Troca o -o por -a: menina.'),
+        ]),
+      ]),
+      bloco(ex({ title: 'Terminações especiais',
+        body: '<p>Algumas palavras ganham um final especial no feminino: <b>-esa, -essa</b> ou <b>-isa</b>.</p>',
+        list: [['poeta', 'poet<mark>isa</mark>'], ['conde', 'cond<mark>essa</mark>'], ['príncipe', 'princ<mark>esa</mark>'], ['duque', 'duqu<mark>esa</mark>']],
+        memo: 'Princesa, condessa, poetisa: finais <b>chiques</b>, de gente da realeza e da poesia.',
+        say: 'Terminações especiais. Algumas palavras ganham um final especial no feminino: esa, essa ou isa. Poeta, poetisa. Conde, condessa. Príncipe, princesa. Duque, duquesa.' }), [
+        ...lote(1, [
+          mc('Qual é o feminino de <b>poeta</b>?', ['poetisa', 'poeteira', 'poetessa'], 'Terminação especial -isa: poetisa.'),
+          mc('Qual é o feminino de <b>conde</b>?', ['condessa', 'condesa', 'conda'], 'Terminação especial -essa, com dois S: condessa.'),
+          mc('Qual é o feminino de <b>príncipe</b>?', ['princesa', 'príncipa', 'principessa'], 'Terminação especial -esa: princesa.'),
+          mc('Qual é o feminino de <b>duque</b>?', ['duquesa', 'duca', 'duquessa'], 'Terminação especial -esa: duquesa.'),
+          mc('Qual regra foi usada em <b>leão → leoa</b>?', ['Muda -ão para -oa', 'Troca -o por -a', 'Terminação especial -essa'], 'Leão termina em -ão, que virou -oa.'),
+          mc('Qual é o feminino de <b>campeão</b>?', ['campeã', 'campeoa', 'campeona'], 'Muda -ão para -ã: campeã.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o feminino de <b>profeta</b>?', ['profetisa', 'profetona', 'profetessa'], 'Terminação especial -isa: profetisa. Igual a poeta e poetisa!'),
+          mc('Qual é o feminino de <b>barão</b>?', ['baronesa', 'baroa', 'barã'], 'Terminação especial -esa: baronesa.'),
+          mc('Qual é o feminino de <b>sacerdote</b>?', ['sacerdotisa', 'sacerdota', 'sacerdotessa'], 'Terminação especial -isa: sacerdotisa.'),
+          mc('Qual regra foi usada em <b>conde → condessa</b>?', ['Terminação especial -essa', 'Troca -o por -a', 'Muda -ão para -ã'], 'Conde ganhou o final especial -essa.'),
+        ]),
+      ]),
+    ], { cartoes: [['Biforme', '<b>Duas formas</b>: uma masculina e uma feminina.<br>gato/gata, irmão/irmã, leão/leoa'], ['Terminações especiais', '<b>-esa, -essa, -isa</b><br>princesa, condessa, poetisa']] }),
+
+    licao('g3', 'Radicais diferentes', [
+      bloco(ex({ title: 'Às vezes, a palavra muda TODA',
+        body: '<p>Esses também são <b>biformes</b> (têm duas formas), mas o feminino é <b>outra palavra</b>. A regra é: <b>radical diferente</b>, a palavra muda completamente.</p>',
+        list: [['rei', '<mark>rainha</mark>'], ['cavalo', '<mark>égua</mark>'], ['boi', '<mark>vaca</mark>'], ['homem', '<mark>mulher</mark>'], ['pai', '<mark>mãe</mark>']],
+        memo: 'Mudou tudo? É <b>radical diferente</b>. Esses a gente decora em <b>pares</b>, igual par de meias.',
+        say: 'Às vezes a palavra muda toda. Esses também são biformes, têm duas formas, mas o feminino é outra palavra. A regra é radical diferente. Rei, rainha. Cavalo, égua. Boi, vaca. Homem, mulher. Pai, mãe. Esses a gente decora em pares.' }), [
+        ...lote(1, [
+          pares('Ligue o masculino ao feminino.', [['rei', 'rainha'], ['cavalo', 'égua'], ['boi', 'vaca'], ['homem', 'mulher']], 'Rei e rainha, cavalo e égua, boi e vaca, homem e mulher.'),
+          mc('Qual é o feminino de <b>pai</b>?', ['mãe', 'paia', 'paiza'], 'Pai e mãe: a palavra muda toda.'),
+          mc('Pai → mãe é biforme. Mas qual é a <b>regra</b>?', ['A palavra muda toda (radical diferente)', 'Troca -o por -a', 'Terminação especial -esa'], 'Pai e mãe são biformes (duas formas), e a regra é radical diferente: a palavra muda completamente.'),
+          mc('Qual é o feminino de <b>cavalo</b>?', ['égua', 'cavala', 'cavaloa'], 'Cavalo e égua: palavras totalmente diferentes.'),
+          mc('Qual é o feminino de <b>boi</b>?', ['vaca', 'boia', 'boa'], 'Boi e vaca: palavras totalmente diferentes.'),
+          pares('Ligue os pares da família e da fazenda.', [['pai', 'mãe'], ['bode', 'cabra'], ['genro', 'nora'], ['carneiro', 'ovelha']], 'Pai e mãe, bode e cabra, genro e nora, carneiro e ovelha.'),
+          mc('Qual é o masculino de <b>rainha</b>?', ['rei', 'rainho', 'reio'], 'Rainha e rei.'),
+          mc('Qual é o masculino de <b>mulher</b>?', ['homem', 'mulhero', 'mulhor'], 'Mulher e homem.'),
+        ]),
+        ...lote(2, [
+          mc('Qual é o feminino de <b>cavalheiro</b>?', ['dama', 'cavalheira', 'cavalheiresa'], 'Cavalheiro (um homem educado e gentil) e dama: palavras totalmente diferentes. Não confunda com cavaleiro, quem anda a cavalo.'),
+          mc('Qual é o feminino de <b>zangão</b>?', ['abelha', 'zangona', 'zangã'], 'O zangão é o macho da abelha: palavras diferentes.'),
+          mc('Qual é o feminino de <b>frade</b>?', ['freira', 'frada', 'fradessa'], 'Frade e freira: radical diferente.'),
+          mc('Qual é o feminino de <b>marido</b>?', ['mulher', 'marida', 'maridesa'], 'Marido e mulher: palavras diferentes.'),
+          pares('Ligue o masculino ao feminino.', [['padrasto', 'madrasta'], ['frade', 'freira'], ['zangão', 'abelha'], ['cão', 'cadela']], 'Padrasto e madrasta, frade e freira, zangão e abelha, cão e cadela.'),
+          mc('Qual é o masculino de <b>égua</b>?', ['cavalo', 'éguo', 'eguão'], 'Égua e cavalo: palavras diferentes.'),
+          escrever('Escreva o feminino de <b>genro</b>.', 'nora', 'Genro e nora: a palavra muda toda.'),
+        ]),
+      ]),
+    ], { cartoes: [['Radical diferente', 'A palavra <b>muda toda</b>.<br>rei/rainha, boi/vaca, pai/mãe, cavalo/égua']] }),
+
+    licao('g4', 'Comum de dois e sobrecomum', [
+      bloco(ex({ title: 'Uniformes: uma forma só',
+        body: '<p><b>Uni</b> quer dizer <b>um</b> (como uniforme da escola, que é igual para todos). A palavra é a mesma para menino e menina.</p><p><b>Comum de dois:</b> a palavra <b>NÃO</b> muda, mas o <b>artigo MUDA</b>.</p>',
+        list: [['o artista', '<mark>a</mark> artista'], ['o estudante', '<mark>a</mark> estudante'], ['o dentista', '<mark>a</mark> dentista']],
+        memo: '<b>Comum de dois</b>: a palavra serve para os dois. <b>Só o artigo troca.</b>',
+        say: 'Uniformes: uma forma só. Uni quer dizer um, como o uniforme da escola, que é igual para todos. Comum de dois: a palavra não muda, mas o artigo muda. O artista, a artista. O estudante, a estudante. Para lembrar: comum de dois, só o artigo troca.' }), [
+        ...lote(1, [
+          mc('<b>o artista / a artista</b> é:', ['comum de dois', 'sobrecomum', 'epiceno'], 'A palavra não muda, só o artigo: comum de dois.'),
+          mc('"O <b>cliente</b> reclamou do atendimento." <b>Cliente</b> é:', ['comum de dois', 'biforme', 'epiceno'], 'O cliente, a cliente: só o artigo muda. Comum de dois.'),
+          mc('Complete: "___ estudante Maria tirou nota 10."', ['A', 'O'], 'Maria é menina. Estudante é comum de dois, então usamos "a".', { two: true }),
+          mc('No <b>comum de dois</b>, o que muda?', ['Só o artigo', 'Só a palavra', 'A palavra e o artigo'], 'A palavra fica igual. Só o artigo muda: o/a dentista.'),
+          mc('Qual destas palavras é <b>comum de dois</b>?', ['dentista', 'criança', 'onça', 'gato'], 'O dentista, a dentista: só o artigo muda.'),
+        ]),
+        ...lote(2, [
+          mc('<b>o motorista / a motorista</b> é:', ['comum de dois', 'sobrecomum', 'epiceno'], 'Só o artigo muda: comum de dois.'),
+          mc('Complete: "___ atleta Rebeca ganhou a medalha."', ['A', 'O'], 'Rebeca é menina. Atleta é comum de dois: a atleta.', { two: true }),
+          mc('Qual destas palavras é <b>comum de dois</b>?', ['jovem', 'criança', 'cobra', 'leão'], 'O jovem, a jovem: só o artigo muda.'),
+          vf('Em "o pianista / a pianista", a palavra pianista não muda, só o artigo.', true, 'Isso! Pianista é comum de dois.'),
+        ]),
+      ]),
+      bloco(ex({ title: 'Sobrecomum: nada muda',
+        body: '<p><b>Nem a palavra, nem o artigo mudam.</b> É o <b>contexto</b> (a história) que mostra se é menino ou menina.</p>',
+        list: [['a criança', '', 'pode ser menino ou menina'], ['o indivíduo', '', 'pode ser homem ou mulher'], ['a pessoa', '', 'pode ser homem ou mulher']],
+        memo: '<b>Sobrecomum</b>: nada muda, <b>nem o artigo</b>! O Pedro é <b>uma</b> criança alegre.',
+        say: 'Sobrecomum: nada muda. Nem a palavra, nem o artigo mudam. É o contexto, a história, que mostra se é menino ou menina. A criança pode ser menino ou menina. O indivíduo pode ser homem ou mulher. A pessoa também. Para lembrar: sobrecomum, nada muda, nem o artigo! O Pedro é uma criança alegre.' }), [
+        ...lote(1, [
+          mc('<b>a criança</b> é:', ['sobrecomum', 'comum de dois', 'biforme'], 'A criança pode ser menino ou menina, e nada muda: sobrecomum.'),
+          mc('Complete: "Pedro é ___ criança muito alegre."', ['uma', 'um'], 'Criança é sobrecomum: é sempre "a criança" ou "uma criança", mesmo sendo menino.', { two: true }),
+          mc('No <b>sobrecomum</b>, o que muda?', ['Nada: o contexto mostra', 'Só o artigo', 'Só a palavra'], 'No sobrecomum nada muda. Só a história mostra se é menino ou menina.'),
+          vf('"A criança" é biforme, porque muda para "o criança" quando é um menino.', false, 'Não existe "o criança". Criança é sobrecomum: nada muda.'),
+          mc('Qual destas palavras é <b>sobrecomum</b>?', ['pessoa', 'estudante', 'leão', 'jacaré'], 'A pessoa: pode ser homem ou mulher, e nada muda.'),
+          mc('<b>O indivíduo</b> pode ser:', ['homem ou mulher', 'só homem', 'só mulher'], 'Indivíduo é sobrecomum: serve para homem ou mulher.'),
+        ]),
+        ...lote(2, [
+          mc('<b>a testemunha</b> pode ser:', ['homem ou mulher', 'só mulher', 'só homem'], 'Testemunha é sobrecomum: serve para homem ou mulher, e nada muda.'),
+          mc('Qual destas palavras é <b>sobrecomum</b>?', ['ídolo', 'dentista', 'gato', 'girafa'], 'O ídolo pode ser homem ou mulher, e nada muda: sobrecomum.'),
+          mc('Complete: "O João é ___ pessoa muito gentil."', ['uma', 'um'], 'Pessoa é sobrecomum: é sempre "a pessoa" ou "uma pessoa", mesmo sendo homem.', { two: true }),
+          mc('<b>a criatura</b> é:', ['sobrecomum', 'comum de dois', 'epiceno'], 'A criatura pode ser homem ou mulher, e nada muda: sobrecomum.'),
+        ]),
+      ]),
+    ], { cartoes: [['Comum de dois', 'A palavra não muda, <b>só o ARTIGO</b> muda.<br>o/a artista, o/a estudante'], ['Sobrecomum', '<b>NADA</b> muda, nem o artigo.<br>a criança, a pessoa, o indivíduo']] }),
+
+    licao('g5', 'Epicenos: macho e fêmea', [
+      bloco(ex({ title: 'Epicenos: macho e fêmea',
+        body: '<p>Usado para <b>animais e plantas</b>. O artigo <b>não muda</b>. Usamos as palavras <b>MACHO</b> e <b>FÊMEA</b> para mostrar o sexo.</p>',
+        list: [['o jacaré', 'o jacaré <mark>macho</mark> / o jacaré <mark>fêmea</mark>'], ['a onça', 'a onça <mark>macho</mark> / a onça <mark>fêmea</mark>'], ['a mosca', 'a mosca <mark>macho</mark> / a mosca <mark>fêmea</mark>']],
+        memo: '<b>Epiceno</b> = bicho ou planta + <b>macho</b> ou <b>fêmea</b>. Nunca "a jacaroa"!',
+        say: 'Epicenos: macho e fêmea. Usado para animais e plantas. O artigo não muda. Usamos as palavras macho e fêmea para mostrar o sexo. O jacaré macho, o jacaré fêmea. A onça macho, a onça fêmea. A mosca macho, a mosca fêmea. Para lembrar: epiceno é bicho ou planta mais macho ou fêmea.' }), [
+        ...lote(1, [
+          mc('<b>a onça</b> é:', ['epiceno', 'sobrecomum', 'comum de dois'], 'Onça é animal e usamos macho ou fêmea: epiceno.'),
+          mc('Como dizemos que o jacaré é <b>fêmea</b>?', ['o jacaré fêmea', 'a jacaroa', 'a jacaré'], 'O artigo não muda: o jacaré fêmea.'),
+          mc('Como dizemos que a girafa é <b>macho</b>?', ['a girafa macho', 'o girafo', 'o girafa'], 'O artigo não muda: a girafa macho.'),
+          mc('Os epicenos são usados para:', ['animais e plantas', 'profissões', 'objetos'], 'Epicenos: animais e plantas.'),
+          mc('Qual destas palavras <b>NÃO</b> é epiceno?', ['gato', 'onça', 'jacaré', 'mosca'], 'Gato tem feminino próprio, gata. Então é biforme, não epiceno.'),
+          vf('A cobra é epiceno, porque precisamos usar macho ou fêmea para saber o sexo do animal.', true, 'Isso! A cobra macho, a cobra fêmea.'),
+          mc('Em <b>a mosca macho</b>, o que mostra que é macho?', ['a palavra "macho"', 'o artigo "a"', 'a palavra "mosca"'], 'O artigo continua "a". Quem mostra é a palavra macho.'),
+          mc('<b>o tatu</b> é:', ['epiceno', 'biforme', 'sobrecomum'], 'Tatu é animal: o tatu macho, o tatu fêmea. Epiceno.'),
+        ]),
+        ...lote(2, [
+          mc('<b>a borboleta</b> é:', ['epiceno', 'sobrecomum', 'biforme'], 'Borboleta é animal e usamos macho ou fêmea: epiceno.'),
+          mc('Como dizemos que a tartaruga é <b>macho</b>?', ['a tartaruga macho', 'o tartarugo', 'o tartaruga'], 'O artigo não muda: a tartaruga macho.'),
+          mc('Como dizemos que o polvo é <b>fêmea</b>?', ['o polvo fêmea', 'a polva', 'a polvo'], 'O artigo não muda: o polvo fêmea.'),
+          mc('Qual destas palavras <b>NÃO</b> é epiceno?', ['leão', 'águia', 'borboleta', 'besouro'], 'Leão tem feminino próprio, leoa. Então é biforme.'),
+          vf('Para dizer que a águia é macho, falamos "o águio".', false, 'Não existe "o águio". Águia é epiceno: a águia macho.'),
+          mc('<b>o besouro</b> é:', ['epiceno', 'comum de dois', 'sobrecomum'], 'Besouro é animal: o besouro macho, o besouro fêmea. Epiceno.'),
+        ]),
+      ]),
+    ], { cartoes: [['Epiceno', 'Animais e plantas: o artigo não muda, usamos <b>MACHO</b> ou <b>FÊMEA</b>.<br>o jacaré fêmea, a onça macho']] }),
+
+    licao('g6', 'Revisão: classifique o gênero', [
+      bloco(ex({ title: 'Os 4 tipos de gênero',
+        body: '<ul class="ex-list"><li>Biforme <span class="arrow">→</span> duas formas<small>gato/gata, poeta/poetisa, rei/rainha</small></li><li>Comum de dois <span class="arrow">→</span> só o artigo muda<small>o artista / a artista</small></li><li>Sobrecomum <span class="arrow">→</span> nada muda<small>a criança (menino ou menina)</small></li><li>Epiceno <span class="arrow">→</span> macho ou fêmea<small>o jacaré macho / o jacaré fêmea</small></li></ul>',
+        memo: 'Agora eu mostro a palavra e você me diz <b>qual tipo</b> ela é!',
+        say: 'Revisão dos quatro tipos. Biforme: duas formas, como gato e gata, rei e rainha. Comum de dois: só o artigo muda, o artista, a artista. Sobrecomum: nada muda, a criança. Epiceno: macho ou fêmea, o jacaré macho. Agora eu mostro a palavra e você me diz qual tipo ela é.' }), [
+        ...lote(1, [
+          tipo('Classifique: <b>o leão / a leoa</b>', 0, 'Duas formas: leão e leoa. Biforme.'),
+          tipo('Classifique: <b>o estudante / a estudante</b>', 1, 'Só o artigo muda: comum de dois.'),
+          tipo('Classifique: <b>a criança</b> (menino ou menina)', 2, 'Nada muda: sobrecomum.'),
+          tipo('Classifique: <b>a mosca macho / a mosca fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>o poeta / a poetisa</b>', 0, 'Duas formas: poeta e poetisa. Biforme.'),
+          tipo('Classifique: <b>o colega / a colega</b>', 1, 'Só o artigo muda: comum de dois.'),
+          tipo('Classifique: <b>a pessoa</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
+          tipo('Classifique: <b>a baleia macho / a baleia fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>o rei / a rainha</b>', 0, 'Duas formas (palavras diferentes): biforme.'),
+          tipo('Classifique: <b>o jornalista / a jornalista</b>', 1, 'Só o artigo muda: comum de dois.'),
+          tipo('Classifique: <b>a vítima</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
+          tipo('Classifique: <b>o jacaré macho / o jacaré fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          mc('Leia: <b>1)</b> A cobra é epiceno porque precisamos usar macho ou fêmea. <b>2)</b> O/A dentista é comum de dois porque a palavra não muda; o que muda é o artigo. <b>3)</b> A criança é biforme porque muda para "o criança" quando é um menino. Estão corretas apenas:', ['1 e 2', '1 e 3', '2 e 3', '1, 2 e 3'], 'A 1 e a 2 estão certas. A 3 está errada: criança é sobrecomum.', { keep: true }),
+        ]),
+        ...lote(2, [
+          tipo('Classifique: <b>o patrão / a patroa</b>', 0, 'Duas formas: patrão e patroa. Biforme.'),
+          tipo('Classifique: <b>o jovem / a jovem</b>', 1, 'Só o artigo muda: comum de dois.'),
+          tipo('Classifique: <b>a testemunha</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
+          tipo('Classifique: <b>a tartaruga macho / a tartaruga fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+          tipo('Classifique: <b>o motorista / a motorista</b>', 1, 'Só o artigo muda: comum de dois.'),
+          tipo('Classifique: <b>o cavalheiro / a dama</b>', 0, 'Duas formas (palavras diferentes): biforme. Cavalheiro é um homem educado e gentil.'),
+          tipo('Classifique: <b>o ídolo</b> (homem ou mulher)', 2, 'Nada muda: sobrecomum.'),
+          tipo('Classifique: <b>o polvo macho / o polvo fêmea</b>', 3, 'Animal com macho e fêmea: epiceno.'),
+        ]),
+      ]),
+    ], { rodada: 10 }),
+  ]),
+  ],
+
+  simulado: {
+    titulo: 'Simulado da prova', quantas: 16,
+    extras: lote(1, [
+      regra('Qual regra explica <b>couves-flores</b>?', 1, 'Couve e flor são substantivos: os dois mudam.'),
+      regra('Qual regra explica <b>porquinhos-da-índia</b>?', 2, 'Tem preposição (da) no meio: só o primeiro muda.'),
+      regra('Qual regra explica <b>salários-família</b>?', 2, 'Família diz o tipo de salário: só o primeiro muda.'),
+      mc('Qual das sequências apresenta três substantivos compostos no plural <b>corretamente</b>?', ['vice-campeões, beija-flores, pés de pato', 'vices-campeões, beija-flor, pés de patos', 'vice-campeão, beijas-flores, pé de patos', 'vices-campeões, beijas-flores, pés de patos'], 'Vice nunca muda; beija é verbo; pés de pato são palavras separadas com "de" no meio, então só o primeiro muda.'),
+      artigos('O menino comprou uns doces para a irmã.', [0, 3, 6], 'Três artigos: O (menino), uns (doces) e a (irmã).'),
+      mc('Em "O menino comprou <b>uns</b> doces", classifique <b>uns</b>:', ['indefinido, masculino, plural', 'definido, masculino, plural', 'indefinido, feminino, plural'], 'Uns: indefinido, masculino, plural.'),
+      tabela('def', [0, 1], ['a', 'o', 'uma', 'as'], 'Definido, feminino, singular: a.'),
+      mc('Feminino de <b>garoto</b> e a regra usada:', ['garota: troca -o por -a', 'garota: radical diferente', 'garotisa: terminação especial'], 'Garoto → garota: troca o -o por -a.'),
+      tipo('"O <b>cliente</b> reclamou do atendimento." Cliente é:', 1, 'O cliente, a cliente: comum de dois.'),
+      tipo('"A <b>onça</b> é um animal feroz." Onça é:', 3, 'A onça macho, a onça fêmea: epiceno.'),
+      tipo('"Ninguém viu a <b>criança</b> sair." Criança é:', 2, 'Nada muda, nem o artigo: sobrecomum.'),
+    ]),
+  },
+
+  resumo: [
+    { cor: 'azul', titulo: '1 · Plurais', subtitulo: 'Palavras compostas', itens: [
+      '<b>Sem hífen:</b> plural só no fim. girassol → girass<mark>óis</mark>',
+      '<b>Com hífen, nome + nome / característica / número:</b> os dois mudam. couve<mark>s</mark>-flor<mark>es</mark>, segunda<mark>s</mark>-feira<mark>s</mark>',
+      '<b>Com DE/DO/DA ou função:</b> só o 1º muda. pombo<mark>s</mark>-correio, dragõ<mark>es</mark>-do-mar, pé<mark>s</mark> de pato',
+      '<b>Com verbo ou repetição:</b> só o 2º muda. guarda-chuv<mark>as</mark>, tico-tico<mark>s</mark>',
+      '<b>Vice</b> nunca muda: vice-campe<mark>ões</mark>' ] },
+    { cor: 'verde', titulo: '2 · Artigos', subtitulo: 'Definidos e indefinidos', tabelas: ['def', 'indef'], itens: [
+      '<b>Definidos (específico):</b> o, a, os, as', '<b>Indefinidos (qualquer um):</b> um, uma, uns, umas',
+      'Classifique com <b>3 perguntas</b>: definido ou indefinido? masculino ou feminino? singular ou plural?' ] },
+    { cor: 'ambar', titulo: '3 · Gênero', subtitulo: 'Biformes e uniformes', itens: [
+      '<b>Biforme (duas formas):</b> -o/-e → -a (gato/gat<mark>a</mark>), -ão → -ã/-oa (irm<mark>ã</mark>, le<mark>oa</mark>), -esa/-essa/-isa (princ<mark>esa</mark>, cond<mark>essa</mark>, poet<mark>isa</mark>)',
+      '<b>Radical diferente:</b> a palavra muda toda. rei/rainha, cavalo/égua, boi/vaca, homem/mulher, pai/mãe',
+      '<b>Comum de dois:</b> só o artigo muda. o/a artista, o/a estudante',
+      '<b>Sobrecomum:</b> nada muda, nem o artigo. a criança, o indivíduo, a pessoa',
+      '<b>Epiceno:</b> animais e plantas + macho/fêmea. o jacaré macho, a onça fêmea' ] },
+  ],
+});
+
+</script>
+<script>
+/* ===================== MOTOR DO JOGO (uma matéria) =====================
+   Depende de: base.js (perfis, sons, voz, Tico) + ajudantes.js + conteudo.js (define MATERIA). */
+const M = MATERIA;
+const $app = document.getElementById('app');
+const COM_PORTAL = document.body.dataset.portal === '1';
+const CORES = {
+  azul: ['var(--blue)', 'var(--blue-d)', 'var(--blue-l)'], verde: ['var(--green)', 'var(--green-d)', 'var(--green-l)'],
+  ambar: ['var(--amber)', 'var(--amber-d)', 'var(--amber-l)'], roxo: ['var(--purple)', 'var(--purple-d)', 'var(--purple-l)'],
+  rosa: ['var(--pink)', 'var(--pink-d)', 'var(--pink-l)'], ciano: ['var(--cyan)', 'var(--cyan-d)', 'var(--cyan-l)'],
+};
+const varsCor = c => `--mc:${c[0]};--mc-d:${c[1]};--mc-l:${c[2]}`;
+let P = null, D = null, R = null;
+
+/* ---------- índice do conteúdo ---------- */
+const LICOES = [], Q = {};
+M.modulos.forEach((m, mi) => {
+  m.n = mi + 1; m.c = CORES[m.cor] || CORES.azul;
+  m.licoes.forEach(l => { l.mod = m; l.todas = []; LICOES.push(l); l.blocos.forEach((b, bi) => b.perguntas.forEach(q => { q.licao = l; q.bloco = bi; l.todas.push(q); Q[q.id] = q; })); });
+});
+const SIM = { id: 'simulado', titulo: M.simulado.titulo, mod: { id: 'simulado', nome: 'Simulado', c: ['var(--ink)', '#0B0F24', 'var(--line)'] }, todas: M.simulado.extras };
+M.simulado.extras.forEach(q => { q.licao = SIM; Q[q.id] = q; });
+const TODAS = Object.values(Q);
+const LOTE_MAX = Math.max(1, ...TODAS.map(q => q.lote || 1));
+const CARTOES = LICOES.flatMap(l => (l.cartoes || []).map(c => ({ frente: c[0], verso: c[1], licao: l, k: hashId(l.id + c[0]) })));
+
+/* ---------- estatística por pergunta (por criança) ---------- */
+const st = q => D.q[q.id];
+const vista = q => !!st(q);
+const dominada = q => { const s = st(q); return !!s && (s.s >= 2 || (s.s >= 1 && s.e === 0)); };
+const pendente = q => { const s = st(q); return !!s && s.ul === 0; };
+function prioridade(q) { const s = st(q); return !s ? 0 : s.ul === 0 ? 1 : !dominada(q) ? 2 : 3; }
+// ordem de escolha: alguns erros antigos primeiro (para fixar), depois as nunca vistas, depois as menos firmes
+function escolher(lista, n) {
+  const ord = lista.map(q => ({ q, p: prioridade(q), u: (st(q) || {}).u || 0, r: Math.random() }))
+    .sort((a, b) => a.p - b.p || a.u - b.u || a.r - b.r);
+  const erros = ord.filter(x => x.p === 1).slice(0, Math.max(1, Math.floor(n / 4)));
+  return [...erros, ...ord.filter(x => !erros.includes(x))].slice(0, n).map(x => x.q);
+}
+function registrar(q, ok) {
+  const s = D.q[q.id] || (D.q[q.id] = { v: 0, c: 0, e: 0, s: 0, ul: 1, u: 0 });
+  s.v++; if (ok) { s.c++; s.s++; s.ul = 1; } else { s.e++; s.s = 0; s.ul = 0; } s.u = Date.now();
+}
+const pendentes = () => TODAS.filter(pendente);
+const novasDe = l => l.todas.filter(q => !vista(q)).length;
+const dominadasDe = l => l.todas.filter(dominada).length;
+const unico = arr => { const v = new Set(); return arr.filter(q => !v.has(q.id) && v.add(q.id)); };
+
+/* ---------- frases ---------- */
+const N = () => esc(P ? P.nome : 'você');
+const PRAISE = [() => `Mandou bem, ${N()}!`, () => 'Isso aí!', () => 'Perfeito!', () => `Você é fera, ${N()}!`, () => 'Acertou em cheio!', () => 'Brilhou!', () => 'Muito bem!', () => `Arrasou, ${N()}!`, () => 'Na mosca!', () => 'Show de bola!'];
+const OOPS = [() => 'Quase!', () => `Tudo bem, ${N()}!`, () => 'Errar faz parte!', () => 'Opa, essa foi por pouco!', () => 'Sem problema!'];
+const OOPS_SUB = ['Essa pergunta volta daqui a pouco para você acertar.', 'Agora você já sabe. Ela vai voltar no fim.', 'Leia a explicação com calma. Você vai acertar quando ela voltar.'];
+const COMBO_MSG = { 3: '3 seguidas! Tá pegando fogo!', 5: '5 seguidas! Imparável!', 8: '8 seguidas! Que memória!', 10: '10 seguidas! Nível de campeonato!', 15: '15 seguidas! Que lenda!' };
+
+/* ---------- tabelas (ex.: tabela dos artigos) ---------- */
+function tabelaHTML(nome, esconder) {
+  const t = M.tabelas[nome];
+  const cel = (r, c) => esconder && esconder[0] === r && esconder[1] === c ? '<td class="q">?</td>' : `<td>${esc(t.cel[r][c])}</td>`;
+  return `<table class="mtx"><caption>${t.titulo}</caption><tr><th></th>${t.cols.map(c => `<th>${c}</th>`).join('')}</tr>
+    ${t.linhas.map((ln, r) => `<tr><th>${ln}</th>${t.cols.map((_, c) => cel(r, c)).join('')}</tr>`).join('')}</table>`;
+}
+const comTabelas = html => String(html || '').replace(/\[\[tabelas?:([\w,]+)\]\]/g, (_, ns) => `<div class="mtx-wrap">${ns.split(',').map(n => tabelaHTML(n)).join('')}</div>`);
+
+/* ---------- entrada ---------- */
+function entrar(p) { P = p; D = dadosDe(p.id, M.slug); gravar(); renderMapa(); }
+function trocarCrianca() { telaPerfis($app, entrar, 'Quem vai estudar agora?'); }
+
+/* ---------- mapa ---------- */
+function totalEstrelas() { return Object.values(D.licoes).reduce((a, d) => a + (d.estrelas || 0), 0); }
+function anel(pct, cor) { return `background:conic-gradient(var(--gold) ${pct * 3.6}deg, rgba(255,255,255,.35) 0), ${cor}`; }
+
+function renderMapa() {
+  hush(); window.scrollTo(0, 0); R = null;
+  const firstOpen = LICOES.find(l => !D.licoes[l.id]);
+  const nPend = pendentes().length, ofs = ofensiva(P.id), hojePts = pontosHoje(P.id);
+  const algumaAtividade = Object.keys(D.q).length > 0;
+  const novasLote = algumaAtividade && D.loteVisto < LOTE_MAX ? TODAS.filter(q => (q.lote || 1) > D.loteVisto && !vista(q)).length : 0;
+  const naoVistas = TODAS.filter(q => !vista(q)).length;
+  const prova = textoProva(M.prova);
+  let h = `<div class="top"><button class="chip-perfil" id="troca" aria-label="Trocar de criança">${avatar(P, 40)}<span class="hello">Oi, ${N()}!</span></button>
+    <div class="pills"><span class="pill" title="Dias seguidos estudando">${ICON.fire}${ofs}</span><span class="pill" title="Pontos">${ICON.bolt}${D.xp}</span><span class="pill" title="Estrelas">${STAR(true)}${totalEstrelas()}</span></div></div>
+  <div class="hero card"><div class="hero-t"><div><div class="hero-m">${esc(M.titulo)} <span>${esc(M.serie || '')}</span></div>${prova ? `<div class="prova">${ICON.cal}${prova}</div>` : ''}</div>
+    <div class="meta"><div class="meta-l"><b>Meta do dia</b><span>${Math.min(hojePts, META_DIA)}/${META_DIA}</span></div><div class="prog small"><i style="width:${Math.min(100, hojePts / META_DIA * 100)}%;background:${hojePts >= META_DIA ? 'var(--gold)' : 'var(--ok)'}"></i></div></div></div></div>`;
+  if (!GRAVOU_OK) h += `<div class="aviso" style="border-color:var(--oops)">${tico('oops', 54)}<div><b>Não estou conseguindo salvar o progresso neste aparelho.</b><br>Pode ser o modo privado do navegador. Peça ajuda a um adulto.</div></div>`;
+  if (novasLote) h += `<div class="aviso novo">${tico('cheer', 54)}<div><b>Chegaram ${novasLote} perguntas novas!</b><br>Elas já estão misturadas nas lições.</div></div>`;
+  else if (algumaAtividade && naoVistas === 0) h += `<div class="aviso">${tico('think', 54)}<div><b>Você já viu todas as perguntas!</b><br>Continue treinando os erros e peça a um adulto um lote novo.</div></div>`;
+  h += `<div class="acoes">
+    <button class="btn" id="treino">Treino do dia</button>
+    <button class="btn ${nPend ? 'oops' : 'ghost'}" id="rev" ${nPend ? '' : 'disabled'}>Revisar erros${nPend ? ' (' + nPend + ')' : ''}</button>
+    <button class="btn ghost" id="cart" ${CARTOES.length ? '' : 'disabled'}>Cartões das regras</button>
+    <button class="btn ghost" id="res" ${M.resumo ? '' : 'disabled'}>Resumão</button></div>`;
+  M.modulos.forEach(m => {
+    h += `<section class="mod" style="${varsCor(m.c)}"><div class="mod-head"><span class="num">${m.n}</span><div><h2>${m.nome}</h2><p>${m.desc || ''}</p></div></div><div class="trail">`;
+    m.licoes.forEach((l, i) => {
+      const d = D.licoes[l.id], pct = Math.round(dominadasDe(l) / l.todas.length * 100), nv = novasDe(l);
+      h += `<div class="node"><button class="dot ${d ? 'done' : ''}" style="${anel(pct, m.c[0])}" data-l="${l.id}" aria-label="Lição ${esc(l.titulo)}"><span class="dot-in" style="background:${m.c[0]}">${d && pct === 100 ? ICON.check : i + 1}</span></button>
+      <div class="node-label"><b>${l.titulo}</b>${d ? `<div class="stars">${STAR(d.estrelas >= 1)}${STAR(d.estrelas >= 2)}${STAR(d.estrelas >= 3)}</div>` : ''}
+      <small class="sub">${l === firstOpen && !d ? '<span class="aqui">COMECE AQUI</span>' : d ? `${pct}% dominado${nv ? ` · ${nv} nova${nv > 1 ? 's' : ''}` : ''}` : `${l.todas.length} perguntas`}</small></div></div>`;
+    });
+    h += `</div></section>`;
+  });
+  const sd = D.licoes.simulado, ultimo = D.simulados[D.simulados.length - 1];
+  h += `<section class="mod" style="${varsCor(SIM.mod.c)}"><div class="mod-head" style="background:var(--ink)"><span class="num">!</span><div><h2>${esc(M.simulado.titulo)}</h2><p>${M.simulado.quantas} perguntas de tudo, com nota no fim</p></div></div>
+  <div class="trail"><div class="node final"><button class="dot" data-l="simulado" aria-label="${esc(M.simulado.titulo)}"><span class="dot-in" style="background:var(--gold)">${ICON.trophy}</span></button><div class="node-label"><b>Fazer o simulado</b>${sd ? `<div class="stars">${STAR(sd.estrelas >= 1)}${STAR(sd.estrelas >= 2)}${STAR(sd.estrelas >= 3)}</div>` : ''}<small class="sub">${ultimo ? `Última nota: ${ultimo.nota.toFixed(1).replace('.', ',')}` : 'Faça depois das lições'}</small></div></div></div></section>
+  <section class="settings"><h3>Ajustes</h3>
+    <div class="row">Voz do Tico lendo<button class="toggle" id="tv" aria-pressed="${DB.voz}" aria-label="Voz"></button></div>
+    <div class="row">Sons de acerto<button class="toggle" id="ts" aria-pressed="${DB.som}" aria-label="Sons"></button></div>
+    <div class="row wrap"><button class="linkbtn" id="troca2">Trocar de criança</button><button class="linkbtn" id="pais">Área dos pais</button>${COM_PORTAL ? '<a class="linkbtn" href="../">Todas as matérias</a>' : ''}</div>
+  </section>`;
+  $app.innerHTML = h;
+  if (novasLote || D.loteVisto < LOTE_MAX) { D.loteVisto = LOTE_MAX; gravar(); }
+  $app.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { audio(); SFX.tap(); const id = b.dataset.l; id === 'simulado' ? iniciarSimulado() : iniciarLicao(LICOES.find(l => l.id === id)); });
+  document.getElementById('treino').onclick = () => { audio(); SFX.tap(); iniciarTreino(); };
+  if (nPend) document.getElementById('rev').onclick = () => { audio(); SFX.tap(); iniciarRevisao(); };
+  if (CARTOES.length) document.getElementById('cart').onclick = () => { audio(); SFX.tap(); iniciarCartoes(); };
+  if (M.resumo) document.getElementById('res').onclick = () => { SFX.tap(); renderResumo(); };
+  document.getElementById('tv').onclick = e => { DB.voz = !DB.voz; gravar(); e.currentTarget.setAttribute('aria-pressed', DB.voz); if (DB.voz) say('Voz ligada!'); else hush(); };
+  document.getElementById('ts').onclick = e => { DB.som = !DB.som; gravar(); e.currentTarget.setAttribute('aria-pressed', DB.som); SFX.tap(); };
+  document.getElementById('troca').onclick = document.getElementById('troca2').onclick = () => { SFX.tap(); trocarCrianca(); };
+  document.getElementById('pais').onclick = () => { SFX.tap(); renderPortaoPais(); };
+}
+
+/* ---------- montar rodadas ---------- */
+const cartaoIntro = (title, body, memo, sayTxt) => ex({ title, body: `<p>${body}</p>`, memo, say: sayTxt || strip(title + '. ' + body) });
+function novaRodada(tipo, licao, fila) { R = { tipo, licao, fila, pos: 0, contadas: new Set(), errouNaRodada: new Set(), acertos: 0, xp: 0, combo: 0, respostas: [], ultimo: Date.now(), metaAntes: pontosHoje(P.id) >= META_DIA }; renderPasso(); }
+function iniciarLicao(l) {
+  const n = l.rodada || M.rodada, total = l.todas.length, fila = [];
+  l.blocos.forEach(b => {
+    const quota = Math.max(Math.min(2, b.perguntas.length), Math.round(n * b.perguntas.length / total));
+    fila.push(b.explica, ...shuffle(escolher(b.perguntas, quota)));
+  });
+  novaRodada('licao', l, fila);
+}
+function iniciarTreino() {
+  const iniciadas = LICOES.filter(l => D.licoes[l.id]);
+  const base = (iniciadas.length ? iniciadas : LICOES.slice(0, 1)).flatMap(l => l.todas);
+  const porIdade = arr => arr.slice().sort((a, b) => ((st(a) || {}).u || 0) - ((st(b) || {}).u || 0));
+  const fila = unico([
+    ...shuffle(pendentes()).slice(0, 4),
+    ...porIdade(base.filter(q => vista(q) && !pendente(q) && !dominada(q))).slice(0, 3),
+    ...porIdade(base.filter(dominada)).slice(0, 2),
+    ...shuffle(base.filter(q => !vista(q))),
+    ...shuffle(base),
+  ]).slice(0, 10);
+  novaRodada('treino', { id: 'treino', titulo: 'Treino do dia', mod: { nome: 'Treino', c: CORES.roxo } },
+    [cartaoIntro('Treino do dia!', 'Um pouquinho de cada coisa: perguntas que você errou, algumas para não esquecer e outras novas.', 'Treinar <b>um pouco todo dia</b> faz a memória ficar forte!'), ...shuffle(fila)]);
+}
+function iniciarRevisao() {
+  const fila = pendentes().sort((a, b) => st(a).u - st(b).u).slice(0, 12);
+  novaRodada('revisao', { id: 'revisao', titulo: 'Revisar erros', mod: { nome: 'Revisão', c: ['var(--oops)', 'var(--oops-d)', 'var(--oops-l)'] } },
+    [cartaoIntro('Hora de revisar!', 'Aqui estão as perguntas que você errou antes. Cada uma que você acertar agora sai da lista.', 'Quem revisa os erros <b>memoriza de verdade</b>. Bora!'), ...shuffle(fila)]);
+}
+function iniciarSimulado() {
+  const n = M.simulado.quantas;
+  const out = shuffle(M.simulado.extras).slice(0, Math.ceil(n / 3));
+  const porLicao = LICOES.map(l => shuffle(l.todas)); let i = 0;
+  while (out.length < n && porLicao.some(a => a.length)) { const a = porLicao[i % porLicao.length]; if (a.length) out.push(a.pop()); i++; }
+  novaRodada('simulado', SIM, [cartaoIntro('Hora do simulado!', `Agora é igual à prova: ${n} perguntas de tudo misturado. O Tico só mostra o resultado no final, com a sua nota.`, 'Leia com calma, pense na regra e responda. <b>Você consegue!</b>'), ...shuffle(out)]);
+}
+
+/* ---------- casca da lição ---------- */
+function shell(inner, bottom) {
+  const c = (R.licao.mod && R.licao.mod.c) || CORES.azul;
+  $app.innerHTML = `<div class="lesson" style="${varsCor(c)}">
+    <div class="lbar"><button class="x" id="quit" aria-label="Sair">${ICON.x}</button><div class="prog" role="progressbar" aria-valuenow="${R.pos}" aria-valuemax="${R.fila.length}"><i style="width:${Math.max(4, R.pos / R.fila.length * 100)}%"></i></div><div class="combo">${R.combo >= 2 ? `<span class="cmb">${ICON.fire}${R.combo}</span>` : ''}</div></div>
+    ${inner}</div><div class="bottom" id="bottom"><div class="inner">${bottom}</div></div>`;
+  document.getElementById('quit').onclick = () => { hush(); gravar(); renderMapa(); };
+  window.scrollTo(0, 0);
+}
+function renderPasso() { const s = R.fila[R.pos]; if (!s) return renderFim(); s.t === 'explain' ? renderExplica(s) : renderPergunta(s); }
+
+function renderExplica(s) {
+  const l = R.licao, body = comTabelas(s.body);
+  const list = s.list ? `<ul class="ex-list">${s.list.map(r => r[1] === '' && !r[2] ? `<li class="ex-sep">${r[0]}</li>` : `<li><span>${r[0]}</span>${r[1] ? `<span class="arrow">→</span><span>${r[1]}</span>` : ''}${r[2] ? `<small>${r[2]}</small>` : ''}</li>`).join('')}</ul>` : '';
+  shell(`<article class="card slide">
+      <span class="kicker" style="background:var(--mc)">${l.mod && l.mod.nome ? l.mod.nome + ' · ' : ''}Aprenda</span>
+      <h2 class="ex-title">${s.title}</h2>${s.formula ? `<div class="formula">${s.formula}</div>` : ''}
+      <div class="ex-body">${body}</div>${list}
+      ${s.memo ? `<div class="tip">${tico('happy', 64)}<div class="bubble"><b>Dica do Tico:</b> ${s.memo}</div></div>` : ''}
+    </article><button class="btn ghost small" id="again" style="max-width:260px;margin:0 auto">Ouvir de novo</button>`,
+    `<button class="btn" id="next">Entendi! Vamos lá</button>`);
+  const fala = s.say || strip(s.title + '. ' + body);
+  document.getElementById('again').onclick = () => say(fala, true);
+  document.getElementById('next').onclick = () => { SFX.tap(); R.pos++; renderPasso(); };
+  sayDepois(fala, 250);
+}
+
+/* ---------- pergunta ---------- */
+const norm = s => String(s).toLowerCase().replace(/[.!?;]+$/, '').replace(/\s*-\s*/g, '-').replace(/\s+/g, ' ').trim();
+const semAcento = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+function renderPergunta(s) {
+  const l = s.licao, sim = R.tipo === 'simulado';
+  const label = R.tipo === 'revisao' ? 'Revisão' : R.tipo === 'treino' ? 'Treino · ' + (l.mod ? l.mod.nome : '') : sim ? 'Simulado' : (l.mod && l.mod.nome) || '';
+  let area = '';
+  if (s.t === 'mc' || s.t === 'table') {
+    const opts = s.o.map((t, i) => ({ t, ok: i === s.a }));
+    R.opts = s.keep ? opts : shuffle(opts);
+    const two = s.two || (R.opts.length === 2 && R.opts.every(o => o.t.length < 22));
+    area = (s.t === 'table' ? `<div class="mtx-wrap" style="margin-bottom:14px">${tabelaHTML(s.tab, s.cell)}</div>` : '') +
+      `<div class="opts ${two ? 'two' : ''}">${R.opts.map((o, i) => `<button class="opt" data-i="${i}">${esc(o.t)}</button>`).join('')}</div>`;
+  } else if (s.t === 'tap') {
+    area = `<div class="toks">${s.s.map((w, i) => `<button class="tok" data-i="${i}">${esc(w)}</button>`).join('')}</div>`;
+  } else if (s.t === 'match') {
+    const L = shuffle(s.pairs.map((p, i) => ({ t: p[0], i }))), Rr = shuffle(s.pairs.map((p, i) => ({ t: p[1], i })));
+    area = `<div class="match"><div class="col">${L.map(o => `<button class="mt" data-side="L" data-i="${o.i}">${esc(o.t)}</button>`).join('')}</div><div class="col">${Rr.map(o => `<button class="mt" data-side="R" data-i="${o.i}">${esc(o.t)}</button>`).join('')}</div></div>`;
+  } else if (s.t === 'write') {
+    area = `<input class="write-in" id="wr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Escreva aqui" aria-label="Sua resposta">${s.dica ? `<p class="dica">${s.dica}</p>` : ''}`;
+  }
+  shell(`<article class="card slide">
+      <div class="qhead"><span class="qlabel">${label}</span><button class="spk" id="spk" aria-label="Ouvir a pergunta">${ICON.spk}</button></div>
+      <h2 class="prompt">${s.q}</h2>${area}</article>`,
+    s.t === 'match' ? `<div class="hint-b">Toque em uma palavra de cada lado</div>` : `<button class="btn" id="check" disabled>${sim ? 'Responder' : 'Verificar'}</button>`);
+  document.getElementById('spk').onclick = () => say(strip(s.q), true);
+  sayDepois(strip(s.q), 200);
+  const check = document.getElementById('check');
+
+  if (s.t === 'mc' || s.t === 'table') {
+    let sel = null;
+    $app.querySelectorAll('.opt').forEach(b => b.onclick = () => { SFX.tap(); $app.querySelectorAll('.opt').forEach(x => x.classList.remove('sel')); b.classList.add('sel'); sel = +b.dataset.i; check.disabled = false; });
+    check.onclick = () => {
+      const ok = R.opts[sel].ok, certa = R.opts.find(o => o.ok).t;
+      $app.querySelectorAll('.opt').forEach((b, i) => { b.disabled = true; if (sim) { if (i === sel) b.classList.add('sel'); } else if (R.opts[i].ok) b.classList.add('right'); else if (i === sel) b.classList.add('wrong'); });
+      responder(s, ok, { certa, dada: R.opts[sel].t });
+    };
+  } else if (s.t === 'tap') {
+    const chosen = new Set();
+    $app.querySelectorAll('.tok').forEach(b => b.onclick = () => { SFX.tap(); const i = +b.dataset.i; chosen.has(i) ? chosen.delete(i) : chosen.add(i); b.classList.toggle('sel'); check.disabled = chosen.size === 0; });
+    check.onclick = () => {
+      const want = new Set(s.a), ok = want.size === chosen.size && [...want].every(i => chosen.has(i));
+      $app.querySelectorAll('.tok').forEach(b => { const i = +b.dataset.i; b.disabled = true; if (sim) return; b.classList.remove('sel'); if (want.has(i) && chosen.has(i)) b.classList.add('right'); else if (want.has(i)) b.classList.add('miss'); else if (chosen.has(i)) b.classList.add('wrong'); });
+      const lim = w => w.replace(/[.,!?]/g, '');
+      responder(s, ok, { certa: s.a.map(i => lim(s.s[i])).join(', '), dada: [...chosen].sort((a, b) => a - b).map(i => lim(s.s[i])).join(', ') });
+    };
+  } else if (s.t === 'match') {
+    let pickL = null, pickR = null, matched = 0, misses = 0;
+    const tryPair = () => {
+      if (!pickL || !pickR) return;
+      if (pickL.dataset.i === pickR.dataset.i) {
+        [pickL, pickR].forEach(b => { b.classList.remove('sel'); b.classList.add(sim ? 'neutro' : 'done'); b.disabled = true; }); matched++; if (!sim) { tone(880, 0, .12); tone(1175, .07, .16); } else SFX.tap();
+        if (matched === s.pairs.length) setTimeout(() => responder(s, true, { certa: s.pairs.map(p => p.join(' e ')).join('; '), dada: misses ? misses + ' erro(s) no caminho' : 'todos certos', misses }), 250);
+      } else { misses++; const a = pickL, b = pickR; if (sim) { SFX.tap(); [a, b].forEach(x => { x.classList.remove('sel'); x.classList.add('neutro'); x.disabled = true; }); matched++; if (matched === s.pairs.length) setTimeout(() => responder(s, true, { certa: s.pairs.map(p => p.join(' e ')).join('; '), dada: misses + ' par(es) errado(s)', misses }), 250); } else { SFX.oops(); [a, b].forEach(x => x.classList.add('shake')); setTimeout(() => [a, b].forEach(x => x.classList.remove('shake', 'sel')), 380); } }
+      pickL = pickR = null;
+    };
+    $app.querySelectorAll('.mt').forEach(b => b.onclick = () => {
+      if (b.classList.contains('done')) return; SFX.tap();
+      if (b.dataset.side === 'L') { if (pickL) pickL.classList.remove('sel'); pickL = b; } else { if (pickR) pickR.classList.remove('sel'); pickR = b; }
+      b.classList.add('sel'); tryPair();
+    });
+  } else if (s.t === 'write') {
+    const inp = document.getElementById('wr');
+    inp.oninput = () => { check.disabled = !inp.value.trim(); };
+    const go = () => {
+      if (!inp.value.trim()) return;
+      const dada = inp.value.trim(), n = norm(dada);
+      const exata = s.r.some(r => norm(r) === n), quase = !exata && s.r.some(r => semAcento(norm(r)) === semAcento(n));
+      inp.disabled = true; check.disabled = true;
+      const ok = exata || (quase && !sim); // no simulado, faltar acento conta como erro, igual à prova
+      if (!sim) inp.classList.add(ok ? 'right' : 'wrong');
+      responder(s, ok, { certa: s.r[0], dada, acento: quase && !sim });
+    };
+    check.onclick = go; inp.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); go(); } };
+    setTimeout(() => inp.focus(), 300);
+  }
+}
+
+/* ---------- resposta ---------- */
+function responder(s, ok, info) {
+  const agora = Date.now(); D.tempo += Math.min(agora - R.ultimo, 120000); R.ultimo = agora;
+  const primeira = !R.contadas.has(s.id);
+  const okStat = ok && !info.misses; // ligou tudo, mas errou par no caminho: comemora, mas fica para reforçar
+  if (primeira) { registrar(s, okStat); R.contadas.add(s.id); }
+  if (R.tipo === 'simulado') {
+    R.respostas.push({ q: s, ok: okStat, ...info }); if (okStat) R.acertos++;
+    gravar(); SFX.tap();
+    const b = document.getElementById('bottom');
+    b.innerHTML = `<div class="inner"><div class="hint-b">Resposta registrada</div><button class="btn" id="cont">Próxima</button></div>`;
+    const c = document.getElementById('cont'); c.focus({ preventScroll: true }); c.onclick = () => { SFX.tap(); R.pos++; renderPasso(); };
+    return;
+  }
+  const retry = R.errouNaRodada.has(s.id);
+  let xp = 0, extra = '';
+  if (ok) {
+    R.acertos++; R.combo++; D.melhorCombo = Math.max(D.melhorCombo, R.combo);
+    xp = retry ? 5 : (info.misses ? 6 : 10);
+    if (R.combo % 5 === 0) xp += 5;
+    if (COMBO_MSG[R.combo]) extra = COMBO_MSG[R.combo];
+    if (R.tipo === 'revisao' && st(s)) st(s).ul = 1;
+    R.xp += xp; D.xp += xp; D.dias[hoje()] = (D.dias[hoje()] || 0) + xp;
+    (COMBO_MSG[R.combo] ? SFX.combo : SFX.ok)(); confetti(COMBO_MSG[R.combo] ? 120 : 45);
+  } else {
+    R.combo = 0; R.errouNaRodada.add(s.id); R.fila.push(s); SFX.oops();
+  }
+  gravar();
+  const title = ok ? pick(PRAISE)() : pick(OOPS)();
+  const nota = ok && info.acento ? `<br><b>Cuidado com o acento:</b> o certo é <b>${esc(info.certa)}</b>.` : ok && info.misses ? '<br>Na próxima, tente ligar todos sem errar nenhum.' : '';
+  const b = document.getElementById('bottom');
+  b.className = 'bottom slide ' + (ok ? 'good' : 'bad');
+  b.innerHTML = `<div class="inner"><div class="fb">${tico(ok ? 'cheer' : 'oops', 70, ok ? 'pop' : '')}<div style="min-width:0">
+      <h3>${title}</h3>
+      ${ok ? `<p><span class="xpfly">+${xp} pontos</span>${extra ? ` · <b style="color:var(--oops-d)">${extra}</b>` : ''}</p>` : `<p>Resposta certa: <b>${esc(info.certa)}</b></p>`}
+      <p class="why">${s.why || ''}${nota}${ok ? '' : '<br><b>' + pick(OOPS_SUB) + '</b>'}</p></div></div>
+    <button class="btn ${ok ? 'ok' : 'oops'}" id="cont">${ok ? 'Continuar' : 'Entendi'}</button></div>`;
+  const c = document.getElementById('cont'); c.focus({ preventScroll: true });
+  c.onclick = () => { SFX.tap(); R.pos++; renderPasso(); };
+  say(ok ? strip(title) + (extra ? '. ' + extra : '') : strip(title) + ' A resposta certa é: ' + info.certa + '. ' + strip(s.why || ''));
+}
+
+/* ---------- fim da rodada ---------- */
+function renderFim() {
+  hush();
+  const unicas = [...R.contadas].length, errs = R.errouNaRodada.size;
+  const sim = R.tipo === 'simulado';
+  let stars, titulo, msg, extraHTML = '';
+  if (sim) {
+    const nota = R.respostas.length ? R.acertos / R.respostas.length * 10 : 0;
+    stars = nota >= 9 ? 3 : nota >= 7 ? 2 : 1;
+    D.simulados.push({ data: hoje(), nota: Math.round(nota * 10) / 10, n: R.respostas.length });
+    const ganho = R.acertos * 10; R.xp = ganho; D.xp += ganho; D.dias[hoje()] = (D.dias[hoje()] || 0) + ganho;
+    titulo = 'Nota ' + nota.toFixed(1).replace('.', ',');
+    msg = nota >= 9 ? `Excelente, ${N()}! Você mandou muito bem: dá para ir para a prova com confiança!` : nota >= 7 ? 'Muito bom! Revise os erros abaixo e você chega no 10.' : 'Bom treino! Os erros já foram para a revisão. Revise e tente de novo.';
+    const errs2 = R.respostas.filter(r => !r.ok);
+    extraHTML = errs2.length ? `<div class="card erros"><h3>Para revisar (${errs2.length})</h3>${errs2.map(r => `<div class="err"><p class="eq">${r.q.q}</p><p><span class="tag bad">Sua resposta</span> ${esc(r.dada || '')}</p><p><span class="tag good">Certa</span> <b>${esc(r.certa)}</b></p><p class="why">${r.q.why || ''}</p></div>`).join('')}</div>` : '';
+  } else {
+    stars = errs === 0 ? 3 : errs <= 2 ? 2 : 1;
+    titulo = R.tipo === 'revisao' ? 'Revisão feita!' : R.tipo === 'treino' ? 'Treino completo!' : 'Lição completa!';
+    const faltam = pendentes().length;
+    msg = R.tipo === 'revisao' ? (faltam ? `Ainda faltam ${faltam} para revisar. Você está quase lá!` : 'Lista de erros zerada! Você aprendeu tudo.')
+      : stars === 3 ? `Sem errar nenhuma! ${N()}, você é demais!` : stars === 2 ? 'Muito bom! Quase perfeito. Mais uma rodada e vira 3 estrelas.' : 'Você terminou! Cada erro virou aprendizado. Que tal mais uma rodada?';
+    if (R.tipo === 'licao') { const l = R.licao, nv = novasDe(l); extraHTML = `<div class="bubble small">${dominadasDe(l)} de ${l.todas.length} perguntas dominadas nesta lição.${nv ? ` Ainda tem ${nv} pergunta${nv > 1 ? 's' : ''} que você nunca viu: jogue de novo!` : ''}</div>`; }
+  }
+  if (R.tipo === 'licao' || sim) { const id = R.licao.id, prev = D.licoes[id] || {}; D.licoes[id] = { estrelas: Math.max(stars, prev.estrelas || 0), rodadas: (prev.rodadas || 0) + 1 }; }
+  const bateuMeta = !R.metaAntes && pontosHoje(P.id) >= META_DIA;
+  gravar();
+  const unicasTxt = sim ? `${R.acertos}/${R.respostas.length}` : (unicas ? Math.round((unicas - errs) / unicas * 100) : 100) + '%';
+  const idx = LICOES.indexOf(R.licao), next = R.tipo === 'licao' && idx >= 0 ? LICOES[idx + 1] : null;
+  $app.innerHTML = `<div class="end">
+    ${tico('cheer', 120, 'bounce')}
+    <h1>${titulo}</h1>
+    ${R.tipo === 'licao' || sim ? `<div class="bigstars">${STAR(stars >= 1)}${STAR(stars >= 2)}${STAR(stars >= 3)}</div>` : ''}
+    ${bateuMeta ? `<div class="aviso novo meta-ok">${ICON.fire.replace('<svg', '<svg width="40" height="40"')}<div><b>Meta do dia cumprida!</b><br>${ofensiva(P.id)} dia${ofensiva(P.id) > 1 ? 's' : ''} seguido${ofensiva(P.id) > 1 ? 's' : ''} estudando.</div></div>` : ''}
+    <div class="bubble" style="max-width:420px">${msg}</div>
+    <div class="stats"><div class="stat"><b>+${R.xp}</b><span>pontos</span></div><div class="stat"><b>${unicasTxt}</b><span>${sim ? 'acertos' : 'de primeira'}</span></div><div class="stat"><b>${D.melhorCombo}</b><span>recorde seguidas</span></div></div>
+    ${extraHTML}
+    ${next ? `<button class="btn ok" id="nx">Próxima: ${next.titulo}</button>` : ''}
+    ${R.tipo === 'licao' ? `<button class="btn ghost" id="rep">Jogar esta lição de novo</button>` : ''}
+    ${sim ? `<button class="btn ghost" id="rep">Fazer outro simulado</button>` : ''}
+    <button class="btn ghost" id="map">Voltar ao mapa</button>
+  </div>`;
+  SFX.win(); confetti(160); setTimeout(() => confetti(120), 500);
+  say(strip(titulo) + '. ' + strip(msg) + (bateuMeta ? ' E você cumpriu a meta do dia!' : ''));
+  const lic = R.licao;
+  const nx = document.getElementById('nx'); if (nx) nx.onclick = () => iniciarLicao(next);
+  const rp = document.getElementById('rep'); if (rp) rp.onclick = () => sim ? iniciarSimulado() : iniciarLicao(lic);
+  document.getElementById('map').onclick = renderMapa;
+}
+
+/* ---------- cartões das regras (para decorar) ---------- */
+function iniciarCartoes() {
+  const fila = [...CARTOES.filter(c => D.cartoes[c.k] !== 'sei'), ...CARTOES.filter(c => D.cartoes[c.k] === 'sei')];
+  let i = 0, virado = false, sabidos = 0;
+  const tela = () => {
+    const c = fila[i];
+    if (!c) {
+      gravar(); SFX.win(); confetti(120);
+      $app.innerHTML = `<div class="end">${tico('cheer', 120, 'bounce')}<h1>Cartões revisados!</h1><div class="bubble">Você marcou ${sabidos} como "já sei". Os que você pediu para rever aparecem primeiro na próxima vez.</div><button class="btn" id="map">Voltar ao mapa</button></div>`;
+      say('Cartões revisados! Muito bem.'); document.getElementById('map').onclick = renderMapa; return;
+    }
+    const cor = c.licao.mod.c;
+    $app.innerHTML = `<div class="lesson" style="${varsCor(cor)}">
+      <div class="lbar"><button class="x" id="quit" aria-label="Sair">${ICON.x}</button><div class="prog"><i style="width:${Math.max(4, i / fila.length * 100)}%"></i></div><div class="combo">${i + 1}/${fila.length}</div></div>
+      <button class="flash ${virado ? 'virado' : ''}" id="flip" aria-label="Virar o cartão">
+        <span class="kicker" style="background:var(--mc)">${esc(c.licao.mod.nome)} · ${esc(c.licao.titulo)}</span>
+        <span class="f-frente">${c.frente}</span>
+        ${virado ? `<span class="f-verso">${c.verso}</span>` : '<span class="f-hint">Toque para ver a resposta</span>'}
+      </button></div>
+      <div class="bottom"><div class="inner">${virado ? '<div class="two-btn"><button class="btn oops" id="rever">Rever de novo</button><button class="btn ok" id="sei">Já sei!</button></div>' : '<button class="btn" id="virar">Virar o cartão</button>'}</div></div>`;
+    document.getElementById('quit').onclick = () => { hush(); gravar(); renderMapa(); };
+    const virar = () => { if (virado) return; virado = true; SFX.flip(); tela(); say(strip(c.verso)); };
+    document.getElementById('flip').onclick = virar;
+    const vb = document.getElementById('virar'); if (vb) vb.onclick = virar;
+    if (virado) {
+      document.getElementById('sei').onclick = () => { D.cartoes[c.k] = 'sei'; sabidos++; SFX.ok(); i++; virado = false; gravar(); tela(); setTimeout(() => fila[i] && say(strip(fila[i].frente)), 200); };
+      document.getElementById('rever').onclick = () => { D.cartoes[c.k] = 'rever'; fila.push(c); SFX.tap(); i++; virado = false; gravar(); tela(); setTimeout(() => fila[i] && say(strip(fila[i].frente)), 200); };
+    }
+  };
+  tela(); say('Cartões das regras. ' + strip(fila[0].frente));
+}
+
+/* ---------- resumão ---------- */
+function renderResumo() {
+  window.scrollTo(0, 0);
+  $app.innerHTML = `<div class="lesson res">
+    <div class="lbar"><button class="x" id="back" aria-label="Voltar">${ICON.back}</button><h2 style="font-size:24px">Resumão das regras</h2></div>
+    ${M.resumo.map(r => { const c = CORES[r.cor] || CORES.azul; return `<div class="card" style="${varsCor(c)}"><span class="kicker" style="background:var(--mc)">${r.titulo}</span><h3>${r.subtitulo || ''}</h3><ul>${r.itens.map(i => `<li>${i}</li>`).join('')}</ul>${r.tabelas ? `<div style="margin-top:10px">${comTabelas('[[tabelas:' + r.tabelas.join(',') + ']]')}</div>` : ''}</div>`; }).join('')}
+    <button class="btn" id="back2">Voltar ao mapa</button></div>`;
+  document.getElementById('back').onclick = renderMapa; document.getElementById('back2').onclick = renderMapa;
+  say('Resumão das regras. Tudo numa página só.');
+}
+
+/* ---------- área dos pais ---------- */
+function renderPortaoPais() {
+  hush(); window.scrollTo(0, 0);
+  const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
+  $app.innerHTML = `<div class="start"><div class="lbar" style="width:100%"><button class="x" id="back" aria-label="Voltar">${ICON.back}</button></div>
+    <h1 style="font-size:30px">Área dos pais</h1><div class="bubble">Para entrar, responda: quanto é <b>${a} × ${b}</b>?</div>
+    <input class="name-in" id="pg" inputmode="numeric" autocomplete="off" aria-label="Resposta"><button class="btn" id="ok" style="max-width:340px">Entrar</button></div>`;
+  document.getElementById('back').onclick = renderMapa;
+  const tenta = () => { if (+document.getElementById('pg').value === a * b) renderPais(); else { const i = document.getElementById('pg'); i.classList.add('shake'); setTimeout(() => i.classList.remove('shake'), 400); i.value = ''; } };
+  document.getElementById('ok').onclick = tenta; document.getElementById('pg').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); tenta(); } };
+}
+function minutos(ms) { const m = Math.round(ms / 60000); return m < 60 ? m + ' min' : Math.floor(m / 60) + 'h' + pad2(m % 60); }
+function renderPais() {
+  window.scrollTo(0, 0);
+  const vistas = TODAS.filter(vista).length, naoVistas = TODAS.length - vistas;
+  const porLote = {}; TODAS.forEach(q => { porLote[q.lote || 1] = (porLote[q.lote || 1] || 0) + 1; });
+  const blocos = DB.perfis.map(p => {
+    const d = dadosDe(p.id, M.slug);
+    const est = Object.entries(d.q).filter(([id]) => Q[id]);
+    const resp = est.reduce((a, [, s]) => a + s.v, 0), certas = est.reduce((a, [, s]) => a + s.c, 0);
+    const piores = est.filter(([, s]) => s.e > 0).sort((a, b) => b[1].e - a[1].e || a[1].s - b[1].s).slice(0, 6);
+    const dom = TODAS.filter(q => { const s = d.q[q.id]; return s && (s.s >= 2 || (s.s >= 1 && s.e === 0)); }).length;
+    const sims = d.simulados.slice(-5);
+    return `<div class="card pais">
+      <div class="pais-h">${avatar(p, 48)}<div><h3>${esc(p.nome)}</h3><small>${ofensiva(p.id)} dia(s) seguido(s) · ${d.xp} pontos · ${minutos(d.tempo)} de estudo</small></div></div>
+      <div class="stats"><div class="stat"><b>${resp}</b><span>respostas</span></div><div class="stat"><b>${resp ? Math.round(certas / resp * 100) : 0}%</b><span>acertos</span></div><div class="stat"><b>${dom}/${TODAS.length}</b><span>dominadas</span></div></div>
+      <table class="tb"><tr><th>Lição</th><th>Estrelas</th><th>Dominadas</th><th>Nunca viu</th></tr>
+      ${LICOES.map(l => { const dl = d.licoes[l.id] || {}; const domL = l.todas.filter(q => { const s = d.q[q.id]; return s && (s.s >= 2 || (s.s >= 1 && s.e === 0)); }).length; const nv = l.todas.filter(q => !d.q[q.id]).length; return `<tr><td>${l.titulo}</td><td>${dl.estrelas || '-'}</td><td>${domL}/${l.todas.length}</td><td>${nv}</td></tr>`; }).join('')}</table>
+      ${sims.length ? `<p><b>Simulados:</b> ${sims.map(s => s.data.split('-').reverse().slice(0, 2).join('/') + ' nota ' + String(s.nota).replace('.', ',')).join(' · ')}</p>` : ''}
+      ${piores.length ? `<p><b>Mais erradas:</b></p><ol class="piores">${piores.map(([id, s]) => `<li>${strip(Q[id].q)} <small>(errou ${s.e}x)</small></li>`).join('')}</ol>` : '<p>Ainda sem erros registrados.</p>'}
+      <div class="row wrap"><button class="linkbtn" data-ren="${p.id}">Renomear</button><button class="linkbtn danger" data-zera="${p.id}">Zerar ${esc(M.titulo)}</button><button class="linkbtn danger" data-apaga="${p.id}">Apagar criança</button></div></div>`;
+  }).join('');
+  $app.innerHTML = `<div class="lesson res">
+    <div class="lbar"><button class="x" id="back" aria-label="Voltar">${ICON.back}</button><h2 style="font-size:24px">Área dos pais</h2></div>
+    <div class="card"><h3>Banco de perguntas: ${esc(M.titulo)} ${esc(M.serie || '')}</h3>
+      <p>${TODAS.length} perguntas em ${LICOES.length} lições (${Object.entries(porLote).map(([n, q]) => `lote ${n}: ${q}`).join(', ')}).</p>
+      <p>${N()} já viu <b>${vistas}</b> e ainda não viu <b>${naoVistas}</b>.${naoVistas < M.rodada * 3 ? ' <b style="color:var(--oops-d)">Está na hora de pedir um lote novo.</b>' : ''}</p>
+      <p class="why">Para renovar: peça ao Claude "renova o quiz de ${esc(M.titulo)}". As perguntas novas entram no mesmo link e o progresso continua.</p></div>
+    ${blocos}
+    <div class="card"><h3>Backup do progresso</h3>
+      <p class="why">O progresso fica só neste aparelho. O Safari pode apagá-lo se o site ficar uns 7 dias sem uso. De vez em quando, copie o código de backup e guarde (por exemplo, mandando para você mesmo no WhatsApp). Para trazer de volta, toque em Restaurar e cole o código.</p>
+      <div class="row wrap"><button class="linkbtn" id="bk">Copiar backup</button><button class="linkbtn" id="rs">Restaurar backup</button></div><p class="why" id="bkmsg"></p></div>
+    <button class="btn" id="back2">Voltar ao mapa</button></div>`;
+  document.getElementById('back').onclick = renderMapa; document.getElementById('back2').onclick = renderMapa;
+  const msg = txt => { document.getElementById('bkmsg').textContent = txt; };
+  document.getElementById('bk').onclick = () => {
+    const c = codigoBackup();
+    const manual = () => { prompt('Copie o código abaixo e guarde:', c); };
+    try { navigator.clipboard.writeText(c).then(() => msg('Código copiado! Cole e guarde em um lugar seguro.'), manual); } catch (e) { manual(); }
+  };
+  document.getElementById('rs').onclick = () => {
+    const c = prompt('Cole aqui o código de backup:'); if (!c) return;
+    try { restaurarBackup(c); location.reload(); } catch (e) { msg('Esse código não é um backup válido. Confira se copiou inteiro.'); }
+  };
+  const confirma = (b, txt, acao) => { if (b.dataset.armed) return acao(); b.dataset.armed = 1; const t = b.textContent; b.textContent = txt; setTimeout(() => { delete b.dataset.armed; b.textContent = t; }, 3500); };
+  $app.querySelectorAll('[data-ren]').forEach(b => b.onclick = () => { const p = DB.perfis.find(x => x.id === b.dataset.ren); const n = prompt('Novo nome:', p.nome); if (n && n.trim()) { p.nome = n.trim().slice(0, 20); gravar(); renderPais(); } });
+  $app.querySelectorAll('[data-zera]').forEach(b => b.onclick = () => confirma(b, 'Tem certeza? Toque de novo', () => { delete DB.dados[b.dataset.zera][M.slug]; if (b.dataset.zera === P.id) D = dadosDe(P.id, M.slug); gravar(); renderPais(); }));
+  $app.querySelectorAll('[data-apaga]').forEach(b => b.onclick = () => confirma(b, 'Apagar mesmo? Toque de novo', () => { apagarPerfil(b.dataset.apaga); const p = perfilAtivo(); if (!p) return telaPerfis($app, entrar); if (p.id !== P.id) entrar(p); else renderPais(); }));
+}
+
+/* ---------- início ---------- */
+migrarLegado();
+(() => { const p = perfilAtivo(); p ? entrar(p) : telaPerfis($app, entrar); })();
+// usado nos testes automáticos (abre uma rodada só com as perguntas pedidas)
+window.__estudos = { M, Q, LICOES, get D() { return D; }, get R() { return R; }, rodada: ids => novaRodada('treino', { id: 'teste', titulo: 'Teste', mod: { nome: 'Teste', c: CORES.roxo } }, ids.map(id => Q[id])) };
+
+</script>
+</body>
+</html>
